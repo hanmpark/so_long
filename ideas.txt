@@ -1,6 +1,0 @@
-Robot Controller
-
-Player controls a robot that has to solve a problem to open the door,
-A key that switch controls for player/robot
-
-Split the screen ?
