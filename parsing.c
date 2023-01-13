@@ -6,89 +6,116 @@
 /*   By: hanmpark <hanmpark@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/13 12:00:48 by hanmpark          #+#    #+#             */
-/*   Updated: 2023/01/13 13:45:37 by hanmpark         ###   ########.fr       */
+/*   Updated: 2023/01/14 00:16:45 by hanmpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "includes/so_long.h"
 
-typedef struct	s_check
+static char	*trimnl(char *str)
 {
-	int	coin;
-	int	player;
-	int	exit;
-}	t_check;
+	char	*res;
 
-void	clear_map(char **map)
-{
-	int	i;
-
-	i = 0;
-	while (map[i])
-	{
-		free(map[i]);
-		i++;
-	}
+	res = ft_strtrim(str, "\n");
+	free(str);
+	return (res);
 }
 
-int	check_map(char **map, t_check *check)
+static int	map_size(const char *file)
 {
-	int	i;
-	int	k;
-	int	xlen;
-
-	k = 0;
-	i = 0;
-	xlen = ft_strlen(map[k]) - 1;
-	/* check lines */
-	while(map[k][i])
-	{
-		i = 0;
-		if (k == 0)
-		{
-			ft_printf("%c", map[k][i]);
-			if (map[k][i] != '1' && map[k][i] != '\n')
-				return (0);
-			i++;
-		}
-		k++;
-	}
-	return (1);
-}
-
-void	init_check(t_check *check)
-{
-	check->coin = 0;
-	check->exit = 0;
-	check->player = 0;
-}
-
-int	main(void)
-{
-	char	**map;
-	t_check	*check;
+	char	*str;
 	int		fd;
-	int		i;
+	int		size;
 
-	fd = open("maps/easy.ber", O_RDONLY);
-	i = 0;
+	fd = open(file, O_RDONLY);
+	if (!fd)
+		return (0);
+	size = 0;
 	while (1)
 	{
+		str = get_next_line(fd);
+		if (!str)
+			break ;
+		size++;
+		free(str);
+	}
+	close(fd);
+	return (size);
+}
+
+char	**init_map(const char *file)
+{
+	char			**map;
+	unsigned int	size;
+	int				fd;
+	int				i;
+
+	size = map_size(file);
+	if (!size)
+		return (NULL);
+	map = ft_calloc(size + 1, sizeof(char *));
+	if (!map)
+		return (NULL);
+	fd = open(file, O_RDONLY);
+	if (!fd || fd < 0)
+		return (NULL);
+	i = 0;
+	while (i < size)
+	{
 		map[i] = get_next_line(fd);
-		ft_printf("%s", map[i]);
+		map[i] = trimnl(map[i]);
 		if (!map[i])
 			break ;
 		i++;
 	}
-	ft_putchar_fd('\n', 1);
-	close(fd);
-	check = malloc(sizeof(t_check));
-	init_check(check);
-	if (!check_map(map, check))
+	return (map);
+}
+
+static int	check_edges(const char **map, int row_len, int col_len)
+{
+	int	i;
+
+	i = 0;
+	while (i <= row_len)
 	{
-		ft_printf("map is in wrong format\n");
-		return (-1);
+		if ((map[0][i] != '1') || (map[col_len][i] != '1'))
+			return (FALSE);
+		i++;
 	}
-	clear_map(map);
-	return (0);
+	i = 0;
+	while (i <= col_len)
+	{
+		if (map[i][0] != '1' || map[i][row_len] != '1')
+			return (FALSE);
+		i++;
+	}
+	return (TRUE);
+}
+
+static int	check_len(const char **map, int line_len)
+{
+	int	count;
+
+	count = 0;
+	while (map[count] && (int)ft_strlen(map[count]) == line_len)
+		count++;
+	if (map[count])
+		return (FALSE);
+	return (count);
+}
+
+int	check_map(const char **map)
+{
+	int	x_len;
+	int	y_len;
+
+	if (!map)
+		return (FALSE);
+	x_len = (int)ft_strlen(*map);
+	y_len = check_len(map, x_len);
+	if (!y_len)
+		return (FALSE);
+	if (!check_edges(map, x_len - 1, y_len - 1))
+		return (FALSE);
+	return (TRUE);
 }

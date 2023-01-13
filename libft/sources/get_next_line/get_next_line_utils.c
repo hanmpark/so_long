@@ -6,7 +6,7 @@
 /*   By: hanmpark <hanmpark@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/05 07:20:26 by hanmpark          #+#    #+#             */
-/*   Updated: 2023/01/05 14:07:35 by hanmpark         ###   ########.fr       */
+/*   Updated: 2023/01/14 00:01:14 by hanmpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,27 +17,6 @@ void	ft_freeall(char *buf, char *line, char *stash)
 	free(buf);
 	free(line);
 	free(stash);
-}
-
-void	*ft_calloc(size_t count, size_t size)
-{
-	char	*tb;
-	size_t	len;
-	int		i;
-
-	if (count > SIZE_MAX)
-		return (NULL);
-	len = count * size;
-	tb = malloc(len);
-	if (!tb)
-		return (NULL);
-	i = 0;
-	while (len)
-	{
-		tb[i++] = 0;
-		len--;
-	}
-	return (tb);
 }
 
 char	*ft_bufferjoin(char *dest, char *src)
