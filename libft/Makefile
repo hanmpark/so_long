@@ -6,7 +6,7 @@
 #    By: hanmpark <hanmpark@student.42nice.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/08 16:40:47 by hanmpark          #+#    #+#              #
-#    Updated: 2023/01/05 11:58:45 by hanmpark         ###   ########.fr        #
+#    Updated: 2023/01/14 14:27:17 by hanmpark         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -58,7 +58,7 @@ CC			= gcc
 CFLAGS		= -Wall -Wextra -Werror
 
 %.o:%.c		${H_FILE}
-	${CC} ${CFLAGS} -c $< -o ${<:.c=.o}
+	@${CC} ${CFLAGS} -c $< -o ${<:.c=.o}
 
 #################### RULES ####################
 all:		${NAME}
@@ -71,12 +71,10 @@ ${NAME}:	${OBJS}
 
 clean:
 	@echo "${_BOLD}${_CYAN}==================== C L E A N I N G ====================${_END}\n"
-	rm -f ${OBJS}
-	@echo "${_BOLD}${_IPURPLE}.o files destroyed${_END}"
+	@rm -f ${OBJS}
 
 fclean:	clean
-	rm -f ${NAME}
-	@echo "${_BOLD}${_IRED}.a file destroyed${_END}"
+	@rm -f ${NAME}
 
 re:		fclean all
 

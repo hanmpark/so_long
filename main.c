@@ -6,7 +6,7 @@
 /*   By: hanmpark <hanmpark@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 10:22:52 by hanmpark          #+#    #+#             */
-/*   Updated: 2023/01/14 00:17:37 by hanmpark         ###   ########.fr       */
+/*   Updated: 2023/01/14 14:48:44 by hanmpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,13 @@
 int	main(int argc, char **argv)
 {
 	char	**map;
+	t_parse	*mapinfo;
 	int		i = 0;
 
 	if (argc != 2 || !argv[1])
+		return (-1);
+	mapinfo = malloc(sizeof(t_parse));
+	if (!mapinfo)
 		return (-1);
 	map = init_map(argv[1]);
 	/* print out the map */
@@ -27,7 +31,7 @@ int	main(int argc, char **argv)
 		i++;
 	}
 	/* ----------------- */
-	if (!check_map((const char **)map))
+	if (!check_map((const char **)map, mapinfo))
 	{
 		ft_printf("Edges of the map are not good...\n");
 		return (-1);

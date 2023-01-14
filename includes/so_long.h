@@ -6,7 +6,7 @@
 /*   By: hanmpark <hanmpark@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 10:23:44 by hanmpark          #+#    #+#             */
-/*   Updated: 2023/01/13 23:55:56 by hanmpark         ###   ########.fr       */
+/*   Updated: 2023/01/14 14:50:29 by hanmpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,44 +21,21 @@
 # define TRUE 1
 # define FALSE 0
 
-typedef struct	s_parse
-{
-	int	player;
-	int	collectible;
-	int	exit;
-}	t_parse;
-
-typedef struct	s_vector
+typedef struct	s_pos
 {
 	int	x;
 	int	y;
-}	t_vector;
+}	t_pos;
 
-typedef struct	s_window
+typedef struct	s_parse
 {
-	void		*reference;
-	t_vector	size;
-}	t_window;
-
-typedef struct	s_image
-{
-	void		*reference;
-	t_vector	size;
-	char		*pixels;
-	int			bits_per_pixel;
-	int			line_size;
-	int			endian;
-}	t_image;
-
-typedef struct	s_program
-{
-	void		*mlx;
-	t_window	window;
-	t_image		sprite;
-	t_vector	sprite_position;
-}	t_program;
+	int		player;
+	int		collectible;
+	int		exit;
+	t_pos	*size;
+}	t_parse;
 
 char	**init_map(const char *file);
-int		check_map(const char **map);
+int		check_map(const char **map, t_parse *mapinfo);
 
 #endif
