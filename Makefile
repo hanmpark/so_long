@@ -6,13 +6,13 @@
 #    By: hanmpark <hanmpark@student.42nice.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/11 13:12:40 by hanmpark          #+#    #+#              #
-#    Updated: 2023/01/14 14:27:57 by hanmpark         ###   ########.fr        #
+#    Updated: 2023/01/14 23:05:13 by hanmpark         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 # PRESETS
+NAME = so_long
 HDIR = includes/
-NAME = so_long.a
 LIBFT = libft/
 
 # SOURCES AND OBJECTS
@@ -22,7 +22,7 @@ OBJS = ${SRCS:.c=.o}
 
 # COMPILER
 CC = gcc
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror -g3
 
 %.o:%.c ${HDIR}
 	@${CC} ${CFLAGS} -c $< -o ${<:.c=.o}
@@ -32,19 +32,16 @@ all: ${NAME}
 
 ${NAME}: ${OBJS}
 	@${MAKE} -C ${LIBFT}
-	@cp ${LIBFT}/libft.a ${NAME}
-	@ar rc ${NAME} ${OBJS}
-	@ranlib ${NAME}
+	@${CC} ${FLAGS} ${OBJS} -o ${NAME} ${LIBFT}/libft.a
 
 clean:
-	@rm -f ${OBJS}
+	@rm -rf ${OBJS}
 	@${MAKE} clean -C ${LIBFT}
 	@echo ".o files destroyed"
-	
+
 fclean: clean
-	@rm -f ${NAME}
-	@rm -f ${LIBFT}/libft.a
-	@echo ".a files destroyed"
+	@rm -rf ${NAME}
+	@rm -rf ${LIBFT}/libft.a
 
 re: fclean all
 

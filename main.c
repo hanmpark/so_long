@@ -6,7 +6,7 @@
 /*   By: hanmpark <hanmpark@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 10:22:52 by hanmpark          #+#    #+#             */
-/*   Updated: 2023/01/14 14:48:44 by hanmpark         ###   ########.fr       */
+/*   Updated: 2023/01/14 19:38:30 by hanmpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int	main(int argc, char **argv)
 	mapinfo = malloc(sizeof(t_parse));
 	if (!mapinfo)
 		return (-1);
-	map = init_map(argv[1]);
+	map = init_map(argv[1], mapinfo);
 	/* print out the map */
 	while (map[i])
 	{

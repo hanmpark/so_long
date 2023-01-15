@@ -6,7 +6,7 @@
 /*   By: hanmpark <hanmpark@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/14 13:57:49 by hanmpark          #+#    #+#             */
-/*   Updated: 2023/01/14 14:37:33 by hanmpark         ###   ########.fr       */
+/*   Updated: 2023/01/14 19:40:45 by hanmpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,24 +43,23 @@ static int	map_size(const char *file)
 	return (size);
 }
 
-char	**init_map(const char *file)
+char	**init_map(const char *file, t_parse *mapinfo)
 {
-	char			**map;
-	unsigned int	size;
-	unsigned int	i;
-	int				fd;
+	char	**map;
+	int		i;
+	int		fd;
 
-	size = map_size(file);
-	if (!size)
+	mapinfo->size.y = map_size(file);
+	if (!mapinfo->size.y)
 		return (NULL);
-	map = ft_calloc(size + 1, sizeof(char *));
+	map = ft_calloc(mapinfo->size.y + 1, sizeof(char *));
 	if (!map)
 		return (NULL);
 	fd = open(file, O_RDONLY);
 	if (!fd || fd < 0)
 		return (NULL);
 	i = 0;
-	while (i < size)
+	while (i < mapinfo->size.y)
 	{
 		map[i] = get_next_line(fd);
 		map[i] = trimnl(map[i]);
