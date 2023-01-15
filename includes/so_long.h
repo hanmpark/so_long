@@ -6,7 +6,7 @@
 /*   By: hanmpark <hanmpark@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 10:23:44 by hanmpark          #+#    #+#             */
-/*   Updated: 2023/01/14 19:40:59 by hanmpark         ###   ########.fr       */
+/*   Updated: 2023/01/15 12:30:06 by hanmpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,13 +29,13 @@ typedef struct	s_pos
 
 typedef struct	s_parse
 {
-	int		player;
+	t_pos	player;
 	int		collectible;
 	int		exit;
 	t_pos	size;
 }	t_parse;
 
 char	**init_map(const char *file, t_parse *mapinfo);
-int		check_map(const char **map, t_parse *mapinfo);
+int		check_map(const char **map, const char *file, t_parse *mapinfo);
 
 #endif

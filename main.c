@@ -6,7 +6,7 @@
 /*   By: hanmpark <hanmpark@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 10:22:52 by hanmpark          #+#    #+#             */
-/*   Updated: 2023/01/14 19:38:30 by hanmpark         ###   ########.fr       */
+/*   Updated: 2023/01/15 12:08:04 by hanmpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ int	main(int argc, char **argv)
 		i++;
 	}
 	/* ----------------- */
-	if (!check_map((const char **)map, mapinfo))
+	if (!check_map((const char **)map, argv[1], mapinfo))
 	{
 		ft_printf("Edges of the map are not good...\n");
 		return (-1);
