@@ -6,7 +6,7 @@
 /*   By: hanmpark <hanmpark@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 10:23:44 by hanmpark          #+#    #+#             */
-/*   Updated: 2023/01/15 12:30:06 by hanmpark         ###   ########.fr       */
+/*   Updated: 2023/01/16 16:39:39 by hanmpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,6 @@ typedef struct	s_parse
 }	t_parse;
 
 char	**init_map(const char *file, t_parse *mapinfo);
-int		check_map(const char **map, const char *file, t_parse *mapinfo);
+int		check_map(const char **map, t_parse *mapinfo);
 
 #endif
