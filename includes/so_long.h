@@ -6,7 +6,7 @@
 /*   By: hanmpark <hanmpark@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 10:23:44 by hanmpark          #+#    #+#             */
-/*   Updated: 2023/01/14 19:40:59 by hanmpark         ###   ########.fr       */
+/*   Updated: 2023/01/16 16:39:39 by hanmpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ typedef struct	s_pos
 
 typedef struct	s_parse
 {
-	int		player;
+	t_pos	player;
 	int		collectible;
 	int		exit;
 	t_pos	size;

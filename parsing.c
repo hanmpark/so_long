@@ -6,7 +6,7 @@
 /*   By: hanmpark <hanmpark@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/13 12:00:48 by hanmpark          #+#    #+#             */
-/*   Updated: 2023/01/14 20:23:16 by hanmpark         ###   ########.fr       */
+/*   Updated: 2023/01/16 17:31:15 by hanmpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,12 +39,6 @@ static int	check_format(const char **map, t_parse *mapinfo)
 	int	len;
 
 	i = 0;
-	mapinfo->size.x = (int)ft_strlen(*map);
-	if (mapinfo->size.x == mapinfo->size.y)
-		return (FALSE);
-	if (((mapinfo->size.x * mapinfo->size.y) < 15) && mapinfo->size.x > 2
-		&& mapinfo->size.y > 2)
-		return (FALSE);
 	len = (int)ft_strlen(map[i]);
 	while (map[i])
 	{
@@ -56,6 +50,11 @@ static int	check_format(const char **map, t_parse *mapinfo)
 		return (FALSE);
 	return (TRUE);
 }
+
+/*static int	check_content(const char *file, t_parse *mapinfo)
+{
+	
+}*/
 
 int	check_map(const char **map, t_parse *mapinfo)
 {

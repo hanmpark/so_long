@@ -6,7 +6,7 @@
 /*   By: hanmpark <hanmpark@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 10:22:52 by hanmpark          #+#    #+#             */
-/*   Updated: 2023/01/14 19:38:30 by hanmpark         ###   ########.fr       */
+/*   Updated: 2023/01/16 17:33:44 by hanmpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,10 @@ int	main(int argc, char **argv)
 		ft_printf("%s\n", map[i]);
 		i++;
 	}
+	ft_printf("size = %d, %d\n", mapinfo->size.x, mapinfo->size.y);
+	ft_printf("player pos = %d, %d\n", mapinfo->player.x, mapinfo->player.y);
+	ft_printf("collectible = %d\n", mapinfo->collectible);
+	ft_printf("exit = %d\n", mapinfo->exit);
 	/* ----------------- */
 	if (!check_map((const char **)map, mapinfo))
 	{
