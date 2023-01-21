@@ -6,7 +6,7 @@
 /*   By: hanmpark <hanmpark@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/14 13:57:49 by hanmpark          #+#    #+#             */
-/*   Updated: 2023/01/16 17:39:05 by hanmpark         ###   ########.fr       */
+/*   Updated: 2023/01/21 00:51:39 by hanmpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ static int	get_content(char *line, t_parse *mapinfo, int y_pos)
 	i = 0;
 	while (line && line[i])
 	{
-		if (line[i] == 'P')
+		if (line[i] == 'P' && !mapinfo->player.x)
 		{
 			mapinfo->player.x = i;
 			mapinfo->player.y = y_pos;
@@ -108,7 +108,7 @@ char	**init_map(const char *file, t_parse *mapinfo)
 	map = ft_calloc(mapinfo->size.y + 1, sizeof(char *));
 	if (!map)
 		return (NULL);
-	if (!build_map(mapinfo, map, file))
+	if (!build_map(mapinfo, map, file) || !check_map((const char **)map, mapinfo))
 		return (NULL);
 	return (map);
 }
