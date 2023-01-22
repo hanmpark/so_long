@@ -5,110 +5,45 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: hanmpark <hanmpark@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/14 13:57:49 by hanmpark          #+#    #+#             */
-/*   Updated: 2023/01/21 00:51:39 by hanmpark         ###   ########.fr       */
+/*   Created: 2023/01/22 22:13:11 by hanmpark          #+#    #+#             */
+/*   Updated: 2023/01/23 00:02:56 by hanmpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "includes/so_long.h"
 
-static char	*trimnl(char *str)
+static void	map_format(char **map, t_parse *mapi)
 {
-	char	*res;
-
-	if (!str)
-		return (NULL);
-	res = ft_strtrim(str, "\n");
-	free(str);
-	return (res);
-}
-
-static int	map_size(const char *file)
-{
-	char	*str;
-	int		fd;
-	int		size;
-
-	fd = open(file, O_RDONLY);
-	if (!fd || fd < 0)
-		return (0);
-	size = 0;
-	while (1)
-	{
-		str = get_next_line(fd);
-		if (!str)
-			break ;
-		size++;
-		free(str);
-	}
-	close(fd);
-	return (size);
-}
-
-static int	get_content(char *line, t_parse *mapinfo, int y_pos)
-{
+	int	times;
+	int	linelen;
 	int	i;
 
 	i = 0;
-	while (line && line[i])
+	times = mapi->size.y;
+	while (times--)
 	{
-		if (line[i] == 'P' && !mapinfo->player.x)
-		{
-			mapinfo->player.x = i;
-			mapinfo->player.y = y_pos;
-		}
-		else if (line[i] == 'C')
-			mapinfo->collectible++;
-		else if (line[i] == 'E')
-			mapinfo->exit++;
-		else if (line[i] != '0' && line[i] != '1')
-			return (FALSE);
-		i++;
+		if (ft_strlen(map[i]) != linelen)
+			return (ft_freetabarray(map));
 	}
-	return (TRUE);
 }
 
-static int	build_map(t_parse *mapinfo, char **map, const char *file)
-{
-	int	i;
-	int	fd;
-
-	fd = open(file, O_RDONLY);
-	if (!fd || fd < 0)
-		return (FALSE);
-	i = 0;
-	while (i < mapinfo->size.y)
-	{
-		map[i] = get_next_line(fd);
-		map[i] = trimnl(map[i]);
-		if (!map[i])
-			break ;
-		if (!get_content(map[i], mapinfo, i))
-		{
-			close(fd);
-			return (FALSE);
-		}
-		i++;
-	}
-	mapinfo->size.x = (int)ft_strlen(*map);
-	close(fd);
-	if (!mapinfo->collectible || !mapinfo->exit || (!mapinfo->player.x && !mapinfo->player.y))
-		return (FALSE);
-	return (TRUE);
-}
-
-char	**init_map(const char *file, t_parse *mapinfo)
+char	**map_init(const char *file, t_parse *mapi)
 {
 	char	**map;
+	char	*tmp;
+	int		fd;
 
-	ft_memset(mapinfo, 0, sizeof(t_parse));
-	mapinfo->size.y = map_size(file);
-	if (!mapinfo->size.y)
-		return (NULL);
-	map = ft_calloc(mapinfo->size.y + 1, sizeof(char *));
+	fd = open(file, O_RDONLY);
+	tmp = get_next_line(fd);
+	mapi->size.y = 0;
+	while (tmp)
+	{
+		map[mapi->size.y] = tmp;
+		free(tmp);
+		tmp = get_next_line(fd);
+		mapi->size.y++;
+	}
 	if (!map)
 		return (NULL);
-	if (!build_map(mapinfo, map, file) || !check_map((const char **)map, mapinfo))
-		return (NULL);
-	return (map);
+	return (map)
 }

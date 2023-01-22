@@ -6,7 +6,7 @@
 /*   By: hanmpark <hanmpark@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 10:22:52 by hanmpark          #+#    #+#             */
-/*   Updated: 2023/01/21 00:49:44 by hanmpark         ###   ########.fr       */
+/*   Updated: 2023/01/22 23:25:26 by hanmpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,14 +15,14 @@
 int	main(int argc, char **argv)
 {
 	char	**map;
-	t_parse	*mapinfo;
+	t_parse	*mapi;
 
 	if (argc != 2 || !argv[1])
 		return (1);
-	mapinfo = NULL;
-	if (!ft_allocptr(mapinfo, sizeof(t_parse)))
+	mapi = NULL;
+	if (!ft_allocptr(mapi, sizeof(struct s_parse)))
 		return (1);
-	map = init_map(argv[1], mapinfo);
+	map = map_init(argv[1], mapi);
 	if (!map)
 	{
 		ft_putstr_fd("Not okay\n", 2);
@@ -36,10 +36,10 @@ int	main(int argc, char **argv)
 		i++;
 	}
 	ft_printf("--------------------------------\n");
-	ft_printf("size = %d, %d\n", mapinfo->size.x, mapinfo->size.y);
-	ft_printf("player pos = %d, %d\n", mapinfo->player.x, mapinfo->player.y);
-	ft_printf("collectible = %d\n", mapinfo->collectible);
-	ft_printf("exit = %d\n", mapinfo->exit);
+	ft_printf("size = %d, %d\n", mapi->size.x, mapi->size.y);
+	ft_printf("player pos = %d, %d\n", mapi->player.x, mapi->player.y);
+	ft_printf("collectible = %d\n", mapi->collectible);
+	ft_printf("exit = %d\n", mapi->exit);
 	ft_printf("--------------------------------\n");
 	/* ----------------- */
 	ft_printf("Edges ok\n");
