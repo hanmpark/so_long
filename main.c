@@ -6,7 +6,7 @@
 /*   By: hanmpark <hanmpark@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 10:22:52 by hanmpark          #+#    #+#             */
-/*   Updated: 2023/01/22 23:25:26 by hanmpark         ###   ########.fr       */
+/*   Updated: 2023/01/24 16:31:19 by hanmpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,13 +19,15 @@ int	main(int argc, char **argv)
 
 	if (argc != 2 || !argv[1])
 		return (1);
-	mapi = NULL;
-	if (!ft_allocptr(mapi, sizeof(struct s_parse)))
+	mapi = malloc(sizeof(t_parse));
+	if (!mapi)
 		return (1);
 	map = map_init(argv[1], mapi);
-	if (!map)
+	if (!map || !*map)
 	{
+		free(mapi);
 		ft_putstr_fd("Not okay\n", 2);
+		system("leaks a.out");
 		return (1);
 	}
 	/* print out the map */
@@ -43,5 +45,7 @@ int	main(int argc, char **argv)
 	ft_printf("--------------------------------\n");
 	/* ----------------- */
 	ft_printf("Edges ok\n");
+	free(mapi);
+	system("leaks a.out");
 	return (0);
 }

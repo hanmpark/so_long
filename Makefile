@@ -6,7 +6,7 @@
 #    By: hanmpark <hanmpark@student.42nice.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/11 13:12:40 by hanmpark          #+#    #+#              #
-#    Updated: 2023/01/20 23:18:16 by hanmpark         ###   ########.fr        #
+#    Updated: 2023/01/24 15:16:07 by hanmpark         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ HDIR = includes/
 LIBFT = libft/
 
 # SOURCES AND OBJECTS
-SRCS = parsing.c main.c init_map.c
+SRCS = main.c init_map.c
 
 OBJS = ${SRCS:.c=.o}
 
