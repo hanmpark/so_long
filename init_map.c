@@ -6,7 +6,7 @@
 /*   By: hanmpark <hanmpark@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/22 22:13:11 by hanmpark          #+#    #+#             */
-/*   Updated: 2023/01/24 16:28:38 by hanmpark         ###   ########.fr       */
+/*   Updated: 2023/01/25 22:09:57 by hanmpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -123,19 +123,21 @@ char	**map_init(const char *file, t_parse *mapi)
 	char	**map;
 	char	*tmp;
 	int		fd;
+	int		i;
 
-	map = malloc((count_len(file) + 1) * sizeof(char *));
+	mapi->size.y = count_len(file);
+	map = malloc((mapi->size.y + 1) * sizeof(char *));
 	if (!map)
 		return (NULL);
+	i = 0;
 	fd = open(file, O_RDONLY);
 	tmp = get_next_line(fd);
-	mapi->size.y = 0;
 	while (tmp)
 	{
-		map[mapi->size.y] = tmp;
+		map[i++] = tmp;
 		tmp = get_next_line(fd);
-		mapi->size.y++;
 	}
+	map[i] = 0;
 	close(fd);
 	map_format(map, mapi);
 	return (map);
