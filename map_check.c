@@ -6,7 +6,7 @@
 /*   By: hanmpark <hanmpark@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/27 17:40:48 by hanmpark          #+#    #+#             */
-/*   Updated: 2023/01/27 17:47:20 by hanmpark         ###   ########.fr       */
+/*   Updated: 2023/01/27 18:19:46 by hanmpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,20 @@ static int	check_case(char c, int x, int y, t_parse *mapi)
 	else if (c != '1' && c != '0')
 		return (FALSE);
 	return (TRUE);
+}
+
+static int	f_fill(int x, int y, char **map, t_parse *mapi)
+{
+	if (x < 0 || y < 0 || x >= mapi->size.x || y >= mapi->size.y)
+		return ;
+	if (map[y][x] == 'F' || map[y][x] !=)
+
+}
+
+static int	flood_fill(t_parse *mapi, char **map)
+{
+	f_fill(mapi->player.x, mapi->player.y, map, mapi);
+	ft_freetabarray(map);
 }
 
 int	check_content(char **map, t_parse *mapi)
