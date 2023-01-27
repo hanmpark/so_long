@@ -6,7 +6,7 @@
 /*   By: hanmpark <hanmpark@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 10:22:52 by hanmpark          #+#    #+#             */
-/*   Updated: 2023/01/24 16:31:19 by hanmpark         ###   ########.fr       */
+/*   Updated: 2023/01/27 17:51:25 by hanmpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,11 +23,10 @@ int	main(int argc, char **argv)
 	if (!mapi)
 		return (1);
 	map = map_init(argv[1], mapi);
-	if (!map || !*map)
+	if (!map)
 	{
 		free(mapi);
 		ft_putstr_fd("Not okay\n", 2);
-		system("leaks a.out");
 		return (1);
 	}
 	/* print out the map */
@@ -46,6 +45,7 @@ int	main(int argc, char **argv)
 	/* ----------------- */
 	ft_printf("Edges ok\n");
 	free(mapi);
-	system("leaks a.out");
+	ft_freetabarray(map);
+	system("leaks so_long");
 	return (0);
 }
