@@ -6,7 +6,7 @@
 #    By: hanmpark <hanmpark@student.42nice.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/08 16:40:47 by hanmpark          #+#    #+#              #
-#    Updated: 2023/01/27 15:34:44 by hanmpark         ###   ########.fr        #
+#    Updated: 2023/01/27 18:11:55 by hanmpark         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,7 +26,7 @@ SRCS_LIBFT = ft_bzero.c ft_isalnum.c ft_isalpha.c ft_isascii.c ft_isdigit.c \
 	ft_strmapi.c ft_striteri.c ft_putchar_fd.c ft_putstr_fd.c ft_putendl_fd.c \
 	ft_putnbr_fd.c ft_lstnew.c ft_lstadd_front.c ft_lstsize.c ft_lstlast.c \
 	ft_lstadd_back.c ft_lstdelone.c ft_lstclear.c ft_lstiter.c ft_lstmap.c \
-	ft_allocptr.c ft_freetabarray.c ft_filelen.c
+	ft_allocptr.c ft_freetabarray.c ft_filelen.c ft_mapdup.c
 
 SRCS_FTPRINTF = def_flags.c format_hexa.c ft_printf.c print_basic.c \
 	print_hexa.c specifier_filter.c treat_charflags.c treat_intflags.c
