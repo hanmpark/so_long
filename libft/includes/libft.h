@@ -6,7 +6,7 @@
 /*   By: hanmpark <hanmpark@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/08 10:29:04 by hanmpark          #+#    #+#             */
-/*   Updated: 2023/01/27 18:11:25 by hanmpark         ###   ########.fr       */
+/*   Updated: 2023/01/29 15:12:54 by hanmpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ int		ft_memcmp(const void *s1, const void *s2, size_t n);
 void	ft_bzero(void *s, size_t n);
 void	*ft_calloc(size_t count, size_t size);
 void	*ft_allocptr(void *ptr, size_t size);
-void	ft_freetabarray(char **str);
+void	ft_freetab(char **map);
 
 /* CHAR MANIPULATION */
 int		ft_toupper(int character);

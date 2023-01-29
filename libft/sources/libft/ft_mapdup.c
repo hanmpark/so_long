@@ -6,7 +6,7 @@
 /*   By: hanmpark <hanmpark@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/27 18:05:15 by hanmpark          #+#    #+#             */
-/*   Updated: 2023/01/27 18:11:45 by hanmpark         ###   ########.fr       */
+/*   Updated: 2023/01/29 15:05:58 by hanmpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ char	**ft_mapdup(char **map)
 	if (!res)
 		return (0);
 	while (map && map[++i])
-		res[i] = map[i];
+		res[i] = ft_strdup(map[i]);
 	res[i] = 0;
 	return (res);
 }
