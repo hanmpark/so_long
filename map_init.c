@@ -6,7 +6,7 @@
 /*   By: hanmpark <hanmpark@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/22 22:13:11 by hanmpark          #+#    #+#             */
-/*   Updated: 2023/01/27 17:51:10 by hanmpark         ###   ########.fr       */
+/*   Updated: 2023/01/29 15:13:35 by hanmpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ char	**map_init(const char *file, t_parse *mapi)
 	map -= mapi->size.y;
 	if (!map_format(map, mapi))
 	{
-		ft_freetabarray(map);
+		ft_freetab(map);
 		return (NULL);
 	}
 	return (map);

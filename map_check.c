@@ -6,7 +6,7 @@
 /*   By: hanmpark <hanmpark@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/27 17:40:48 by hanmpark          #+#    #+#             */
-/*   Updated: 2023/01/27 18:19:46 by hanmpark         ###   ########.fr       */
+/*   Updated: 2023/01/29 15:15:09 by hanmpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,18 +31,44 @@ static int	check_case(char c, int x, int y, t_parse *mapi)
 	return (TRUE);
 }
 
-static int	f_fill(int x, int y, char **map, t_parse *mapi)
+static int	filling(int x, int y, char **draftmap, t_parse *mapi)
 {
-	if (x < 0 || y < 0 || x >= mapi->size.x || y >= mapi->size.y)
-		return ;
-	if (map[y][x] == 'F' || map[y][x] !=)
+	static int	collectibles = 0;
+	static int	exit = 0;
 
+	if (x < 0 || y < 0 || x >= mapi->size.x || y >= mapi->size.y)
+		return (0);
+	if (draftmap[y][x] == 'F' || draftmap[y][x] == '1')
+		return (0);
+	else if (draftmap[y][x] == 'C')
+		collectibles++;
+	else if (draftmap[y][x] == 'E')
+		exit++;
+	draftmap[y][x] = 'F';
+	filling(x - 1, y, draftmap, mapi);
+	filling(x + 1, y, draftmap, mapi);
+	filling(x, y - 1, draftmap, mapi);
+	filling(x, y + 1, draftmap, mapi);
+	if (collectibles != mapi->collectible || !exit)
+		return (0);
+	return (1);
 }
 
-static int	flood_fill(t_parse *mapi, char **map)
+static int	flood_fill(t_parse *mapi, char **draftmap)
 {
-	f_fill(mapi->player.x, mapi->player.y, map, mapi);
-	ft_freetabarray(map);
+	int	res;
+	int	i = 0;
+
+	res = filling(mapi->player.x, mapi->player.y, draftmap, mapi);
+	printf("FLOOD FILLING:\n");
+	while (draftmap[i])
+	{
+		printf("%s\n", draftmap[i]);
+		i++;
+	}
+	printf("\n");
+	ft_freetab(draftmap);
+	return (res);
 }
 
 int	check_content(char **map, t_parse *mapi)
@@ -62,7 +88,9 @@ int	check_content(char **map, t_parse *mapi)
 		}
 		i++;
 	}
-	if (!mapi->collectible || !mapi->exit || !mapi->isplayer)
+	if (!mapi->collectible || !mapi->exit || mapi->exit > 1 || !mapi->isplayer)
+		return (FALSE);
+	else if (!flood_fill(mapi, ft_mapdup(map)))
 		return (FALSE);
 	return (TRUE);
 }

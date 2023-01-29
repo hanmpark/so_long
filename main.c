@@ -6,7 +6,7 @@
 /*   By: hanmpark <hanmpark@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 10:22:52 by hanmpark          #+#    #+#             */
-/*   Updated: 2023/01/27 17:51:25 by hanmpark         ###   ########.fr       */
+/*   Updated: 2023/01/29 15:13:21 by hanmpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ int	main(int argc, char **argv)
 	/* ----------------- */
 	ft_printf("Edges ok\n");
 	free(mapi);
-	ft_freetabarray(map);
+	ft_freetab(map);
 	system("leaks so_long");
 	return (0);
 }
