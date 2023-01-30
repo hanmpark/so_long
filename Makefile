@@ -6,7 +6,7 @@
 #    By: hanmpark <hanmpark@student.42nice.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/11 13:12:40 by hanmpark          #+#    #+#              #
-#    Updated: 2023/01/27 17:41:32 by hanmpark         ###   ########.fr        #
+#    Updated: 2023/01/29 15:36:51 by hanmpark         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,6 +14,7 @@
 NAME = so_long
 HDIR = includes/
 LIBFT = libft/
+LINKS = -Lmlx -framework OpenGL -framework Appkit
 
 # SOURCES AND OBJECTS
 SRCS = main.c map_init.c map_check.c
@@ -25,7 +26,7 @@ CC = gcc
 CFLAGS = -Wall -Wextra -Werror -g3
 
 %.o:%.c ${HDIR}
-	@${CC} ${CFLAGS} -c -I ./${H_DIR} $< -o ${<:.c=.o}
+	@${CC} ${CFLAGS} -c -I ./${H_DIR} -Imlx $< -o ${<:.c=.o}
 
 # RULES
 all: ${NAME}
@@ -33,7 +34,7 @@ all: ${NAME}
 ${NAME}: ${OBJS}
 	@echo "\n\033[3m\033[2;37m\t- Compiling...\033[0m"
 	@${MAKE} -C ${LIBFT}
-	@${CC} ${FLAGS} ${OBJS} -o ${NAME} ${LIBFT}/libft.a
+	@${CC} ${LIBFT}/libft.a ${OBJS} ${LINKS} -o ${NAME}
 	@echo "\033[3m\033[1;32m   - Compiled -\033[0m"
 
 clean:
