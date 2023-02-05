@@ -6,11 +6,11 @@
 /*   By: hanmpark <hanmpark@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/27 17:40:48 by hanmpark          #+#    #+#             */
-/*   Updated: 2023/01/29 15:15:09 by hanmpark         ###   ########.fr       */
+/*   Updated: 2023/02/05 21:13:58 by hanmpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes/so_long.h"
+#include "../../inc/so_long.h"
 
 static int	check_case(char c, int x, int y, t_parse *mapi)
 {

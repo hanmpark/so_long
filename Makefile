@@ -6,17 +6,19 @@
 #    By: hanmpark <hanmpark@student.42nice.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/11 13:12:40 by hanmpark          #+#    #+#              #
-#    Updated: 2023/02/05 21:00:03 by hanmpark         ###   ########.fr        #
+#    Updated: 2023/02/05 21:13:02 by hanmpark         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 # PRESETS
 NAME = so_long
-HDIR = includes/
-LIBFT = libft/
+HDIR = inc/
+LIBFT = src/libft/
+MAIN = src/main/
 
 # SOURCES AND OBJECTS
-SRCS = main.c map_init.c map_check.c
+MAP_SRC = map_init.c map_check.c
+SRCS = ${addprefix ${MAIN}, main.c ${MAP_SRC}}
 
 OBJS = ${SRCS:.c=.o}
 

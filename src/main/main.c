@@ -6,11 +6,11 @@
 /*   By: hanmpark <hanmpark@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 10:22:52 by hanmpark          #+#    #+#             */
-/*   Updated: 2023/01/29 15:13:21 by hanmpark         ###   ########.fr       */
+/*   Updated: 2023/02/05 21:14:02 by hanmpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes/so_long.h"
+#include "../../inc/so_long.h"
 
 int	main(int argc, char **argv)
 {

@@ -6,15 +6,15 @@
 /*   By: hanmpark <hanmpark@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 10:23:44 by hanmpark          #+#    #+#             */
-/*   Updated: 2023/01/27 17:44:09 by hanmpark         ###   ########.fr       */
+/*   Updated: 2023/02/05 21:15:24 by hanmpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef SO_LONG_H
 # define SO_LONG_H
 //# include <mlx.h>
-# include "../libft/includes/ft_printf.h"
-# include "../libft/includes/get_next_line.h"
+# include "../src/libft/includes/ft_printf.h"
+# include "../src/libft/includes/get_next_line.h"
 # include <stdio.h>
 
 # define TRUE 1
