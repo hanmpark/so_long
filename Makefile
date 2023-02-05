@@ -6,7 +6,7 @@
 #    By: hanmpark <hanmpark@student.42nice.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/11 13:12:40 by hanmpark          #+#    #+#              #
-#    Updated: 2023/01/30 16:25:10 by hanmpark         ###   ########.fr        #
+#    Updated: 2023/02/05 21:00:03 by hanmpark         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,58 +14,57 @@
 NAME = so_long
 HDIR = includes/
 LIBFT = libft/
-CC = gcc
-MLXDIR = mlx/
-MLX = -L${MLXDIR} -lmlx
-LINKS = -framework OpenGL -framework Appkit
-
-# Static library is a collection of object files, while dynamic or shared library \
-is a collection of functions compiled and stored in an executable \
-with purpose of being linked by other programs at run-time.
-DYLIB = libmlx.dylib
 
 # SOURCES AND OBJECTS
 SRCS = main.c map_init.c map_check.c
 
 OBJS = ${SRCS:.c=.o}
 
+# PRETTY
+DEF = \033[0m
+BOLD = \033[1m
+UBOLD = \033[21m
+CUR = \033[3m
+UL = \033[4m
+
+GREEN = \033[32m
+GRAY = \033[2;37m
+MAGENTA = \033[35m
+
 # COMPILER
+CC = gcc
+FLAGS = -Wall -Wextra -Werror
+LINKS = -lmlx -framework OpenGL -framework Appkit
 ifdef DEBUG
-FLAGS += fsanitize=address -g3
+FLAGS += -fsanitize=address -g3
 endif
 
 %.o:%.c ${HDIR}
-	${CC} ${CFLAGS} -c -I ./${HDIR} $< -o ${<:.c=.o}
+	@${CC} ${FLAGS} -c -I ./${HDIR} $< -o ${<:.c=.o}
 
 # RULES
 all: ${NAME}
 
-${NAME}: ${OBJS} ${MLX}
-	@echo "\n\033[3m\033[2;37m\t- Compiling...\033[0m"
-	@make -C ${LIBFT}
-	@${CC} ${CFLAGS} ${LIBFT}/libft.a ${OBJS} ${MLX} ${LINKS} -o ${NAME}
-	@echo "\033[3m\033[1;32m   - Compiled -\033[0m"
-
-${MLX}:
-	@make -C ${MLXDIR}
-	@cp -rf ${MLXDIR}/${DYLIB} .
+${NAME}: ${OBJS}
+	@echo "\n${CUR}${GRAY}\t- Compiling...${DEF}"
+	@${MAKE} -C ${LIBFT}
+	@${CC} ${FLAGS} ${LINKS} ${LIBFT}/libft.a ${OBJS} -o ${NAME}
+	@echo "   ${CUR}${BOLD}${UL}${GREEN}- Compiled -${DEF}\n"
 
 debug: ${OBJS}
-	@echo "debug"
+	@echo "\n   ${BOLD}${UL}${MAGENTA}DEBUGGING MODE${DEF}"
 	@${MAKE} DEBUG=1
 
 clean:
-	@echo "\n\033[3m\033[2;37m\t- Cleaning objects...\033[0m"
+	@echo "\n${CUR}${GRAY}\t- Removing object files${DEF}"
 	@rm -rf ${OBJS}
-	@make -C ${LIBFT} clean
-	@make -C ${MLXDIR} clean
+	@${MAKE} -C ${LIBFT} clean
 
 fclean: clean
-	@echo "\033[3m\033[2;37m\t- Cleaning ${NAME}...\033[0m"
+	@echo "${CUR}${GRAY}\t- Removing ${BOLD}${NAME}${DEF}"
 	@rm -rf ${NAME}
-	@rm -rf ${DYLIB}
 	@rm -rf ${LIBFT}/libft.a
-	@echo "\033[3m\033[1;32m   - Cleaned -\033[0m"
+	@echo "   ${CUR}${BOLD}${UL}${GREEN}- Cleaned -${DEF}\n"
 
 re: fclean all
 
