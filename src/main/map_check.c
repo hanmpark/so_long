@@ -6,7 +6,7 @@
 /*   By: hanmpark <hanmpark@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/27 17:40:48 by hanmpark          #+#    #+#             */
-/*   Updated: 2023/02/05 21:13:58 by hanmpark         ###   ########.fr       */
+/*   Updated: 2023/02/06 16:27:11 by hanmpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,21 +57,13 @@ static int	filling(int x, int y, char **draftmap, t_parse *mapi)
 static int	flood_fill(t_parse *mapi, char **draftmap)
 {
 	int	res;
-	int	i = 0;
 
 	res = filling(mapi->player.x, mapi->player.y, draftmap, mapi);
-	printf("FLOOD FILLING:\n");
-	while (draftmap[i])
-	{
-		printf("%s\n", draftmap[i]);
-		i++;
-	}
-	printf("\n");
 	ft_freetab(draftmap);
 	return (res);
 }
 
-int	check_content(char **map, t_parse *mapi)
+void	check_content(char **map, t_parse *mapi)
 {
 	int	i;
 	int	k;
@@ -83,19 +75,18 @@ int	check_content(char **map, t_parse *mapi)
 		while (map[i][k])
 		{
 			if (!check_case(map[i][k], k, i, mapi))
-				return (FALSE);
+				ft_maperror(map, mapi, "Something wrong with case(s)");
 			k++;
 		}
 		i++;
 	}
 	if (!mapi->collectible || !mapi->exit || mapi->exit > 1 || !mapi->isplayer)
-		return (FALSE);
+		ft_maperror(map, mapi, "Wrong number of elements in the chosen map");
 	else if (!flood_fill(mapi, ft_mapdup(map)))
-		return (FALSE);
-	return (TRUE);
+		ft_maperror(map, mapi, "Your map is impossible");
 }
 
-int	check_edges(char **map, t_parse *mapi)
+void	check_edges(char **map, t_parse *mapi)
 {
 	int	i;
 
@@ -103,15 +94,14 @@ int	check_edges(char **map, t_parse *mapi)
 	while (i < mapi->size.x)
 	{
 		if (map[0][i] != '1' || map[mapi->size.y - 1][i] != '1')
-			return (FALSE);
+			ft_maperror(map, mapi, "Edges walls problem");
 		i++;
 	}
 	i = 0;
 	while (i < mapi->size.y)
 	{
 		if (map[i][0] != '1' || map[i][mapi->size.x - 1] != '1')
-			return (FALSE);
+			ft_maperror(map, mapi, "Edges walls problem");
 		i++;
 	}
-	return (TRUE);
 }
