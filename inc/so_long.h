@@ -6,16 +6,15 @@
 /*   By: hanmpark <hanmpark@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 10:23:44 by hanmpark          #+#    #+#             */
-/*   Updated: 2023/02/05 21:15:24 by hanmpark         ###   ########.fr       */
+/*   Updated: 2023/02/06 12:55:30 by hanmpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef SO_LONG_H
 # define SO_LONG_H
-//# include <mlx.h>
 # include "../src/libft/includes/ft_printf.h"
 # include "../src/libft/includes/get_next_line.h"
-# include <stdio.h>
+# include <mlx.h>
 
 # define TRUE 1
 # define FALSE 0
@@ -36,7 +35,7 @@ typedef struct	s_parse
 }	t_parse;
 
 char	**map_init(const char *file, t_parse *mapi);
-int		check_edges(char **map, t_parse *mapi);
-int		check_content(char **map, t_parse *mapi);
+void	check_edges(char **map, t_parse *mapi);
+void	check_content(char **map, t_parse *mapi);
 
 #endif
