@@ -6,7 +6,7 @@
 /*   By: hanmpark <hanmpark@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/08 10:29:04 by hanmpark          #+#    #+#             */
-/*   Updated: 2023/01/29 15:12:54 by hanmpark         ###   ########.fr       */
+/*   Updated: 2023/02/06 12:59:23 by hanmpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,5 +84,6 @@ t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
 /* FILE/MAP MANIPULATION */
 int		ft_filelen(const char *file);
 char	**ft_mapdup(char **map);
+void	ft_maperror(char **map, void *mapi, char *str);
 
 #endif

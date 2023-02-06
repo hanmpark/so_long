@@ -1,29 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_freetab.c                                       :+:      :+:    :+:   */
+/*   ft_maperror.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hanmpark <hanmpark@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/21 00:27:43 by hanmpark          #+#    #+#             */
-/*   Updated: 2023/02/06 12:19:39 by hanmpark         ###   ########.fr       */
+/*   Created: 2023/02/06 12:22:06 by hanmpark          #+#    #+#             */
+/*   Updated: 2023/02/06 15:38:48 by hanmpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/libft.h"
 
-void	ft_freetab(char **tab)
+void	ft_maperror(char **map, void *mapi, char *str)
 {
-	int	i;
-
-	i = 0;
-	if (tab)
-	{
-		while (tab[i])
-		{
-			free(tab[i]);
-			i++;
-		}
-		free(tab);
-	}
+	free(mapi);
+	ft_freetab(map);
+	ft_putstr_fd("\033[31m", 2);
+	ft_putstr_fd(str, 2);
+	ft_putstr_fd("\033[0m\n", 2);
+	exit (1);
 }
