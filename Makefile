@@ -6,7 +6,7 @@
 #    By: hanmpark <hanmpark@student.42nice.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/11 13:12:40 by hanmpark          #+#    #+#              #
-#    Updated: 2023/02/05 21:13:02 by hanmpark         ###   ########.fr        #
+#    Updated: 2023/02/06 16:05:12 by hanmpark         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -51,6 +51,7 @@ ${NAME}: ${OBJS}
 	@echo "\n${CUR}${GRAY}\t- Compiling...${DEF}"
 	@${MAKE} -C ${LIBFT}
 	@${CC} ${FLAGS} ${LINKS} ${LIBFT}/libft.a ${OBJS} -o ${NAME}
+	@echo "${CUR}${GRAY}\t- Created ${BOLD}${NAME}${DEF}"
 	@echo "   ${CUR}${BOLD}${UL}${GREEN}- Compiled -${DEF}\n"
 
 debug: ${OBJS}
