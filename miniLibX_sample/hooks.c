@@ -55,7 +55,6 @@ int	ft_update (void *param)
 		program->sprite_position.y -= 1;
 		frame = 0;
 	}
-	
 	mlx_put_image_to_window(program->mlx, program->window.reference,
 		program->sprite.reference, program->sprite_position.x, program->sprite_position.y);
 
