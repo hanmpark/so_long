@@ -6,11 +6,11 @@
 /*   By: hanmpark <hanmpark@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/27 17:40:48 by hanmpark          #+#    #+#             */
-/*   Updated: 2023/02/06 18:12:25 by hanmpark         ###   ########.fr       */
+/*   Updated: 2023/02/07 07:29:05 by hanmpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../inc/so_long.h"
+#include "../../inc/parsing.h"
 
 static int	check_case(char c, int x, int y, t_parse *mapi)
 {
@@ -21,14 +21,14 @@ static int	check_case(char c, int x, int y, t_parse *mapi)
 		mapi->isplayer++;
 	}
 	else if (c == 'P' && mapi->isplayer)
-		return (FALSE);
+		return (MAP_WRONG);
 	else if (c == 'C')
 		mapi->collectible++;
 	else if (c == 'E')
 		mapi->exit++;
 	else if (c != '1' && c != '0')
-		return (FALSE);
-	return (TRUE);
+		return (MAP_WRONG);
+	return (MAP_OKAY);
 }
 
 static int	filling(int x, int y, char **draftmap, t_parse *mapi)
@@ -50,8 +50,8 @@ static int	filling(int x, int y, char **draftmap, t_parse *mapi)
 	filling(x, y - 1, draftmap, mapi);
 	filling(x, y + 1, draftmap, mapi);
 	if (collectibles != mapi->collectible || !exit)
-		return (0);
-	return (1);
+		return (MAP_WRONG);
+	return (MAP_OKAY);
 }
 
 static int	flood_fill(t_parse *mapi, char **draftmap)
@@ -81,7 +81,7 @@ void	check_content(char **map, t_parse *mapi)
 		i++;
 	}
 	if (!mapi->collectible || !mapi->exit || mapi->exit > 1 || !mapi->isplayer)
-		ft_maperror(map, mapi, "Wrong number of elements in the chosen map");
+		ft_maperror(map, mapi, "Wrong number of elements");
 	else if (!flood_fill(mapi, ft_mapdup(map)))
 		ft_maperror(map, mapi, "Your map is impossible");
 }
@@ -94,14 +94,14 @@ void	check_edges(char **map, t_parse *mapi)
 	while (i < mapi->size.x)
 	{
 		if (map[0][i] != '1' || map[mapi->size.y - 1][i] != '1')
-			ft_maperror(map, mapi, "Edges walls problem");
+			ft_maperror(map, mapi, "Wall problem");
 		i++;
 	}
 	i = 0;
 	while (i < mapi->size.y)
 	{
 		if (map[i][0] != '1' || map[i][mapi->size.x - 1] != '1')
-			ft_maperror(map, mapi, "Edges walls problem");
+			ft_maperror(map, mapi, "Wall problem");
 		i++;
 	}
 }
