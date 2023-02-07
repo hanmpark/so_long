@@ -6,36 +6,54 @@
 /*   By: hanmpark <hanmpark@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 10:23:44 by hanmpark          #+#    #+#             */
-/*   Updated: 2023/02/06 12:55:30 by hanmpark         ###   ########.fr       */
+/*   Updated: 2023/02/07 16:22:30 by hanmpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef SO_LONG_H
 # define SO_LONG_H
-# include "../src/libft/includes/ft_printf.h"
-# include "../src/libft/includes/get_next_line.h"
+
+# include "parsing.h"
 # include <mlx.h>
 
-# define TRUE 1
-# define FALSE 0
-
-typedef struct	s_pos
+typedef struct	s_vector
 {
 	int	x;
 	int	y;
-}	t_pos;
+}				t_vector;
 
-typedef struct	s_parse
+typedef struct	s_color
 {
-	t_pos	player;
-	int		isplayer;
-	int		collectible;
-	int		exit;
-	t_pos	size;
-}	t_parse;
+	unsigned char	b;
+	unsigned char	g;
+	unsigned char	r;
+	unsigned char	o;
+}				t_color;
 
-char	**map_init(const char *file, t_parse *mapi);
-void	check_edges(char **map, t_parse *mapi);
-void	check_content(char **map, t_parse *mapi);
+typedef struct	s_win
+{
+	void	*id;
+	t_vector	size;
+}				t_win;
+
+typedef struct	s_img
+{
+	void	*id;
+	char	*addr;
+	int		bbp;
+	int		line_len;
+	int		endian;
+	t_vector	size;
+}				t_img;
+
+typedef struct	s_data
+{
+	void	*mlx;
+	t_win	win;
+	t_img	sprite;
+	t_vector	sprite_pos;
+}				t_data;
+
+void	game_init(char **map, t_parse *mapi);
 
 #endif
