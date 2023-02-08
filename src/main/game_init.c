@@ -6,7 +6,7 @@
 /*   By: hanmpark <hanmpark@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/06 17:28:52 by hanmpark          #+#    #+#             */
-/*   Updated: 2023/02/08 18:18:41 by hanmpark         ###   ########.fr       */
+/*   Updated: 2023/02/08 22:45:04 by hanmpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ static t_win	new_window(void *mlx, int x, int y)
 	win.id = mlx_new_window(mlx, x, y, "so_long");
 	win.size.x = x;
 	win.size.y = y;
-	mlx_hook(win.id, 17, 0, *ft_close, 0);
+	mlx_hook(win.id, 17, 0, &ft_close, 0);
 	return (win);
 }
 

@@ -6,7 +6,7 @@
 /*   By: hanmpark <hanmpark@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/27 17:40:48 by hanmpark          #+#    #+#             */
-/*   Updated: 2023/02/08 11:37:18 by hanmpark         ###   ########.fr       */
+/*   Updated: 2023/02/08 19:32:41 by hanmpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ static int	check_case(char c, int x, int y, t_cnt *content)
 		content->collectible++;
 	else if (c == 'E')
 		content->exit++;
-	else if (c != '1' && c != '0')
+	else if (c != '1' && c != '0' && c != 'M')
 		return (MAP_WRONG);
 	return (MAP_OKAY);
 }
@@ -38,7 +38,7 @@ static int	filling(int x, int y, char **draftmap, t_cnt *content)
 
 	if (x < 0 || y < 0 || x >= content->size.x || y >= content->size.y)
 		return (0);
-	if (draftmap[y][x] == 'F' || draftmap[y][x] == '1')
+	if (draftmap[y][x] == 'F' || draftmap[y][x] == '1' || draftmap[y][x] == 'M')
 		return (0);
 	else if (draftmap[y][x] == 'C')
 		collectibles++;

@@ -6,7 +6,7 @@
 /*   By: hanmpark <hanmpark@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 10:23:44 by hanmpark          #+#    #+#             */
-/*   Updated: 2023/02/08 19:15:51 by hanmpark         ###   ########.fr       */
+/*   Updated: 2023/02/08 20:44:45 by hanmpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,16 +52,20 @@ typedef struct	s_win
 
 typedef struct	s_img
 {
+	void	*img_player[7];
 	void	*img_floor;
 	void	*img_floor1;
 	void	*img_wall;
 	void	*img_collectible;
 	void	*img_exit;
+	void	*img_mob;
+	char	*player[7];
 	char	*floor;
 	char	*floor1;
 	char	*wall;
 	char	*collectible;
 	char	*exit;
+	char	*mob;
 	int		height;
 	int		width;
 }				t_img;
