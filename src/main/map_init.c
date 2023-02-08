@@ -6,30 +6,19 @@
 /*   By: hanmpark <hanmpark@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/22 22:13:11 by hanmpark          #+#    #+#             */
-/*   Updated: 2023/02/07 07:20:27 by hanmpark         ###   ########.fr       */
+/*   Updated: 2023/02/08 11:37:14 by hanmpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../inc/parsing.h"
+#include "../../inc/so_long.h"
 
-static void	mapi_init(t_parse *mapi)
-{
-	mapi->isplayer = 0;
-	mapi->collectible = 0;
-	mapi->exit = 0;
-	mapi->player.x = 0;
-	mapi->player.y = 0;
-	mapi->size.x = 0;
-	mapi->size.y = 0;
-}
-
-static void	map_format(char **map, t_parse *mapi)
+static void	map_format(char **map, t_cnt *content)
 {
 	char	*tmp;
 	int		i;
 
 	i = 0;
-	mapi->size.x = (int)ft_strlen(map[i]) - 1;
+	content->size.x = (int)ft_strlen(map[i]) - 1;
 	ft_printf("\033[32mMAP\033[0m\n");
 	while (map && map[i])
 	{
@@ -37,12 +26,12 @@ static void	map_format(char **map, t_parse *mapi)
 		free(map[i]);
 		map[i] = tmp;
 		ft_printf("\033[32m%s\033[0m\n", map[i]);
-		if ((int)ft_strlen(map[i]) != mapi->size.x)
-			ft_maperror(map, mapi, "Format error");
+		if ((int)ft_strlen(map[i]) != content->size.x)
+			ft_error(map, ERR_FORMAT);
 		i++;
 	}
-	check_edges(map, mapi);
-	check_content(map, mapi);
+	check_edges(map, content);
+	check_content(map, content);
 }
 
 static void	map_set(const char *file, char **map)
@@ -63,16 +52,16 @@ static void	map_set(const char *file, char **map)
 	close(fd);
 }
 
-char	**map_init(const char *file, t_parse *mapi)
+char	**map_init(const char *file, t_cnt *content)
 {
 	char	**map;
 
-	mapi_init(mapi);
-	mapi->size.y = ft_filelen(file);
-	map = malloc((mapi->size.y + 1) * sizeof(char *));
+	content_init(content);
+	content->size.y = ft_filelen(file);
+	map = malloc((content->size.y) * sizeof(char *));
 	if (!map)
-		ft_maperror(map, mapi, "Malloc failed");
+		ft_error(map, ERR_MALLOC);
 	map_set(file, map);
-	map_format(map, mapi);
+	map_format(map, content);
 	return (map);
 }

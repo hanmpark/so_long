@@ -6,21 +6,33 @@
 /*   By: hanmpark <hanmpark@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 10:23:44 by hanmpark          #+#    #+#             */
-/*   Updated: 2023/02/07 16:22:30 by hanmpark         ###   ########.fr       */
+/*   Updated: 2023/02/08 14:09:48 by hanmpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef SO_LONG_H
 # define SO_LONG_H
 
-# include "parsing.h"
+# include "../src/libft/includes/get_next_line.h"
+# include "../src/libft/includes/ft_printf.h"
 # include <mlx.h>
 
-typedef struct	s_vector
+# define MAP_OKAY 1
+# define MAP_WRONG 0
+
+/* ***************************** Error messages ***************************** */
+# define ERR_MALLOC "Error\nMalloc failed\n"
+# define ERR_FORMAT "Error\nFormat error\n"
+# define ERR_WALLS "Error\nFound an element different from '1' for wall(s)\n"
+# define ERR_ELEMENTS "Error\nWrong number of elements\n"
+# define ERR_IMPOSSIBLE "Error\nYour map is impossible !\n"
+# define ERR_CASE "Error\nSomething wrong with case(s)\n"
+
+typedef struct	s_pos
 {
 	int	x;
 	int	y;
-}				t_vector;
+}				t_pos;
 
 typedef struct	s_color
 {
@@ -33,27 +45,45 @@ typedef struct	s_color
 typedef struct	s_win
 {
 	void	*id;
-	t_vector	size;
+	t_pos	size;
 }				t_win;
 
 typedef struct	s_img
 {
-	void	*id;
-	char	*addr;
-	int		bbp;
-	int		line_len;
-	int		endian;
-	t_vector	size;
+	void	*img_floor;
+	void	*img_wall;
+	char	*floor;
+	char	*wall;
+	int		height;
+	int		width;
 }				t_img;
+
+typedef struct	s_content
+{
+	t_pos	player;
+	int		isplayer;
+	int		collectible;
+	int		exit;
+	t_pos	size;
+}				t_cnt;
 
 typedef struct	s_data
 {
+	char	**map;
+	t_cnt	content;
 	void	*mlx;
 	t_win	win;
 	t_img	sprite;
-	t_vector	sprite_pos;
+	t_pos	sprite_pos;
 }				t_data;
 
-void	game_init(char **map, t_parse *mapi);
+char	**map_init(const char *file, t_cnt *mapi);
+void	check_edges(char **map, t_cnt *mapi);
+void	check_content(char **map, t_cnt *mapi);
+void	content_init(t_cnt *content);
+
+void	game_init(t_data *game);
+void	content_init(t_cnt *content);
+void	assign_texture(t_data *game);
 
 #endif

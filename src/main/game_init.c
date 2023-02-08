@@ -6,7 +6,7 @@
 /*   By: hanmpark <hanmpark@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/06 17:28:52 by hanmpark          #+#    #+#             */
-/*   Updated: 2023/02/07 16:23:47 by hanmpark         ###   ########.fr       */
+/*   Updated: 2023/02/08 14:36:50 by hanmpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,17 +24,8 @@ static t_win	new_window(void *mlx, int x, int y)
 	win.id = mlx_new_window(mlx, x, y, "so_long");
 	win.size.x = x;
 	win.size.y = y;
-	mlx_hook(win.id, 27, 0, *ft_close, 0);
+	mlx_hook(win.id, 17, 0, *ft_close, 0);
 	return (win);
-}
-
-static t_img	new_sprite(void *mlx, char *path)
-{
-	t_img	sprite;
-
-	sprite.id = mlx_xpm_file_to_image(mlx, path, &sprite.size.x, &sprite.size.y);
-	sprite.addr = mlx_get_data_addr(sprite.id, &sprite.bbp, &sprite.line_len, &sprite.endian);
-	return (sprite);
 }
 
 // static int	ft_input(int key, void *param)
@@ -47,28 +38,71 @@ static t_img	new_sprite(void *mlx, char *path)
 // 		prog->sprite_pos.x += prog->sprite.size.x;
 // }
 
-void	game_init(char **map, t_parse *mapi)
+static void	end(t_data *data)
 {
-	t_data	prog;
-	int		i;
-	int		j;
+	int	i;
 
-	prog.mlx = mlx_init();
-	prog.win = new_window(prog.mlx, mapi->size.x * 16, mapi->size.y * 16);
-	i = -1;
-	while (map[++i])
+	i = 0;
+	if (data->map)
 	{
-		j = -1;
-		while (map[i][++j])
-		{
-			prog.sprite = new_sprite(prog.mlx, "../../sprites/ground.xpm");
-			mlx_put_image_to_window(prog.mlx, prog.win.id, prog.sprite.id, j * 16, i * 16);
-		}
+		ft_freetab(data->map);
+		mlx_destroy_image(data->mlx, data->sprite.img_floor);
+		mlx_destroy_image(data->mlx, data->sprite.img_wall);
+		mlx_destroy_window(data->mlx, data->win.id);
 	}
+	free(data->mlx);
+	exit(0);
+}
+
+static void	print_img(t_data *game, void *img, int x, int y)
+{
+	mlx_put_image_to_window(game->mlx, game->win.id, img, game->sprite.width * x, game->sprite.height * y);
+}
+
+void	print_background(t_data *game)
+{
+	int	i;
+	int	j;
+
+	i = 0;
+	while (game->map[i])
+	{
+		j = 0;
+		while (game->map[i][j])
+		{
+			print_img(game, game->sprite.img_floor, j, i);
+			if (game->map[i][j] == '1')
+				print_img(game, game->sprite.img_wall, j, i);
+			j++;
+		}
+		i++;
+	}
+}
+
+int	render(t_data *game)
+{
+	print_background(game);
+	return (0);
+}
+
+void	game_init(t_data *game)
+{
+	game->mlx = mlx_init();
+	if (!game->mlx)
+	{
+		ft_freetab(game->map);
+		exit(1);
+	}
+	assign_texture(game);
+	game->win = new_window(game->mlx, game->sprite.width * game->content.size.x, game->sprite.height * game->content.size.y);
+	mlx_loop_hook(game->mlx, &render, game);
+	// mlx_put_image_to_window(game->mlx, game->win.id, game->sprite.img_wall, 0, 0);
+	// print_img(game, game->sprite.img_floor, 0, 0);
 	// prog.sprite = new_sprite(prog.mlx, "../../sprites/ground.xpm");
 	// prog.sprite_pos.x = mapi->player.x * 16;
 	// prog.sprite_pos.y = mapi->player.y * 16;
 	// mlx_put_image_to_window(prog.mlx, prog.win.id, prog.sprite.id, prog.sprite_pos.x, prog.sprite_pos.y);
 	// mlx_key_hook(prog.win.id, *ft_input, &prog);
-	mlx_loop(prog.mlx);
+	mlx_loop(game->mlx);
+	end(game);
 }
