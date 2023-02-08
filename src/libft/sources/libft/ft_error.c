@@ -1,19 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_allocptr.c                                      :+:      :+:    :+:   */
+/*   ft_maperror.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hanmpark <hanmpark@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/21 00:21:57 by hanmpark          #+#    #+#             */
-/*   Updated: 2023/01/21 00:26:54 by hanmpark         ###   ########.fr       */
+/*   Created: 2023/02/06 12:22:06 by hanmpark          #+#    #+#             */
+/*   Updated: 2023/02/08 09:27:27 by hanmpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/libft.h"
 
-void	*ft_allocptr(void *ptr, size_t size)
+void	ft_error(char **map, char *str)
 {
-	ptr = malloc(size);
-	return (ptr);
+	ft_freetab(map);
+	ft_putstr_fd("\033[31m", 2);
+	ft_putstr_fd(str, 2);
+	ft_putstr_fd("\033[0m\n", 2);
+	exit (1);
 }

@@ -6,7 +6,7 @@
 /*   By: hanmpark <hanmpark@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/08 10:29:04 by hanmpark          #+#    #+#             */
-/*   Updated: 2023/02/06 12:59:23 by hanmpark         ###   ########.fr       */
+/*   Updated: 2023/02/08 09:28:37 by hanmpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,6 @@ void	*ft_memchr(const void *s, int c, size_t n);
 int		ft_memcmp(const void *s1, const void *s2, size_t n);
 void	ft_bzero(void *s, size_t n);
 void	*ft_calloc(size_t count, size_t size);
-void	*ft_allocptr(void *ptr, size_t size);
 void	ft_freetab(char **map);
 
 /* CHAR MANIPULATION */
@@ -84,6 +83,6 @@ t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
 /* FILE/MAP MANIPULATION */
 int		ft_filelen(const char *file);
 char	**ft_mapdup(char **map);
-void	ft_maperror(char **map, void *mapi, char *str);
+void	ft_error(char **map, char *str);
 
 #endif
