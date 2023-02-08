@@ -6,7 +6,7 @@
 /*   By: hanmpark <hanmpark@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 10:23:44 by hanmpark          #+#    #+#             */
-/*   Updated: 2023/02/08 14:09:48 by hanmpark         ###   ########.fr       */
+/*   Updated: 2023/02/08 19:15:51 by hanmpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,8 @@
 # define ERR_ELEMENTS "Error\nWrong number of elements\n"
 # define ERR_IMPOSSIBLE "Error\nYour map is impossible !\n"
 # define ERR_CASE "Error\nSomething wrong with case(s)\n"
+# define ERR_BER "Error\n.ber file does not exist\n"
+# define ERR_MLX "Error\nMLX problem\n"
 
 typedef struct	s_pos
 {
@@ -51,9 +53,15 @@ typedef struct	s_win
 typedef struct	s_img
 {
 	void	*img_floor;
+	void	*img_floor1;
 	void	*img_wall;
+	void	*img_collectible;
+	void	*img_exit;
 	char	*floor;
+	char	*floor1;
 	char	*wall;
+	char	*collectible;
+	char	*exit;
 	int		height;
 	int		width;
 }				t_img;
@@ -74,7 +82,7 @@ typedef struct	s_data
 	void	*mlx;
 	t_win	win;
 	t_img	sprite;
-	t_pos	sprite_pos;
+	t_pos	player_pos;
 }				t_data;
 
 char	**map_init(const char *file, t_cnt *mapi);
@@ -85,5 +93,6 @@ void	content_init(t_cnt *content);
 void	game_init(t_data *game);
 void	content_init(t_cnt *content);
 void	assign_texture(t_data *game);
+int		render(t_data *game);
 
 #endif

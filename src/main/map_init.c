@@ -6,7 +6,7 @@
 /*   By: hanmpark <hanmpark@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/22 22:13:11 by hanmpark          #+#    #+#             */
-/*   Updated: 2023/02/08 11:37:14 by hanmpark         ###   ########.fr       */
+/*   Updated: 2023/02/08 17:44:29 by hanmpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,8 @@ static void	map_set(const char *file, char **map)
 		tmp = get_next_line(fd);
 	}
 	map[i] = 0;
+	if (!*map)
+		ft_error(map, ERR_BER);
 	close(fd);
 }
 
@@ -58,7 +60,7 @@ char	**map_init(const char *file, t_cnt *content)
 
 	content_init(content);
 	content->size.y = ft_filelen(file);
-	map = malloc((content->size.y) * sizeof(char *));
+	map = malloc((content->size.y + 1) * sizeof(char *));
 	if (!map)
 		ft_error(map, ERR_MALLOC);
 	map_set(file, map);
