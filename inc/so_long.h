@@ -6,7 +6,7 @@
 /*   By: hanmpark <hanmpark@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 10:23:44 by hanmpark          #+#    #+#             */
-/*   Updated: 2023/02/08 20:44:45 by hanmpark         ###   ########.fr       */
+/*   Updated: 2023/02/09 09:53:41 by hanmpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,19 +52,19 @@ typedef struct	s_win
 
 typedef struct	s_img
 {
-	void	*img_player[7];
+	void	*img_down;
 	void	*img_floor;
 	void	*img_floor1;
 	void	*img_wall;
 	void	*img_collectible;
-	void	*img_exit;
+	void	*img_exit[2];
 	void	*img_mob;
-	char	*player[7];
+	char	*down;
 	char	*floor;
 	char	*floor1;
 	char	*wall;
 	char	*collectible;
-	char	*exit;
+	char	*exit[2];
 	char	*mob;
 	int		height;
 	int		width;
@@ -86,7 +86,6 @@ typedef struct	s_data
 	void	*mlx;
 	t_win	win;
 	t_img	sprite;
-	t_pos	player_pos;
 }				t_data;
 
 char	**map_init(const char *file, t_cnt *mapi);
@@ -98,5 +97,7 @@ void	game_init(t_data *game);
 void	content_init(t_cnt *content);
 void	assign_texture(t_data *game);
 int		render(t_data *game);
+int		ft_close(t_data *data);
+int		key_hook(int keycode, t_data *game);
 
 #endif
