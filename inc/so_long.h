@@ -6,7 +6,7 @@
 /*   By: hanmpark <hanmpark@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 10:23:44 by hanmpark          #+#    #+#             */
-/*   Updated: 2023/02/09 09:53:41 by hanmpark         ###   ########.fr       */
+/*   Updated: 2023/02/09 20:26:54 by hanmpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,12 @@
 # define ERR_CASE "Error\nSomething wrong with case(s)\n"
 # define ERR_BER "Error\n.ber file does not exist\n"
 # define ERR_MLX "Error\nMLX problem\n"
+
+/* ******************************* Key events ******************************* */
+# define KEYPRESS 2
+# define KEYRELEASE 3
+# define KEYPRESSMASK 1L
+# define KEYRELEASEMASK 2L
 
 typedef struct	s_pos
 {
@@ -86,6 +92,7 @@ typedef struct	s_data
 	void	*mlx;
 	t_win	win;
 	t_img	sprite;
+	int		*keyboard;
 }				t_data;
 
 char	**map_init(const char *file, t_cnt *mapi);

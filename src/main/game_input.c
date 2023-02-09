@@ -6,7 +6,7 @@
 /*   By: hanmpark <hanmpark@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/09 09:46:35 by hanmpark          #+#    #+#             */
-/*   Updated: 2023/02/09 11:12:14 by hanmpark         ###   ########.fr       */
+/*   Updated: 2023/02/09 20:26:41 by hanmpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,9 @@ int	key_hook(int keycode, t_data *game)
 	static int	moves;
 	t_pos		pos;
 
-	moves = 1;
 	pos = game->content.player;
-	ft_printf("Moves: %d\n", moves++);
+	ft_printf("Moves: %d\n", moves);
+	moves++;
 	if (keycode == 53)
 		ft_close(game);
 	else if (keycode == 0 && game->map[pos.y][pos.x - 1] != '1')

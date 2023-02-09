@@ -6,7 +6,7 @@
 /*   By: hanmpark <hanmpark@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/08 17:45:49 by hanmpark          #+#    #+#             */
-/*   Updated: 2023/02/09 09:21:04 by hanmpark         ###   ########.fr       */
+/*   Updated: 2023/02/09 20:27:17 by hanmpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,8 +45,6 @@ static void	print_elements(t_data *game)
 	int	j;
 
 	i = -1;
-	mlx_put_image_to_window(game->mlx, game->win.id, game->sprite.img_down,
-		64 * game->content.player.x, 64 * game->content.player.y - 10);
 	while (game->map[++i])
 	{
 		j = 0;
@@ -60,6 +58,8 @@ static void	print_elements(t_data *game)
 				print_img(game, game->sprite.img_mob, j, i);
 		}
 	}
+	mlx_put_image_to_window(game->mlx, game->win.id, game->sprite.img_down,
+		64 * game->content.player.x, 64 * game->content.player.y - 10);
 }
 
 // static void	print_animation(t_data *game)
