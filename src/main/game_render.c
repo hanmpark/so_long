@@ -6,7 +6,7 @@
 /*   By: hanmpark <hanmpark@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/08 17:45:49 by hanmpark          #+#    #+#             */
-/*   Updated: 2023/02/08 20:53:03 by hanmpark         ###   ########.fr       */
+/*   Updated: 2023/02/09 09:21:04 by hanmpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,8 @@ static void	print_elements(t_data *game)
 	int	j;
 
 	i = -1;
+	mlx_put_image_to_window(game->mlx, game->win.id, game->sprite.img_down,
+		64 * game->content.player.x, 64 * game->content.player.y - 10);
 	while (game->map[++i])
 	{
 		j = 0;
@@ -53,32 +55,32 @@ static void	print_elements(t_data *game)
 			if (game->map[i][j] == 'C')
 				print_img(game, game->sprite.img_collectible, j, i);
 			else if (game->map[i][j] == 'E')
-				print_img(game, game->sprite.img_exit, j, i);
+				print_img(game, game->sprite.img_exit[1], j, i);
 			else if (game->map[i][j] == 'M')
 				print_img(game, game->sprite.img_mob, j, i);
 		}
 	}
 }
 
-static void	print_animation(t_data *game)
-{
-	static int	frame = 0;
-	static int	i = 0;
+// static void	print_animation(t_data *game)
+// {
+// 	static int	frame = 0;
+// 	static int	i = 0;
 
-	frame++;
-	print_img(game, game->sprite.img_player[i], game->content.player.x, game->content.player.y);
-	if (frame == 5)
-		i++;
-	if (i == 7)
-		i = 0;
-	if (frame == 10)
-		frame = 0;
-}
+// 	frame++;
+// 	print_img(game, game->sprite.img_player[i], game->content.player.x, game->content.player.y);
+// 	if (frame == 5)
+// 		i++;
+// 	if (i == 7)
+// 		i = 0;
+// 	if (frame == 10)
+// 		frame = 0;
+// }
 
 int	render(t_data *game)
 {
 	print_background(game);
 	print_elements(game);
-	print_animation(game);
+	// print_animation(game);
 	return (0);
 }
