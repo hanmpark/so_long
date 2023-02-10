@@ -6,7 +6,7 @@
 /*   By: hanmpark <hanmpark@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/10 08:45:13 by hanmpark          #+#    #+#             */
-/*   Updated: 2023/02/10 11:50:26 by hanmpark         ###   ########.fr       */
+/*   Updated: 2023/02/10 19:22:03 by hanmpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,5 +25,5 @@ void	anim_dir(int dir, t_pos pos, t_data *game)
 		img = game->sprite.img_right;
 	else if (dir == KEY_U)
 		img = game->sprite.img_up;
-	print_img(game, img, pos.x, pos.y);
+	print_background(img, pos, game);
 }

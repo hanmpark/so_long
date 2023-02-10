@@ -6,7 +6,7 @@
 /*   By: hanmpark <hanmpark@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/09 09:46:35 by hanmpark          #+#    #+#             */
-/*   Updated: 2023/02/10 11:54:23 by hanmpark         ###   ########.fr       */
+/*   Updated: 2023/02/10 19:08:57 by hanmpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,16 +60,10 @@ static int	ft_check_path(int x, int y, t_data *game)
 static void	move_dir(int dir, int x, int y, t_data *game)
 {
 	t_pos	new;
-	t_pos	curpos;
 
 	new = set_vector(x, y, dir);
-	curpos = game->content.player;
 	if (ft_check_path(new.x, new.y, game))
 	{
-		if ((curpos.x % 2 && !(curpos.y % 2)) || (!(curpos.x % 2) && curpos.y % 2))
-			print_img(game, game->sprite.img_floor[0], curpos.x, curpos.y);
-		else
-			print_img(game, game->sprite.img_floor[1], curpos.x, curpos.y);
 		if (game->map[new.y][new.x] == 'E')
 			ft_close(game);
 		game->content.player = new;

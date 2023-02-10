@@ -6,7 +6,7 @@
 /*   By: hanmpark <hanmpark@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/06 17:28:52 by hanmpark          #+#    #+#             */
-/*   Updated: 2023/02/10 09:04:53 by hanmpark         ###   ########.fr       */
+/*   Updated: 2023/02/10 19:24:26 by hanmpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,17 +26,17 @@ int	ft_close(t_data *data)
 static void	new_window(t_data *game, int x, int y)
 {
 	game->win.id = mlx_new_window(game->mlx, x, y, "so_long");
-	print_background(game);
-	print_elements(game);
+	print_background(game->sprite.img_down, game->content.player, game);
 }
 
 void	game_init(t_data *game)
 {
+	game->check = content_init();
 	game->mlx = mlx_init();
 	if (!game->mlx)
 		ft_error(game->map, ERR_MLX);
 	assign_texture(game);
-	new_window(game, 64 * game->content.size.x, 64 * game->content.size.y);
+	new_window(game, 576, 704);
 	mlx_hook(game->win.id, 17, 0, &ft_close, game);
 	mlx_hook(game->win.id, KEYPRESS, 0, &key_hook, game);
 	mlx_loop(game->mlx);

@@ -6,21 +6,24 @@
 /*   By: hanmpark <hanmpark@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/08 09:14:22 by hanmpark          #+#    #+#             */
-/*   Updated: 2023/02/10 08:56:43 by hanmpark         ###   ########.fr       */
+/*   Updated: 2023/02/10 13:24:57 by hanmpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/so_long.h"
 
-void	content_init(t_cnt *content)
+t_cnt	content_init(void)
 {
-	content->isplayer = 0;
-	content->collectible = 0;
-	content->exit = 0;
-	content->player.x = 0;
-	content->player.y = 0;
-	content->size.x = 0;
-	content->size.y = 0;
+	t_cnt	content;
+
+	content.isplayer = 0;
+	content.collectible = 0;
+	content.exit = 0;
+	content.player.x = 0;
+	content.player.y = 0;
+	content.size.x = 0;
+	content.size.y = 0;
+	return (content);
 }
 
 void	assign_texture(t_data *game)

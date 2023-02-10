@@ -6,7 +6,7 @@
 /*   By: hanmpark <hanmpark@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 10:23:44 by hanmpark          #+#    #+#             */
-/*   Updated: 2023/02/10 11:38:48 by hanmpark         ###   ########.fr       */
+/*   Updated: 2023/02/10 19:23:06 by hanmpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,12 @@ typedef struct	s_pos
 	int	x;
 	int	y;
 }				t_pos;
+
+typedef struct	s_gap
+{
+	int	min;
+	int	max;
+}				t_gap;
 
 typedef struct	s_color
 {
@@ -105,17 +111,16 @@ typedef struct	s_data
 char	**map_init(const char *file, t_cnt *mapi);
 void	check_edges(char **map, t_cnt *mapi);
 void	check_content(char **map, t_cnt *mapi);
-void	content_init(t_cnt *content);
 
 void	game_init(t_data *game);
-void	content_init(t_cnt *content);
+t_cnt	content_init(void);
 void	assign_texture(t_data *game);
 // int		render(t_data *game);
 int		ft_close(t_data *data);
 int		key_hook(int keycode, t_data *game);
 
 void	print_elements(t_data *game);
-void	print_background(t_data *game);
+void	print_background(void *img_player, t_pos pos, t_data *game);
 void	print_img(t_data *game, void *img, int x, int y);
 void	anim_dir(int dir, t_pos pos, t_data *game);
 

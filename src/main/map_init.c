@@ -6,7 +6,7 @@
 /*   By: hanmpark <hanmpark@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/22 22:13:11 by hanmpark          #+#    #+#             */
-/*   Updated: 2023/02/08 17:44:29 by hanmpark         ###   ########.fr       */
+/*   Updated: 2023/02/10 13:27:18 by hanmpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ char	**map_init(const char *file, t_cnt *content)
 {
 	char	**map;
 
-	content_init(content);
+	*content = content_init();
 	content->size.y = ft_filelen(file);
 	map = malloc((content->size.y + 1) * sizeof(char *));
 	if (!map)
