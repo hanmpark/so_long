@@ -6,7 +6,7 @@
 /*   By: hanmpark <hanmpark@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 10:23:44 by hanmpark          #+#    #+#             */
-/*   Updated: 2023/02/10 19:23:06 by hanmpark         ###   ########.fr       */
+/*   Updated: 2023/02/11 00:42:30 by hanmpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,20 +45,6 @@ typedef struct	s_pos
 	int	y;
 }				t_pos;
 
-typedef struct	s_gap
-{
-	int	min;
-	int	max;
-}				t_gap;
-
-typedef struct	s_color
-{
-	unsigned char	b;
-	unsigned char	g;
-	unsigned char	r;
-	unsigned char	o;
-}				t_color;
-
 typedef struct	s_win
 {
 	void	*id;
@@ -67,11 +53,11 @@ typedef struct	s_win
 
 typedef struct	s_img
 {
-	void	*img_down;
-	void	*img_left;
-	void	*img_right;
-	void	*img_up;
-	void	*img_floor[2];
+	t_list	*img_down;
+	t_list	*img_left;
+	t_list	*img_right;
+	t_list	*img_up;
+	void	*img_floor[3];
 	void	*img_wall;
 	void	*img_collectible;
 	void	*img_exit[2];
@@ -80,7 +66,7 @@ typedef struct	s_img
 	char	*left;
 	char	*right;
 	char	*up;
-	char	*floor[2];
+	char	*floor[3];
 	char	*wall;
 	char	*collectible;
 	char	*exit[2];
@@ -115,11 +101,11 @@ void	check_content(char **map, t_cnt *mapi);
 void	game_init(t_data *game);
 t_cnt	content_init(void);
 void	assign_texture(t_data *game);
-// int		render(t_data *game);
+t_list	*load_dir(char *path);
+
 int		ft_close(t_data *data);
 int		key_hook(int keycode, t_data *game);
 
-void	print_elements(t_data *game);
 void	print_background(void *img_player, t_pos pos, t_data *game);
 void	print_img(t_data *game, void *img, int x, int y);
 void	anim_dir(int dir, t_pos pos, t_data *game);
