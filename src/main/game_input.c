@@ -6,40 +6,11 @@
 /*   By: hanmpark <hanmpark@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/09 09:46:35 by hanmpark          #+#    #+#             */
-/*   Updated: 2023/02/10 19:08:57 by hanmpark         ###   ########.fr       */
+/*   Updated: 2023/02/10 23:25:53 by hanmpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/so_long.h"
-
-static t_pos	set_vector(int x, int y, int dir)
-{
-	t_pos	vector;
-
-	vector.x = 0;
-	vector.y = 0;
-	if (dir == KEY_L)
-	{
-		vector.x = x - 1;
-		vector.y = y;
-	}
-	else if (dir == KEY_D)
-	{
-		vector.y = y + 1;
-		vector.x = x;
-	}
-	else if (dir == KEY_U)
-	{
-		vector.x = x;
-		vector.y = y - 1;
-	}
-	else if (dir == KEY_R)
-	{
-		vector.x = x + 1;
-		vector.y = y;
-	}
-	return (vector);
-}
 
 static int	ft_check_path(int x, int y, t_data *game)
 {
@@ -59,14 +30,12 @@ static int	ft_check_path(int x, int y, t_data *game)
 
 static void	move_dir(int dir, int x, int y, t_data *game)
 {
-	t_pos	new;
-
-	new = set_vector(x, y, dir);
-	if (ft_check_path(new.x, new.y, game))
+	if (ft_check_path(x, y, game))
 	{
-		if (game->map[new.y][new.x] == 'E')
+		if (game->map[y][x] == 'E')
 			ft_close(game);
-		game->content.player = new;
+		game->content.player.x = x;
+		game->content.player.y = y;
 		anim_dir(dir, game->content.player, game);
 	}
 }
@@ -79,12 +48,12 @@ int	key_hook(int keycode, t_data *game)
 	if (keycode == KEY_ESC)
 		ft_close(game);
 	else if (keycode == KEY_L)
-		move_dir(KEY_L, pos.x, pos.y, game);
+		move_dir(KEY_L, pos.x - 1, pos.y, game);
 	else if (keycode == KEY_D && ft_check_path(pos.x, pos.y + 1, game))
-		move_dir(KEY_D, pos.x, pos.y, game);
+		move_dir(KEY_D, pos.x, pos.y + 1, game);
 	else if (keycode == KEY_R && ft_check_path(pos.x + 1, pos.y, game))
-		move_dir(KEY_R, pos.x, pos.y, game);
+		move_dir(KEY_R, pos.x + 1, pos.y, game);
 	else if (keycode == KEY_U && ft_check_path(pos.x, pos.y - 1, game))
-		move_dir(KEY_U, pos.x, pos.y, game);
+		move_dir(KEY_U, pos.x, pos.y - 1, game);
 	return (0);
 }
