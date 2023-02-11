@@ -6,7 +6,7 @@
 /*   By: hanmpark <hanmpark@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 10:23:44 by hanmpark          #+#    #+#             */
-/*   Updated: 2023/02/11 00:42:30 by hanmpark         ###   ########.fr       */
+/*   Updated: 2023/02/11 16:38:10 by hanmpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,7 @@ typedef struct	s_win
 typedef struct	s_img
 {
 	t_list	*img_down;
+	t_list	*img_down_back;
 	t_list	*img_left;
 	t_list	*img_right;
 	t_list	*img_up;
