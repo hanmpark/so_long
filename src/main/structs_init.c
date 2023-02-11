@@ -6,7 +6,7 @@
 /*   By: hanmpark <hanmpark@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/08 09:14:22 by hanmpark          #+#    #+#             */
-/*   Updated: 2023/02/11 00:30:22 by hanmpark         ###   ########.fr       */
+/*   Updated: 2023/02/11 16:45:04 by hanmpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,28 +26,22 @@ t_cnt	content_init(void)
 	return (content);
 }
 
-t_list	*load_dir(char *path, t_data *game)
+t_list	*load_dir(char *path)
 {
 	t_list	*img;
-	char	**str;
-	int		i;
+	char	*str;
+	char	number;
 
-	str = malloc(5 * sizeof(char *));
-	if (!str)
-		ft_error(game->map, ERR_MALLOC);
-	*str = ft_strdup(path);
-	ft_printf("%s\n", *str);
-	img = ft_lstnew(*str);
-	i = 1;
-	while (*str)
+	str = ft_strdup(path);
+	img = ft_lstnew(str);
+	number = '1';
+	while (number < '5')
 	{
-		str++;
-		*str = ft_strdup(path);
-		*str = ft_memset(str + 23, i, 1);
-		ft_printf("%s\n", *str);
-		ft_lstadd_back(&img, ft_lstnew(*str));
-		i++;
+		ft_memset(&str[23], number, 1);
+		ft_lstadd_back(&img, ft_lstnew(str));
+		number++;
 	}
+	free(str);
 	return (img);
 }
 
