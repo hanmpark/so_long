@@ -6,7 +6,7 @@
 /*   By: hanmpark <hanmpark@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/08 17:45:49 by hanmpark          #+#    #+#             */
-/*   Updated: 2023/02/10 23:20:04 by hanmpark         ###   ########.fr       */
+/*   Updated: 2023/02/12 22:08:00 by hanmpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,26 +37,26 @@ static void	print_elements(int x, int y, t_pos mappos, t_data *game)
 	}
 }
 
-static void	print_game(t_pos win, t_pos m, void *img_player, t_data *game)
+static void	print_game(t_pos m, t_data *game)
 {
-	t_pos	max;
 	int		og;
+	t_pos	win;
 
 	og = m.x;
-	max.x = game->content.size.x;
-	max.y = game->content.size.y;
+	win.x = 0;
+	win.y = 0;
 	while (win.y < 9)
 	{
 		win.x = 0;
 		m.x = og;
 		while (win.x < 13)
 		{
-			if (m.x < 0 || m.x >= max.x || m.y < 0 || m.y >= max.y)
+			if (m.x < 0 || m.x >= game->content.size.x || m.y < 0 || \
+				m.y >= game->content.size.y)
 				print_img(game, game->sprite.img_floor[2], win.x, win.y);
-			if ((m.x >= 0 && m.x < max.x) && (m.y >= 0 && m.y < max.y))
+			if ((m.x >= 0 && m.x < game->content.size.x) && \
+				(m.y >= 0 && m.y < game->content.size.y))
 				print_elements(win.x, win.y, m, game);
-			if (win.x == 6 && win.y == 4)
-				print_img(game, img_player, win.x, win.y);
 			win.x++;
 			m.x++;
 		}
@@ -64,14 +64,18 @@ static void	print_game(t_pos win, t_pos m, void *img_player, t_data *game)
 		m.y++;
 	}
 }
+// if (win.x == 6 && win.y == 4)
 
-void	print_background(void *img_player, t_pos mappos, t_data *game)
+void	print_background(t_list *img_player, t_pos mappos, t_data *game)
 {
-	t_pos	winpos;
+	t_pos	win_middle;
 
-	winpos.x = 0;
-	winpos.y = 0;
 	mappos.x -= 6;
 	mappos.y -= 4;
-	print_game(winpos, mappos, img_player, game);
+	print_game(mappos, game);
+	mappos.x += 6;
+	mappos.y += 4;
+	win_middle.x = 6;
+	win_middle.y = 4;
+	anim_dir(game, img_player, win_middle, mappos);
 }

@@ -6,7 +6,7 @@
 /*   By: hanmpark <hanmpark@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/09 09:46:35 by hanmpark          #+#    #+#             */
-/*   Updated: 2023/02/10 23:25:53 by hanmpark         ###   ########.fr       */
+/*   Updated: 2023/02/12 20:49:15 by hanmpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ static void	move_dir(int dir, int x, int y, t_data *game)
 			ft_close(game);
 		game->content.player.x = x;
 		game->content.player.y = y;
-		anim_dir(dir, game->content.player, game);
+		set_img_dir(dir, game->content.player, game);
 	}
 }
 
