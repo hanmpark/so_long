@@ -6,7 +6,7 @@
 /*   By: hanmpark <hanmpark@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/09 09:46:35 by hanmpark          #+#    #+#             */
-/*   Updated: 2023/02/12 20:49:15 by hanmpark         ###   ########.fr       */
+/*   Updated: 2023/02/13 13:40:10 by hanmpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,12 +42,12 @@ static void	move_dir(int dir, int x, int y, t_data *game)
 
 int	key_hook(int keycode, t_data *game)
 {
-	t_pos		pos;
+	t_pos	pos;
 
 	pos = game->content.player;
 	if (keycode == KEY_ESC)
 		ft_close(game);
-	else if (keycode == KEY_L)
+	else if (keycode == KEY_L && ft_check_path(pos.x - 1, pos.y, game))
 		move_dir(KEY_L, pos.x - 1, pos.y, game);
 	else if (keycode == KEY_D && ft_check_path(pos.x, pos.y + 1, game))
 		move_dir(KEY_D, pos.x, pos.y + 1, game);

@@ -6,7 +6,7 @@
 /*   By: hanmpark <hanmpark@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/08 17:45:49 by hanmpark          #+#    #+#             */
-/*   Updated: 2023/02/12 22:08:00 by hanmpark         ###   ########.fr       */
+/*   Updated: 2023/02/13 13:49:16 by hanmpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,16 +66,10 @@ static void	print_game(t_pos m, t_data *game)
 }
 // if (win.x == 6 && win.y == 4)
 
-void	print_background(t_list *img_player, t_pos mappos, t_data *game)
+int	print_background(t_pos mappos, t_data *game)
 {
-	t_pos	win_middle;
-
 	mappos.x -= 6;
 	mappos.y -= 4;
 	print_game(mappos, game);
-	mappos.x += 6;
-	mappos.y += 4;
-	win_middle.x = 6;
-	win_middle.y = 4;
-	anim_dir(game, img_player, win_middle, mappos);
+	return (0);
 }

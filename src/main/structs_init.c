@@ -6,7 +6,7 @@
 /*   By: hanmpark <hanmpark@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/08 09:14:22 by hanmpark          #+#    #+#             */
-/*   Updated: 2023/02/12 22:41:50 by hanmpark         ###   ########.fr       */
+/*   Updated: 2023/02/13 15:11:34 by hanmpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,6 @@ t_list	*load_dir(char *path, t_data *game)
 	str = ft_strdup(path);
 	img = ft_lstnew(mlx_xpm_file_to_image(game->mlx, str, \
 		&game->sprite.width, &game->sprite.height));
-	ft_printf("%s\n", str);
 	number = '1';
 	set = ft_setlen(str, '0');
 	while (number < '4')

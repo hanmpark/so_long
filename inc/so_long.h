@@ -6,7 +6,7 @@
 /*   By: hanmpark <hanmpark@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 10:23:44 by hanmpark          #+#    #+#             */
-/*   Updated: 2023/02/12 21:25:26 by hanmpark         ###   ########.fr       */
+/*   Updated: 2023/02/13 13:49:30 by hanmpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,6 +92,11 @@ typedef struct	s_data
 	void	*mlx;
 	t_win	win;
 	t_img	sprite;
+	int		pressed;
+	int		left;
+	int		right;
+	int		down;
+	int		up;
 }				t_data;
 
 char	**map_init(const char *file, t_cnt *mapi);
@@ -106,9 +111,9 @@ t_list	*load_dir(char *path, t_data *game);
 int		ft_close(t_data *data);
 int		key_hook(int keycode, t_data *game);
 
-void	print_background(t_list *img_player, t_pos pos, t_data *game);
+int		print_background(t_pos mappos, t_data *game);
 void	print_img(t_data *game, void *img, int x, int y);
 void	set_img_dir(int dir, t_pos pos, t_data *game);
-void	anim_dir(t_data *game, t_list *img, t_pos win, t_pos m);
+void	anim_dir(t_data *game, t_list *img, t_pos m);
 
 #endif
