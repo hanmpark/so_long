@@ -6,7 +6,7 @@
 /*   By: hanmpark <hanmpark@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/08 17:45:49 by hanmpark          #+#    #+#             */
-/*   Updated: 2023/02/14 13:29:05 by hanmpark         ###   ########.fr       */
+/*   Updated: 2023/02/14 23:00:46 by hanmpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,8 @@ static void	print_elements(t_pos win, t_pos pl, t_data *game)
 		print_img(game, game->img.img_exit[0], win.x, win.y);
 	else if (game->map[pl.y][pl.x] == 'M')
 		print_img(game, game->img.img_mob, win.x, win.y);
+	else if (game->map[pl.y][pl.x] == 'P')
+		print_img(game, game->img.current, win.x, win.y);
 	else if (game->map[pl.y][pl.x] == '1')
 	{
 		print_img(game, game->img.img_floor[2], win.x, win.y);

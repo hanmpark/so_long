@@ -6,7 +6,7 @@
 /*   By: hanmpark <hanmpark@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 10:23:44 by hanmpark          #+#    #+#             */
-/*   Updated: 2023/02/14 14:40:25 by hanmpark         ###   ########.fr       */
+/*   Updated: 2023/02/14 22:45:18 by hanmpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,6 +74,14 @@ typedef struct	s_content
 	int		exit;
 }				t_cnt;
 
+typedef struct	s_dir
+{
+	int	left;
+	int	right;
+	int	down;
+	int	up;
+}				t_dir;
+
 typedef struct	s_data
 {
 	char	**map;
@@ -85,16 +93,8 @@ typedef struct	s_data
 	void	*win;
 	t_img	img;
 	int		f_rate;
+	t_dir	dir;
 }				t_data;
-
-typedef struct	s_imgset
-{
-	int	dir;
-	int	left;
-	int	right;
-	int	down;
-	int	up;
-}				t_imgset;
 
 void	map_init(const char *file, t_data *game);
 void	check_edges(char **map, t_data *game);
@@ -106,7 +106,7 @@ void	assign_texture(t_data *game);
 t_list	*load_dir(char *path, t_data *game);
 
 int		ft_close(t_data *game);
-int		key_hook(int keycode, t_data *game);
+int		key_hook(t_data *game);
 
 int		render(t_pos player, t_data *game);
 void	print_img(t_data *game, void *img, int x, int y);
