@@ -6,7 +6,7 @@
 /*   By: hanmpark <hanmpark@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 10:23:44 by hanmpark          #+#    #+#             */
-/*   Updated: 2023/02/13 13:49:30 by hanmpark         ###   ########.fr       */
+/*   Updated: 2023/02/14 14:40:25 by hanmpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,27 +45,19 @@ typedef struct	s_pos
 	int	y;
 }				t_pos;
 
-typedef struct	s_win
-{
-	void	*id;
-	t_pos	size;
-}				t_win;
-
 typedef struct	s_img
 {
-	t_list	*img_down;
-	t_list	*img_left;
-	t_list	*img_right;
-	t_list	*img_up;
+	t_list	*down;
+	t_list	*left;
+	t_list	*right;
+	t_list	*up;
+	t_list	*current;
+	t_list	*current_back;
 	void	*img_floor[3];
 	void	*img_wall;
 	void	*img_collectible;
 	void	*img_exit[2];
 	void	*img_mob;
-	char	*down;
-	char	*left;
-	char	*right;
-	char	*up;
 	char	*floor[3];
 	char	*wall;
 	char	*collectible;
@@ -77,43 +69,48 @@ typedef struct	s_img
 
 typedef struct	s_content
 {
-	t_pos	player;
 	int		isplayer;
 	int		collectible;
 	int		exit;
-	t_pos	size;
 }				t_cnt;
 
 typedef struct	s_data
 {
 	char	**map;
-	t_cnt	content;
+	t_cnt	map_content;
 	t_cnt	check;
+	t_pos	size;
+	t_pos	player;
 	void	*mlx;
-	t_win	win;
-	t_img	sprite;
-	int		pressed;
-	int		left;
-	int		right;
-	int		down;
-	int		up;
+	void	*win;
+	t_img	img;
+	int		f_rate;
 }				t_data;
 
-char	**map_init(const char *file, t_cnt *mapi);
-void	check_edges(char **map, t_cnt *mapi);
-void	check_content(char **map, t_cnt *mapi);
+typedef struct	s_imgset
+{
+	int	dir;
+	int	left;
+	int	right;
+	int	down;
+	int	up;
+}				t_imgset;
+
+void	map_init(const char *file, t_data *game);
+void	check_edges(char **map, t_data *game);
+void	check_content(char **map, t_data *game);
 
 void	game_init(t_data *game);
 t_cnt	content_init(void);
 void	assign_texture(t_data *game);
 t_list	*load_dir(char *path, t_data *game);
 
-int		ft_close(t_data *data);
+int		ft_close(t_data *game);
 int		key_hook(int keycode, t_data *game);
 
-int		print_background(t_pos mappos, t_data *game);
+int		render(t_pos player, t_data *game);
 void	print_img(t_data *game, void *img, int x, int y);
-void	set_img_dir(int dir, t_pos pos, t_data *game);
-void	anim_dir(t_data *game, t_list *img, t_pos m);
+
+int	update(t_data *game);
 
 #endif

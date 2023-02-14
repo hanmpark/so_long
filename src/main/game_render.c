@@ -6,7 +6,7 @@
 /*   By: hanmpark <hanmpark@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/08 17:45:49 by hanmpark          #+#    #+#             */
-/*   Updated: 2023/02/13 13:49:16 by hanmpark         ###   ########.fr       */
+/*   Updated: 2023/02/14 13:29:05 by hanmpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,61 +15,57 @@
 void	print_img(t_data *game, void *img, int x, int y)
 {
 	if (img)
-		mlx_put_image_to_window(game->mlx, game->win.id, img, 64 * x, 64 * y);
+		mlx_put_image_to_window(game->mlx, game->win, img, 64 * x, 64 * y);
 }
 
-static void	print_elements(int x, int y, t_pos mappos, t_data *game)
+static void	print_elements(t_pos win, t_pos pl, t_data *game)
 {
-	if ((mappos.x % 2 && !(mappos.y % 2)) || (!(mappos.x % 2) && mappos.y % 2))
-		print_img(game, game->sprite.img_floor[0], x, y);
+	if ((pl.x % 2 && !(pl.y % 2)) || (!(pl.x % 2) && pl.y % 2))
+		print_img(game, game->img.img_floor[0], win.x, win.y);
 	else
-		print_img(game, game->sprite.img_floor[1], x, y);
-	if (game->map[mappos.y][mappos.x] == 'C')
-		print_img(game, game->sprite.img_collectible, x, y);
-	else if (game->map[mappos.y][mappos.x] == 'E')
-		print_img(game, game->sprite.img_exit[0], x, y);
-	else if (game->map[mappos.y][mappos.x] == 'M')
-		print_img(game, game->sprite.img_mob, x, y);
-	else if (game->map[mappos.y][mappos.x] == '1')
+		print_img(game, game->img.img_floor[1], win.x, win.y);
+	if (game->map[pl.y][pl.x] == 'C')
+		print_img(game, game->img.img_collectible, win.x, win.y);
+	else if (game->map[pl.y][pl.x] == 'E')
+		print_img(game, game->img.img_exit[0], win.x, win.y);
+	else if (game->map[pl.y][pl.x] == 'M')
+		print_img(game, game->img.img_mob, win.x, win.y);
+	else if (game->map[pl.y][pl.x] == '1')
 	{
-		print_img(game, game->sprite.img_floor[2], x, y);
-		print_img(game, game->sprite.img_wall, x, y);
+		print_img(game, game->img.img_floor[2], win.x, win.y);
+		print_img(game, game->img.img_wall, win.x, win.y);
 	}
 }
 
-static void	print_game(t_pos m, t_data *game)
+static void	print_game(t_pos pl, t_data *game)
 {
 	int		og;
 	t_pos	win;
 
-	og = m.x;
-	win.x = 0;
-	win.y = 0;
-	while (win.y < 9)
+	og = pl.x;
+	win.y = -1;
+	while (++win.y < 9)
 	{
-		win.x = 0;
-		m.x = og;
-		while (win.x < 13)
+		win.x = -1;
+		pl.x = og;
+		while (++win.x < 13)
 		{
-			if (m.x < 0 || m.x >= game->content.size.x || m.y < 0 || \
-				m.y >= game->content.size.y)
-				print_img(game, game->sprite.img_floor[2], win.x, win.y);
-			if ((m.x >= 0 && m.x < game->content.size.x) && \
-				(m.y >= 0 && m.y < game->content.size.y))
-				print_elements(win.x, win.y, m, game);
-			win.x++;
-			m.x++;
+			if (pl.x < 0 || pl.x >= game->size.x || pl.y < 0 || \
+				pl.y >= game->size.y)
+				print_img(game, game->img.img_floor[2], win.x, win.y);
+			if ((pl.x >= 0 && pl.x < game->size.x) && \
+				(pl.y >= 0 && pl.y < game->size.y))
+				print_elements(win, pl, game);
+			pl.x++;
 		}
-		win.y++;
-		m.y++;
+		pl.y++;
 	}
 }
-// if (win.x == 6 && win.y == 4)
 
-int	print_background(t_pos mappos, t_data *game)
+int	render(t_pos player, t_data *game)
 {
-	mappos.x -= 6;
-	mappos.y -= 4;
-	print_game(mappos, game);
+	player.x -= 6;
+	player.y -= 4;
+	print_game(player, game);
 	return (0);
 }

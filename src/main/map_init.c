@@ -6,35 +6,33 @@
 /*   By: hanmpark <hanmpark@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/22 22:13:11 by hanmpark          #+#    #+#             */
-/*   Updated: 2023/02/10 13:27:18 by hanmpark         ###   ########.fr       */
+/*   Updated: 2023/02/14 09:15:10 by hanmpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/so_long.h"
 
-static void	map_format(char **map, t_cnt *content)
+static void	map_format(char **map, t_data *game)
 {
 	char	*tmp;
 	int		i;
 
 	i = 0;
-	content->size.x = (int)ft_strlen(map[i]) - 1;
-	ft_printf("\033[32mMAP\033[0m\n");
+	game->size.x = (int)ft_strlen(map[i]) - 1;
 	while (map && map[i])
 	{
 		tmp = ft_strtrim(map[i], "\n");
 		free(map[i]);
 		map[i] = tmp;
-		ft_printf("\033[32m%s\033[0m\n", map[i]);
-		if ((int)ft_strlen(map[i]) != content->size.x)
+		if ((int)ft_strlen(map[i]) != game->size.x)
 			ft_error(map, ERR_FORMAT);
 		i++;
 	}
-	check_edges(map, content);
-	check_content(map, content);
+	check_edges(map, game);
+	check_content(map, game);
 }
 
-static void	map_set(const char *file, char **map)
+static void	map_set(const char *file, t_data *game)
 {
 	char	*tmp;
 	int		fd;
@@ -45,25 +43,22 @@ static void	map_set(const char *file, char **map)
 	tmp = get_next_line(fd);
 	while (tmp)
 	{
-		map[i++] = tmp;
+		game->map[i++] = tmp;
 		tmp = get_next_line(fd);
 	}
-	map[i] = 0;
-	if (!*map)
-		ft_error(map, ERR_BER);
 	close(fd);
+	game->map[i] = 0;
+	if (!*game->map)
+		ft_error(game->map, ERR_BER);
 }
 
-char	**map_init(const char *file, t_cnt *content)
+void	map_init(const char *file, t_data *game)
 {
-	char	**map;
-
-	*content = content_init();
-	content->size.y = ft_filelen(file);
-	map = malloc((content->size.y + 1) * sizeof(char *));
-	if (!map)
-		ft_error(map, ERR_MALLOC);
-	map_set(file, map);
-	map_format(map, content);
-	return (map);
+	game->map_content = content_init();
+	game->size.y = ft_filelen(file);
+	game->map = malloc((game->size.y + 1) * sizeof(char *));
+	if (!game->map)
+		ft_error(game->map, ERR_MALLOC);
+	map_set(file, game);
+	map_format(game->map, game);
 }
