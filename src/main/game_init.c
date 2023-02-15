@@ -6,7 +6,7 @@
 /*   By: hanmpark <hanmpark@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/06 17:28:52 by hanmpark          #+#    #+#             */
-/*   Updated: 2023/02/14 22:37:18 by hanmpark         ###   ########.fr       */
+/*   Updated: 2023/02/15 14:29:34 by hanmpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,14 +33,30 @@ int	keypressed(int key, t_data *game)
 {
 	if (key == KEY_ESC)
 		ft_close(game);
-	else if (key == KEY_L)
+	else if (key == KEY_L && !game->dir.left)
+	{
 		game->dir.left = 1;
-	else if (key == KEY_R)
+		game->img.current = game->img.left;
+		game->img.current_back = game->img.current;
+	}
+	else if (key == KEY_R && !game->dir.right)
+	{
 		game->dir.right = 1;
-	else if (key == KEY_D)
+		game->img.current = game->img.right;
+		game->img.current_back = game->img.current;
+	}
+	else if (key == KEY_D && !game->dir.down)
+	{
 		game->dir.down = 1;
-	else if (key == KEY_U)
+		game->img.current = game->img.down;
+		game->img.current_back = game->img.current;
+	}
+	else if (key == KEY_U && !game->dir.up)
+	{
 		game->dir.up = 1;
+		game->img.current = game->img.up;
+		game->img.current_back = game->img.current;
+	}
 	return (0);
 }
 
