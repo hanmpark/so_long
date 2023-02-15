@@ -6,7 +6,7 @@
 /*   By: hanmpark <hanmpark@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 10:23:44 by hanmpark          #+#    #+#             */
-/*   Updated: 2023/02/15 14:02:47 by hanmpark         ###   ########.fr       */
+/*   Updated: 2023/02/15 17:18:46 by hanmpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,6 +89,7 @@ typedef struct	s_data
 	t_cnt	check;
 	t_pos	size;
 	t_pos	player;
+	t_pos	move;
 	void	*mlx;
 	void	*win;
 	t_img	img;
