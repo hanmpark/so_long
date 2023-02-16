@@ -6,7 +6,7 @@
 /*   By: hanmpark <hanmpark@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/14 09:20:46 by hanmpark          #+#    #+#             */
-/*   Updated: 2023/02/15 17:51:14 by hanmpark         ###   ########.fr       */
+/*   Updated: 2023/02/16 14:49:19 by hanmpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,9 @@ static void	pressed_anim(t_data *game)
 
 int	update(t_data *game)
 {
+	game->pl_rate++;
+	if (game->pl_rate == 400)
+		game->pl_rate = 0;
 	key_hook(game);
 	pressed_anim(game);
 	render(game->player, game);

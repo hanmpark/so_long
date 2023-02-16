@@ -6,7 +6,7 @@
 /*   By: hanmpark <hanmpark@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 10:23:44 by hanmpark          #+#    #+#             */
-/*   Updated: 2023/02/15 17:18:46 by hanmpark         ###   ########.fr       */
+/*   Updated: 2023/02/16 14:44:28 by hanmpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,23 +94,30 @@ typedef struct	s_data
 	void	*win;
 	t_img	img;
 	int		f_rate;
+	int		pl_rate;
+	int		is_anim;
 	t_dir	dir;
 }				t_data;
 
+/* map functions */
 void	map_init(const char *file, t_data *game);
 void	check_edges(char **map, t_data *game);
 void	check_content(char **map, t_data *game);
 
+/* game_init */
 void	game_init(t_data *game);
 t_cnt	content_init(void);
 void	assign_texture(t_data *game);
 t_list	*load_dir(char *path, t_data *game);
 
 int		ft_close(t_data *game);
-int		key_hook(t_data *game);
+void	key_hook(t_data *game);
 
 int		render(t_pos player, t_data *game);
 void	print_img(t_data *game, void *img, int x, int y);
+
+int	key_released(int key, t_data *game);
+int	key_pressed(int key, t_data *game);
 
 int	update(t_data *game);
 

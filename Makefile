@@ -6,7 +6,7 @@
 #    By: hanmpark <hanmpark@student.42nice.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/11 13:12:40 by hanmpark          #+#    #+#              #
-#    Updated: 2023/02/14 11:16:17 by hanmpark         ###   ########.fr        #
+#    Updated: 2023/02/16 13:04:50 by hanmpark         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,7 @@ MAIN = src/main/
 
 # SOURCES AND OBJECTS
 MAP_SRC = map_init.c map_check.c game_init.c structs_init.c game_render.c \
-			game_input.c game_update.c
+			game_move.c game_update.c game_hook.c
 SRCS = ${addprefix ${MAIN}, main.c ${MAP_SRC}}
 
 OBJS = ${SRCS:.c=.o}
