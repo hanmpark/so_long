@@ -6,7 +6,7 @@
 /*   By: hanmpark <hanmpark@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 10:23:44 by hanmpark          #+#    #+#             */
-/*   Updated: 2023/02/16 14:44:28 by hanmpark         ###   ########.fr       */
+/*   Updated: 2023/02/16 21:04:32 by hanmpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,10 +93,9 @@ typedef struct	s_data
 	void	*mlx;
 	void	*win;
 	t_img	img;
-	int		f_rate;
-	int		pl_rate;
-	int		is_anim;
 	t_dir	dir;
+	t_dir	press;
+	int		anim_rate;
 }				t_data;
 
 /* map functions */
@@ -111,7 +110,7 @@ void	assign_texture(t_data *game);
 t_list	*load_dir(char *path, t_data *game);
 
 int		ft_close(t_data *game);
-void	key_hook(t_data *game);
+void	move_dir(int x, int y, t_data *game);
 
 int		render(t_pos player, t_data *game);
 void	print_img(t_data *game, void *img, int x, int y);
@@ -120,5 +119,6 @@ int	key_released(int key, t_data *game);
 int	key_pressed(int key, t_data *game);
 
 int	update(t_data *game);
+int	ft_check_path(int x, int y, t_data *game);
 
 #endif
