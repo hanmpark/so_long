@@ -6,7 +6,7 @@
 /*   By: hanmpark <hanmpark@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/08 09:14:22 by hanmpark          #+#    #+#             */
-/*   Updated: 2023/02/17 16:03:05 by hanmpark         ###   ########.fr       */
+/*   Updated: 2023/02/17 21:19:33 by hanmpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ int	ft_setlen(char *str, char c)
 	return (len);
 }
 
-t_list	*load_dir(char *path, t_data *game)
+static t_list	*load_dir(char *path, char times, t_data *game)
 {
 	t_list	*img;
 	int		set;
@@ -44,7 +44,7 @@ t_list	*load_dir(char *path, t_data *game)
 		&game->img.width, &game->img.height));
 	number = '1';
 	set = ft_setlen(str, '0');
-	while (number < '4')
+	while (number < times)
 	{
 		ft_memset(&str[set], number, 1);
 		ft_lstadd_back(&img, ft_lstnew(mlx_xpm_file_to_image(game->mlx, str, \
@@ -57,13 +57,13 @@ t_list	*load_dir(char *path, t_data *game)
 
 void	assign_dir_sprites(t_data *game)
 {
-	game->img.down = load_dir("./sprites/dir/down/down0.xpm", game);
-	game->img.up = load_dir("./sprites/dir/up/up0.xpm", game);
-	game->img.left = load_dir("./sprites/dir/left/left0.xpm", game);
-	game->img.right = load_dir("./sprites/dir/right/right0.xpm", game);
+	game->img.down = load_dir("./sprites/dir/down/down0.xpm", '4', game);
+	game->img.up = load_dir("./sprites/dir/up/up0.xpm", '4', game);
+	game->img.left = load_dir("./sprites/dir/left/left0.xpm", '4', game);
+	game->img.right = load_dir("./sprites/dir/right/right0.xpm", '4', game);
 	game->img.current = game->img.down;
 	game->img.current_back = game->img.down;
-	game->img.mob = load_dir("./sprites/mob/mob0.xpm", game);
+	game->img.mob = load_dir("./sprites/mob/mob0.xpm", '2', game);
 	game->img.mob_back = game->img.mob;
 }
 

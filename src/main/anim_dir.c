@@ -6,7 +6,7 @@
 /*   By: hanmpark <hanmpark@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/17 09:55:42 by hanmpark          #+#    #+#             */
-/*   Updated: 2023/02/17 17:36:50 by hanmpark         ###   ########.fr       */
+/*   Updated: 2023/02/17 20:34:37 by hanmpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,7 @@ static void	is_left(t_data *game)
 		ft_check_path(game->player.x - 1, game->player.y, game))
 	{
 		game->anim.left = 1;
-		if (!(game->frames % 3))
-			game->move.x += 8;
+		game->move.x += 4;
 		if (game->move.x == 64)
 		{
 			game->move.x = 0;
@@ -35,8 +34,7 @@ static void	is_right(t_data *game)
 		ft_check_path(game->player.x + 1, game->player.y, game))
 	{
 		game->anim.right = 1;
-		if (!(game->frames % 3))
-			game->move.x -= 8;
+		game->move.x -= 4;
 		if (game->move.x == -64)
 		{
 			game->move.x = 0;
@@ -52,8 +50,7 @@ static void	is_down(t_data *game)
 		ft_check_path(game->player.x, game->player.y + 1, game))
 	{
 		game->anim.down = 1;
-		if (!(game->frames % 3))
-			game->move.y -= 8;
+		game->move.y -= 4;
 		if (game->move.y == -64)
 		{
 			game->move.y = 0;
@@ -69,8 +66,7 @@ static void	is_up(t_data *game)
 		ft_check_path(game->player.x, game->player.y - 1, game))
 	{
 		game->anim.up = 1;
-		if (!(game->frames % 3))
-			game->move.y += 8;
+		game->move.y += 4;
 		if (game->move.y == 64)
 		{
 			game->move.y = 0;

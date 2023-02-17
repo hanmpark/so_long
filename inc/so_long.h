@@ -6,7 +6,7 @@
 /*   By: hanmpark <hanmpark@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 10:23:44 by hanmpark          #+#    #+#             */
-/*   Updated: 2023/02/17 16:28:37 by hanmpark         ###   ########.fr       */
+/*   Updated: 2023/02/17 21:19:49 by hanmpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,6 +88,7 @@ typedef struct	s_data
 	t_pos	size;
 	t_pos	player;
 	t_pos	move;
+	int		count_moves;
 	void	*mlx;
 	void	*win;
 	t_img	img;
@@ -107,7 +108,6 @@ void	check_content(char **map, t_data *game);
 void	game_init(t_data *game);
 t_cnt	content_init(void);
 void	assign_texture(t_data *game);
-t_list	*load_dir(char *path, t_data *game);
 
 int		ft_close(t_data *game);
 void	move_dir(int x, int y, t_data *game);
@@ -115,11 +115,11 @@ void	move_dir(int x, int y, t_data *game);
 int		render(t_data *game);
 void	print_img(t_data *game, void *img, int x, int y);
 
-int	key_released(int key, t_data *game);
-int	key_pressed(int key, t_data *game);
+int		key_released(int key, t_data *game);
+int		key_pressed(int key, t_data *game);
 
-int	update(t_data *game);
-int	ft_check_path(int x, int y, t_data *game);
+int		update(t_data *game);
+int		ft_check_path(int x, int y, t_data *game);
 
 void	anim_dir(t_data *game);
 

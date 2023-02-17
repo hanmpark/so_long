@@ -6,7 +6,7 @@
 /*   By: hanmpark <hanmpark@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/09 09:46:35 by hanmpark          #+#    #+#             */
-/*   Updated: 2023/02/17 10:20:40 by hanmpark         ###   ########.fr       */
+/*   Updated: 2023/02/17 20:19:12 by hanmpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,8 @@ int	ft_check_path(int x, int y, t_data *game)
 
 void	move_dir(int x, int y, t_data *game)
 {
+	game->count_moves++;
+	ft_printf("Moves : %d\n", game->count_moves);
 	if (game->map[y][x] == 'E')
 		ft_close(game);
 	else if (game->map[y][x] == 'C')
@@ -34,8 +36,8 @@ void	move_dir(int x, int y, t_data *game)
 			game->check.exit++;
 		}
 	}
-	game->map[game->player.y][game->player.x] = '0';
+	// game->map[game->player.y][game->player.x] = '0';
 	game->player.x = x;
 	game->player.y = y;
-	game->map[y][x] = 'P';
+	// game->map[y][x] = 'P';
 }
