@@ -6,7 +6,7 @@
 /*   By: hanmpark <hanmpark@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 10:23:44 by hanmpark          #+#    #+#             */
-/*   Updated: 2023/02/17 10:15:37 by hanmpark         ###   ########.fr       */
+/*   Updated: 2023/02/17 16:28:37 by hanmpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,12 +53,14 @@ typedef struct	s_img
 	t_list	*up;
 	t_list	*current;
 	t_list	*current_back;
+	t_list	*mob;
+	t_list	*mob_back;
 	void	*img_floor[3];
+	void	*border;
 	void	*img_wall;
 	void	*img_collectible;
 	void	*img_exit[2];
 	void	*current_exit;
-	void	*img_mob;
 	int		height;
 	int		width;
 }				t_img;
@@ -90,8 +92,10 @@ typedef struct	s_data
 	void	*win;
 	t_img	img;
 	t_dir	dir;
-	t_dir	press;
-	int		anim_rate;
+	t_dir	anim;
+	int		pl_rate;
+	int		mob_rate;
+	int		frames;
 }				t_data;
 
 /* map functions */

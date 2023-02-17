@@ -6,7 +6,7 @@
 /*   By: hanmpark <hanmpark@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/06 17:28:52 by hanmpark          #+#    #+#             */
-/*   Updated: 2023/02/17 09:55:31 by hanmpark         ###   ########.fr       */
+/*   Updated: 2023/02/17 17:35:03 by hanmpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,11 +30,13 @@ static void	data_init(t_data *game)
 	game->dir.right = 0;
 	game->dir.down = 0;
 	game->dir.up = 0;
-	game->anim_rate = 0;
-	game->press.left = 0;
-	game->press.right = 0;
-	game->press.down = 0;
-	game->press.up = 0;
+	game->pl_rate = 0;
+	game->mob_rate = 0;
+	game->frames = 0;
+	game->anim.left = 0;
+	game->anim.right = 0;
+	game->anim.down = 0;
+	game->anim.up = 0;
 	assign_texture(game);
 }
 

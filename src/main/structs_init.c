@@ -6,7 +6,7 @@
 /*   By: hanmpark <hanmpark@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/08 09:14:22 by hanmpark          #+#    #+#             */
-/*   Updated: 2023/02/17 10:19:34 by hanmpark         ###   ########.fr       */
+/*   Updated: 2023/02/17 16:03:05 by hanmpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,8 @@ void	assign_dir_sprites(t_data *game)
 	game->img.right = load_dir("./sprites/dir/right/right0.xpm", game);
 	game->img.current = game->img.down;
 	game->img.current_back = game->img.down;
+	game->img.mob = load_dir("./sprites/mob/mob0.xpm", game);
+	game->img.mob_back = game->img.mob;
 }
 
 void	assign_texture(t_data *game)
@@ -76,6 +78,8 @@ void	assign_texture(t_data *game)
 		"./sprites/ground1.xpm", &game->img.width, &game->img.height);
 	game->img.img_floor[2] = mlx_xpm_file_to_image(game->mlx, \
 		"./sprites/ground2.xpm", &game->img.width, &game->img.height);
+	game->img.border = mlx_xpm_file_to_image(game->mlx, \
+		"./sprites/border.xpm", &game->img.width, &game->img.height);
 	game->img.img_collectible = mlx_xpm_file_to_image(game->mlx, \
 		"./sprites/collectible.xpm", &game->img.width, &game->img.height);
 	game->img.img_exit[0] = mlx_xpm_file_to_image(game->mlx, \
@@ -83,6 +87,4 @@ void	assign_texture(t_data *game)
 	game->img.current_exit = game->img.img_exit[0];
 	game->img.img_exit[1] = mlx_xpm_file_to_image(game->mlx, \
 		"./sprites/exit1.xpm", &game->img.width, &game->img.height);
-	game->img.img_mob = mlx_xpm_file_to_image(game->mlx, \
-		"./sprites/mob.xpm", &game->img.width, &game->img.height);
 }

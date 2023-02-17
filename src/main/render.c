@@ -6,7 +6,7 @@
 /*   By: hanmpark <hanmpark@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/08 17:45:49 by hanmpark          #+#    #+#             */
-/*   Updated: 2023/02/17 11:15:29 by hanmpark         ###   ########.fr       */
+/*   Updated: 2023/02/17 17:46:57 by hanmpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ static void	print_elements(t_pos win, t_pos pl, t_data *game)
 	else if (game->map[pl.y][pl.x] == 'E')
 		print_img(game, game->img.current_exit, win.x, win.y);
 	else if (game->map[pl.y][pl.x] == 'M')
-		print_img(game, game->img.img_mob, win.x, win.y);
+		print_img(game, game->img.mob->content, win.x, win.y);
 	else if (game->map[pl.y][pl.x] == '1')
 	{
 		print_img(game, game->img.img_floor[2], win.x, win.y);
@@ -44,15 +44,15 @@ static void	print_game(t_data *game)
 	int		og;
 	t_pos	win;
 
-	pl.y = game->player.y - 5;
-	pl.x = game->player.x - 7;
+	pl.y = game->player.y - 4;
+	pl.x = game->player.x - 6;
 	og = pl.x;
-	win.y = -2;
+	win.y = -1;
 	while (++win.y < 9)
 	{
-		win.x = -2;
+		win.x = -1;
 		pl.x = og;
-		while (++win.x < 14)
+		while (++win.x < 13)
 		{
 			if (pl.x < 0 || pl.x >= game->size.x || pl.y < 0 || \
 				pl.y >= game->size.y)
@@ -69,6 +69,7 @@ static void	print_game(t_data *game)
 int	render(t_data *game)
 {
 	print_game(game);
+	mlx_put_image_to_window(game->mlx, game->win, game->img.border, 0, 0);
 	mlx_put_image_to_window(game->mlx, game->win, game->img.current->content, \
 		6 * 64, 4 * 64);
 	return (0);

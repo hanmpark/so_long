@@ -6,7 +6,7 @@
 /*   By: hanmpark <hanmpark@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/27 17:40:48 by hanmpark          #+#    #+#             */
-/*   Updated: 2023/02/14 09:07:34 by hanmpark         ###   ########.fr       */
+/*   Updated: 2023/02/17 14:10:30 by hanmpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,7 @@ static int	flood_fill(t_data *game, char **tmpmap)
 		ft_freetab(tmpmap);
 		return (MAP_WRONG);
 	}
+	ft_freetab(tmpmap);
 	return (MAP_OKAY);
 }
 
