@@ -6,7 +6,7 @@
 /*   By: hanmpark <hanmpark@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 10:23:44 by hanmpark          #+#    #+#             */
-/*   Updated: 2023/02/16 21:04:32 by hanmpark         ###   ########.fr       */
+/*   Updated: 2023/02/17 10:15:37 by hanmpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,12 +57,8 @@ typedef struct	s_img
 	void	*img_wall;
 	void	*img_collectible;
 	void	*img_exit[2];
+	void	*current_exit;
 	void	*img_mob;
-	char	*floor[3];
-	char	*wall;
-	char	*collectible;
-	char	*exit[2];
-	char	*mob;
 	int		height;
 	int		width;
 }				t_img;
@@ -112,7 +108,7 @@ t_list	*load_dir(char *path, t_data *game);
 int		ft_close(t_data *game);
 void	move_dir(int x, int y, t_data *game);
 
-int		render(t_pos player, t_data *game);
+int		render(t_data *game);
 void	print_img(t_data *game, void *img, int x, int y);
 
 int	key_released(int key, t_data *game);
@@ -120,5 +116,7 @@ int	key_pressed(int key, t_data *game);
 
 int	update(t_data *game);
 int	ft_check_path(int x, int y, t_data *game);
+
+void	anim_dir(t_data *game);
 
 #endif

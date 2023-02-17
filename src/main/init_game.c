@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   game_init.c                                        :+:      :+:    :+:   */
+/*   init_game.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hanmpark <hanmpark@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/06 17:28:52 by hanmpark          #+#    #+#             */
-/*   Updated: 2023/02/16 20:50:34 by hanmpark         ###   ########.fr       */
+/*   Updated: 2023/02/17 09:55:31 by hanmpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 static void	new_window(t_data *game, int x, int y)
 {
 	game->win = mlx_new_window(game->mlx, x, y, "so_long");
-	render(game->player, game);
+	render(game);
 }
 
 static void	data_init(t_data *game)

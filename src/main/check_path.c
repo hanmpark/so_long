@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   game_move.c                                        :+:      :+:    :+:   */
+/*   check_path.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hanmpark <hanmpark@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/09 09:46:35 by hanmpark          #+#    #+#             */
-/*   Updated: 2023/02/16 21:04:26 by hanmpark         ###   ########.fr       */
+/*   Updated: 2023/02/17 10:20:40 by hanmpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,10 @@ void	move_dir(int x, int y, t_data *game)
 		game->check.collectible++;
 		game->map[y][x] = '0';
 		if (game->check.collectible == game->map_content.collectible)
+		{
+			game->img.current_exit = game->img.img_exit[1];
 			game->check.exit++;
+		}
 	}
 	game->map[game->player.y][game->player.x] = '0';
 	game->player.x = x;

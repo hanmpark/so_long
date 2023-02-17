@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   game_hook.c                                        :+:      :+:    :+:   */
+/*   hooks.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hanmpark <hanmpark@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/16 11:13:04 by hanmpark          #+#    #+#             */
-/*   Updated: 2023/02/17 00:57:57 by hanmpark         ###   ########.fr       */
+/*   Updated: 2023/02/17 10:42:46 by hanmpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,6 @@ static void	dir_pressed(t_list *img_dir, t_data *game, int *dir)
 {
 	if (!*dir)
 	{
-		ft_printf("PASS\n");
 		*dir = 1;
 		game->img.current = img_dir;
 		game->img.current_back = img_dir;
