@@ -6,7 +6,7 @@
 /*   By: hanmpark <hanmpark@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 10:23:44 by hanmpark          #+#    #+#             */
-/*   Updated: 2023/02/17 21:19:49 by hanmpark         ###   ########.fr       */
+/*   Updated: 2023/02/18 16:05:22 by hanmpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,7 @@ typedef struct	s_img
 	t_list	*current_back;
 	t_list	*mob;
 	t_list	*mob_back;
+	void	*img_idle[2];
 	void	*img_floor[3];
 	void	*border;
 	void	*img_wall;
