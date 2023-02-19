@@ -6,7 +6,7 @@
 /*   By: hanmpark <hanmpark@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 10:23:44 by hanmpark          #+#    #+#             */
-/*   Updated: 2023/02/18 16:05:22 by hanmpark         ###   ########.fr       */
+/*   Updated: 2023/02/18 20:25:02 by hanmpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,6 +98,7 @@ typedef struct	s_data
 	int		pl_rate;
 	int		mob_rate;
 	int		frames;
+	t_pos	*enemy;
 }				t_data;
 
 /* map functions */
