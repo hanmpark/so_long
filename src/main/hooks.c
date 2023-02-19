@@ -6,7 +6,7 @@
 /*   By: hanmpark <hanmpark@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/16 11:13:04 by hanmpark          #+#    #+#             */
-/*   Updated: 2023/02/18 16:18:24 by hanmpark         ###   ########.fr       */
+/*   Updated: 2023/02/19 22:49:45 by hanmpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,25 +38,25 @@ int	key_pressed(int key, t_data *game)
 	if (key == KEY_ESC)
 		ft_close(game);
 	else if (key == KEY_L)
-		dir_pressed(game->img.left, game, &game->dir.left);
+		dir_pressed(game->img.left, game, &game->hook.dir.left);
 	else if (key == KEY_R)
-		dir_pressed(game->img.right, game, &game->dir.right);
+		dir_pressed(game->img.right, game, &game->hook.dir.right);
 	else if (key == KEY_D)
-		dir_pressed(game->img.down, game, &game->dir.down);
+		dir_pressed(game->img.down, game, &game->hook.dir.down);
 	else if (key == KEY_U)
-		dir_pressed(game->img.up, game, &game->dir.up);
+		dir_pressed(game->img.up, game, &game->hook.dir.up);
 	return (0);
 }
 
 int	key_released(int key, t_data *game)
 {
 	if (key == KEY_L)
-		game->dir.left = 0;
+		game->hook.dir.left = 0;
 	else if (key == KEY_R)
-		game->dir.right = 0;
+		game->hook.dir.right = 0;
 	else if (key == KEY_D)
-		game->dir.down = 0;
+		game->hook.dir.down = 0;
 	else if (key == KEY_U)
-		game->dir.up = 0;
+		game->hook.dir.up = 0;
 	return (0);
 }

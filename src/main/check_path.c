@@ -6,7 +6,7 @@
 /*   By: hanmpark <hanmpark@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/09 09:46:35 by hanmpark          #+#    #+#             */
-/*   Updated: 2023/02/18 13:14:00 by hanmpark         ###   ########.fr       */
+/*   Updated: 2023/02/19 23:00:23 by hanmpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,13 +15,15 @@
 int	ft_check_path(int x, int y, t_data *game)
 {
 	if ((game->map[y][x] != '1' && game->map[y][x] != 'E') || \
-		(game->map[y][x] == 'E' && game->check.exit))
+		(game->map[y][x] == 'E' && game->exit))
 		return (1);
 	return (0);
 }
 
 void	move_dir(int x, int y, t_data *game)
 {
+	static int	collectible = 0;
+
 	game->count_moves++;
 	ft_printf("Moves : %d\n", game->count_moves);
 	if (game->map[y][x] == 'E')
@@ -33,12 +35,12 @@ void	move_dir(int x, int y, t_data *game)
 	}
 	else if (game->map[y][x] == 'C')
 	{
-		game->check.collectible++;
+		collectible++;
 		game->map[y][x] = '0';
-		if (game->check.collectible == game->map_content.collectible)
+		if (collectible == game->map_content.collectible)
 		{
 			game->img.current_exit = game->img.img_exit[1];
-			game->check.exit++;
+			game->exit++;
 		}
 	}
 	game->map[game->player.y][game->player.x] = '0';

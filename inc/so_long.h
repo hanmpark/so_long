@@ -6,7 +6,7 @@
 /*   By: hanmpark <hanmpark@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 10:23:44 by hanmpark          #+#    #+#             */
-/*   Updated: 2023/02/18 20:25:02 by hanmpark         ###   ########.fr       */
+/*   Updated: 2023/02/19 22:51:10 by hanmpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,24 +81,26 @@ typedef struct	s_dir
 	int	up;
 }				t_dir;
 
+typedef struct	s_hook
+{
+	t_dir	dir;
+	t_dir	anim;
+}				t_hook;
+
 typedef struct	s_data
 {
 	char	**map;
 	t_cnt	map_content;
-	t_cnt	check;
 	t_pos	size;
 	t_pos	player;
 	t_pos	move;
+	int		exit;
 	int		count_moves;
 	void	*mlx;
 	void	*win;
 	t_img	img;
-	t_dir	dir;
-	t_dir	anim;
-	int		pl_rate;
-	int		mob_rate;
+	t_hook	hook;
 	int		frames;
-	t_pos	*enemy;
 }				t_data;
 
 /* map functions */

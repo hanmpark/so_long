@@ -6,7 +6,7 @@
 /*   By: hanmpark <hanmpark@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/06 17:28:52 by hanmpark          #+#    #+#             */
-/*   Updated: 2023/02/17 20:32:11 by hanmpark         ###   ########.fr       */
+/*   Updated: 2023/02/19 22:51:40 by hanmpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,22 +20,21 @@ static void	new_window(t_data *game, int x, int y)
 
 static void	data_init(t_data *game)
 {
-	game->check = content_init();
 	game->mlx = mlx_init();
 	if (!game->mlx)
 		ft_error(game->map, ERR_MLX);
 	game->move.x = 0;
 	game->move.y = 0;
-	game->dir.left = 0;
-	game->dir.right = 0;
-	game->dir.down = 0;
-	game->dir.up = 0;
-	game->mob_rate = 0;
+	game->hook.dir.left = 0;
+	game->hook.dir.right = 0;
+	game->hook.dir.down = 0;
+	game->hook.dir.up = 0;
 	game->frames = 0;
-	game->anim.left = 0;
-	game->anim.right = 0;
-	game->anim.down = 0;
-	game->anim.up = 0;
+	game->exit = 0;
+	game->hook.anim.left = 0;
+	game->hook.anim.right = 0;
+	game->hook.anim.down = 0;
+	game->hook.anim.up = 0;
 	game->count_moves = 0;
 	assign_texture(game);
 }

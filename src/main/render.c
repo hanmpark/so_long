@@ -6,7 +6,7 @@
 /*   By: hanmpark <hanmpark@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/08 17:45:49 by hanmpark          #+#    #+#             */
-/*   Updated: 2023/02/18 16:21:05 by hanmpark         ###   ########.fr       */
+/*   Updated: 2023/02/19 22:46:55 by hanmpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,13 @@ void	print_img(t_data *game, void *img, int x, int y)
 		mlx_put_image_to_window(game->mlx, game->win, img, \
 			64 * x + game->move.x, 64 * y + game->move.y);
 }
+
+// void	print_img_mob(t_data *game, void *img, int x, int y)
+// {
+// 	if (img)
+// 		mlx_put_image_to_window(game->mlx, game->win, img, \
+// 			64 * x + game->move.x + game->)
+// }
 
 static void	print_elements(t_pos win, t_pos pl, t_data *game)
 {
@@ -70,14 +77,14 @@ int	render(t_data *game)
 {
 	print_game(game);
 	mlx_put_image_to_window(game->mlx, game->win, game->img.border, 0, 0);
-	if (game->anim.left || game->anim.right || game->anim.down || game->anim.up || \
-		game->dir.left || game->dir.right || game->dir.down || game->dir.up)
+	if (game->hook.anim.left || game->hook.anim.right || game->hook.anim.down || game->hook.anim.up || \
+		game->hook.dir.left || game->hook.dir.right || game->hook.dir.down || game->hook.dir.up)
 		mlx_put_image_to_window(game->mlx, game->win, game->img.current->content, \
 			6 * 64, 4 * 64);
-	else if (!game->dir.left && !game->dir.right && !game->dir.down && !game->dir.up && game->frames <= 50)
+	else if (!game->hook.dir.left && !game->hook.dir.right && !game->hook.dir.down && !game->hook.dir.up && game->frames <= 50)
 		mlx_put_image_to_window(game->mlx, game->win, game->img.img_idle[0], \
 			6 * 64, 4 * 64);
-	else if (!game->dir.left && !game->dir.right && !game->dir.down && !game->dir.up && game->frames < 100)
+	else if (!game->hook.dir.left && !game->hook.dir.right && !game->hook.dir.down && !game->hook.dir.up && game->frames < 100)
 		mlx_put_image_to_window(game->mlx, game->win, game->img.img_idle[1], \
 			6 * 64, 4 * 64);
 	return (0);
