@@ -6,7 +6,7 @@
 #    By: hanmpark <hanmpark@student.42nice.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/11 13:12:40 by hanmpark          #+#    #+#              #
-#    Updated: 2023/02/17 09:57:05 by hanmpark         ###   ########.fr        #
+#    Updated: 2023/02/20 13:53:08 by hanmpark         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,8 +17,8 @@ LIBFT = src/libft/
 MAIN = src/main/
 
 # SOURCES AND OBJECTS
-MAP_SRC = map_init.c map_check.c structs_init.c init_game.c anim_dir.c check_path.c \
-			hooks.c render.c update.c
+MAP_SRC = map_init.c map_check.c structs_init.c game_init.c move_player.c check_path.c \
+			hooks.c render.c update.c move_enemy.c
 SRCS = ${addprefix ${MAIN}, main.c ${MAP_SRC}}
 
 OBJS = ${SRCS:.c=.o}

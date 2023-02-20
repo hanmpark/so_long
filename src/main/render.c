@@ -6,7 +6,7 @@
 /*   By: hanmpark <hanmpark@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/08 17:45:49 by hanmpark          #+#    #+#             */
-/*   Updated: 2023/02/19 22:46:55 by hanmpark         ###   ########.fr       */
+/*   Updated: 2023/02/20 14:13:28 by hanmpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,15 +16,20 @@ void	print_img(t_data *game, void *img, int x, int y)
 {
 	if (img)
 		mlx_put_image_to_window(game->mlx, game->win, img, \
-			64 * x + game->move.x, 64 * y + game->move.y);
+			64 * x + game->move_pl_px.x, 64 * y + game->move_pl_px.y);
 }
 
-// void	print_img_mob(t_data *game, void *img, int x, int y)
-// {
-// 	if (img)
-// 		mlx_put_image_to_window(game->mlx, game->win, img, \
-// 			64 * x + game->move.x + game->)
-// }
+void	print_img_mob(t_data *game, int number)
+{
+	t_pos	pos;
+
+	pos.x = game->enemy[number].pos.x - (game->player.x - 6);
+	pos.y = game->enemy[number].pos.y - (game->player.y - 4);
+	if ((pos.x >= 0 && pos.x <= 12) && (pos.y >= 0 && pos.y <= 8))
+		mlx_put_image_to_window(game->mlx, game->win, game->img.mob->content, \
+			64 * pos.x + (game->move_pl_px.x + game->enemy[number].move_px), \
+			64 * pos.y + (game->move_pl_px.y));
+}
 
 static void	print_elements(t_pos win, t_pos pl, t_data *game)
 {
@@ -32,17 +37,13 @@ static void	print_elements(t_pos win, t_pos pl, t_data *game)
 		print_img(game, game->img.img_floor[0], win.x, win.y);
 	else
 		print_img(game, game->img.img_floor[1], win.x, win.y);
-	if (game->map[pl.y][pl.x] == 'C')
+	if (game->map[pl.y][pl.x] == 'C' || game->map[pl.y][pl.x] == 'T')
 		print_img(game, game->img.img_collectible, win.x, win.y);
-	else if (game->map[pl.y][pl.x] == 'E')
+	else if (pl.x == game->map_content.exit_pos.x && \
+		pl.y == game->map_content.exit_pos.y)
 		print_img(game, game->img.current_exit, win.x, win.y);
-	else if (game->map[pl.y][pl.x] == 'M')
-		print_img(game, game->img.mob->content, win.x, win.y);
 	else if (game->map[pl.y][pl.x] == '1')
-	{
-		print_img(game, game->img.img_floor[2], win.x, win.y);
 		print_img(game, game->img.img_wall, win.x, win.y);
-	}
 }
 
 static void	print_game(t_data *game)
@@ -75,17 +76,17 @@ static void	print_game(t_data *game)
 
 int	render(t_data *game)
 {
+	int	i;
+
+	i = 0;
 	print_game(game);
+	mlx_put_image_to_window(game->mlx, game->win, game->img.current->content, \
+		6 * 64, 4 * 64);
+	while (i < game->map_content.enemy)
+	{
+		print_img_mob(game, i);
+		i++;
+	}
 	mlx_put_image_to_window(game->mlx, game->win, game->img.border, 0, 0);
-	if (game->hook.anim.left || game->hook.anim.right || game->hook.anim.down || game->hook.anim.up || \
-		game->hook.dir.left || game->hook.dir.right || game->hook.dir.down || game->hook.dir.up)
-		mlx_put_image_to_window(game->mlx, game->win, game->img.current->content, \
-			6 * 64, 4 * 64);
-	else if (!game->hook.dir.left && !game->hook.dir.right && !game->hook.dir.down && !game->hook.dir.up && game->frames <= 50)
-		mlx_put_image_to_window(game->mlx, game->win, game->img.img_idle[0], \
-			6 * 64, 4 * 64);
-	else if (!game->hook.dir.left && !game->hook.dir.right && !game->hook.dir.down && !game->hook.dir.up && game->frames < 100)
-		mlx_put_image_to_window(game->mlx, game->win, game->img.img_idle[1], \
-			6 * 64, 4 * 64);
 	return (0);
 }

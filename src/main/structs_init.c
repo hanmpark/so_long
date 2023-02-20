@@ -6,7 +6,7 @@
 /*   By: hanmpark <hanmpark@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/08 09:14:22 by hanmpark          #+#    #+#             */
-/*   Updated: 2023/02/18 16:08:28 by hanmpark         ###   ########.fr       */
+/*   Updated: 2023/02/20 12:29:15 by hanmpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,9 @@ t_cnt	content_init(void)
 	content.isplayer = 0;
 	content.collectible = 0;
 	content.exit = 0;
+	content.enemy = 0;
+	content.exit_pos.x = 0;
+	content.exit_pos.y = 0;
 	return (content);
 }
 

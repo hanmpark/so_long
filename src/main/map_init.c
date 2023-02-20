@@ -6,7 +6,7 @@
 /*   By: hanmpark <hanmpark@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/22 22:13:11 by hanmpark          #+#    #+#             */
-/*   Updated: 2023/02/14 09:15:10 by hanmpark         ###   ########.fr       */
+/*   Updated: 2023/02/20 08:53:10 by hanmpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,47 @@ static void	map_set(const char *file, t_data *game)
 		ft_error(game->map, ERR_BER);
 }
 
+static t_enemy	enemy_data_set(int x, int y, t_data *game)
+{
+	t_enemy	en;
+
+	en.pos.x = x;
+	en.pos.y = y;
+	en.move_px = 0;
+	if (ft_check_path(x - 1, y, game))
+		en.dir = LEFT;
+	else if (ft_check_path(x + 1, y, game))
+		en.dir = RIGHT;
+	else
+		en.dir = STATIC;
+	return (en);
+}
+
+static void	enemy_set(t_data *game)
+{
+	int	index;
+	int	y;
+	int	x;
+
+	game->enemy = malloc((game->map_content.enemy) * sizeof(t_enemy));
+	if (!game->enemy)
+		ft_error(game->map, ERR_MALLOC);
+	index = 0;
+	y = -1;
+	while (game->map[++y])
+	{
+		x = -1;
+		while (game->map[y][++x])
+		{
+			if (game->map[y][x] == 'M')
+			{
+				game->enemy[index] = enemy_data_set(x, y, game);
+				index++;
+			}
+		}
+	}
+}
+
 void	map_init(const char *file, t_data *game)
 {
 	game->map_content = content_init();
@@ -61,4 +102,5 @@ void	map_init(const char *file, t_data *game)
 		ft_error(game->map, ERR_MALLOC);
 	map_set(file, game);
 	map_format(game->map, game);
+	enemy_set(game);
 }

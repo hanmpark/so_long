@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init_game.c                                        :+:      :+:    :+:   */
+/*   game_init.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hanmpark <hanmpark@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/06 17:28:52 by hanmpark          #+#    #+#             */
-/*   Updated: 2023/02/19 22:51:40 by hanmpark         ###   ########.fr       */
+/*   Updated: 2023/02/20 15:47:45 by hanmpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,8 @@ static void	data_init(t_data *game)
 	game->mlx = mlx_init();
 	if (!game->mlx)
 		ft_error(game->map, ERR_MLX);
-	game->move.x = 0;
-	game->move.y = 0;
+	game->move_pl_px.x = 0;
+	game->move_pl_px.y = 0;
 	game->hook.dir.left = 0;
 	game->hook.dir.right = 0;
 	game->hook.dir.down = 0;
@@ -35,6 +35,7 @@ static void	data_init(t_data *game)
 	game->hook.anim.right = 0;
 	game->hook.anim.down = 0;
 	game->hook.anim.up = 0;
+	game->move_enemy = 0;
 	game->count_moves = 0;
 	assign_texture(game);
 }

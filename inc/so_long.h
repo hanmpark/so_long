@@ -6,7 +6,7 @@
 /*   By: hanmpark <hanmpark@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 10:23:44 by hanmpark          #+#    #+#             */
-/*   Updated: 2023/02/19 22:51:10 by hanmpark         ###   ########.fr       */
+/*   Updated: 2023/02/20 15:42:28 by hanmpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,11 @@
 # define KEY_D 1
 # define KEY_R 2
 # define KEY_U 13
+
+/* ENEMY MOVEMENT */
+# define LEFT 1
+# define RIGHT 2
+# define STATIC 0
 
 typedef struct	s_pos
 {
@@ -71,6 +76,8 @@ typedef struct	s_content
 	int		isplayer;
 	int		collectible;
 	int		exit;
+	t_pos	exit_pos;
+	int		enemy;
 }				t_cnt;
 
 typedef struct	s_dir
@@ -87,19 +94,28 @@ typedef struct	s_hook
 	t_dir	anim;
 }				t_hook;
 
+typedef struct	s_enemy
+{
+	t_pos	pos;
+	int		move_px;
+	int		dir;
+}				t_enemy;
+
 typedef struct	s_data
 {
 	char	**map;
 	t_cnt	map_content;
 	t_pos	size;
 	t_pos	player;
-	t_pos	move;
+	t_pos	move_pl_px;
 	int		exit;
 	int		count_moves;
 	void	*mlx;
 	void	*win;
 	t_img	img;
 	t_hook	hook;
+	t_enemy	*enemy;
+	int		move_enemy;
 	int		frames;
 }				t_data;
 
@@ -124,7 +140,9 @@ int		key_pressed(int key, t_data *game);
 
 int		update(t_data *game);
 int		ft_check_path(int x, int y, t_data *game);
+void	check_game(t_pos pl, t_enemy *mob, t_data *game);
 
-void	anim_dir(t_data *game);
+void	move_player(t_data *game);
+void	move_enemy(t_data *game);
 
 #endif
