@@ -6,7 +6,7 @@
 /*   By: hanmpark <hanmpark@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/17 09:55:42 by hanmpark          #+#    #+#             */
-/*   Updated: 2023/02/22 07:24:12 by hanmpark         ###   ########.fr       */
+/*   Updated: 2023/02/22 19:55:30 by hanmpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,12 +78,16 @@ static void	up_direction(t_data *game)
 
 void	move_player(t_data *game)
 {
-	if (game->hook.dir.left || game->hook.anim.left)
+	if (game->game_state == GAME_ON && \
+		(game->hook.dir.left || game->hook.anim.left))
 		left_direction(game);
-	if (game->hook.dir.right || game->hook.anim.right)
+	if (game->game_state == GAME_ON && \
+		(game->hook.dir.right || game->hook.anim.right))
 		right_direction(game);
-	if (game->hook.dir.down || game->hook.anim.down)
+	if (game->game_state == GAME_ON && \
+		(game->hook.dir.down || game->hook.anim.down))
 		down_direction(game);
-	if (game->hook.dir.up || game->hook.anim.up)
+	if (game->game_state == GAME_ON && \
+		(game->hook.dir.up || game->hook.anim.up))
 		up_direction(game);
 }

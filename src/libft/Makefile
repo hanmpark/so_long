@@ -6,7 +6,7 @@
 #    By: hanmpark <hanmpark@student.42nice.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/08 16:40:47 by hanmpark          #+#    #+#              #
-#    Updated: 2023/02/08 09:28:13 by hanmpark         ###   ########.fr        #
+#    Updated: 2023/02/22 20:01:02 by hanmpark         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -50,8 +50,7 @@ CFLAGS = -Wall -Wextra -Werror
 all:	${NAME}
 
 ${NAME}:	${OBJS}
-	@ar rc ${NAME} ${OBJS}
-	@ranlib ${NAME}
+	@ar rcs ${NAME} ${OBJS}
 
 clean:
 	@rm -f ${OBJS}

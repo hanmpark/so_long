@@ -6,7 +6,7 @@
 /*   By: hanmpark <hanmpark@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 10:23:44 by hanmpark          #+#    #+#             */
-/*   Updated: 2023/02/22 07:23:19 by hanmpark         ###   ########.fr       */
+/*   Updated: 2023/02/22 19:57:39 by hanmpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,10 @@
 # define RIGHT 2
 # define STATIC 0
 
+# define GAME_ON 0
+# define GAME_OVER 1
+# define GAME_SUCCESS 2
+
 typedef struct	s_pos
 {
 	int	x;
@@ -60,13 +64,15 @@ typedef struct	s_img
 	t_list	*current_back;
 	t_list	*mob;
 	t_list	*mob_back;
-	void	*img_idle[2];
-	void	*img_floor[3];
-	void	*border;
-	void	*img_wall;
-	void	*img_collectible;
-	void	*img_exit[2];
+	t_list	*collectible;
+	t_list	*collectible_back;
+	void	*dead;
 	void	*current_exit;
+	void	*floor[3];
+	void	*exit[2];
+	void	*number[10];
+	void	*wall;
+	void	*border[3];
 	int		height;
 	int		width;
 }				t_img;
@@ -115,6 +121,7 @@ typedef struct	s_data
 	t_img	img;
 	t_hook	hook;
 	t_enemy	*enemy;
+	int		game_state;
 	int		move_enemy;
 	int		frames;
 }				t_data;
@@ -134,6 +141,7 @@ void	move_dir(int x, int y, t_data *game);
 
 int		render(t_data *game);
 void	print_img(t_data *game, void *img, int x, int y);
+void	print_img_mob(t_data *g, int enemy_number);
 
 int		key_released(int key, t_data *game);
 int		key_pressed(int key, t_data *game);
