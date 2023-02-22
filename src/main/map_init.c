@@ -6,7 +6,7 @@
 /*   By: hanmpark <hanmpark@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/22 22:13:11 by hanmpark          #+#    #+#             */
-/*   Updated: 2023/02/20 08:53:10 by hanmpark         ###   ########.fr       */
+/*   Updated: 2023/02/22 07:35:27 by hanmpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,9 +59,9 @@ static t_enemy	enemy_data_set(int x, int y, t_data *game)
 	en.pos.x = x;
 	en.pos.y = y;
 	en.move_px = 0;
-	if (ft_check_path(x - 1, y, game))
+	if (ft_check_path(x - 1, y, 1, game))
 		en.dir = LEFT;
-	else if (ft_check_path(x + 1, y, game))
+	else if (ft_check_path(x + 1, y, 1, game))
 		en.dir = RIGHT;
 	else
 		en.dir = STATIC;

@@ -6,7 +6,7 @@
 /*   By: hanmpark <hanmpark@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/17 09:55:42 by hanmpark          #+#    #+#             */
-/*   Updated: 2023/02/20 13:56:07 by hanmpark         ###   ########.fr       */
+/*   Updated: 2023/02/22 07:24:12 by hanmpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 static void	left_direction(t_data *game)
 {
 	if (!game->hook.anim.right && !game->hook.anim.down && !game->hook.anim.up && \
-		ft_check_path(game->player.x - 1, game->player.y, game))
+		ft_check_path(game->player.x - 1, game->player.y, 0, game))
 	{
 		game->hook.anim.left = 1;
 		game->move_pl_px.x += 4;
@@ -31,7 +31,7 @@ static void	left_direction(t_data *game)
 static void	right_direction(t_data *game)
 {
 	if (!game->hook.anim.left && !game->hook.anim.down && !game->hook.anim.up && \
-		ft_check_path(game->player.x + 1, game->player.y, game))
+		ft_check_path(game->player.x + 1, game->player.y, 0, game))
 	{
 		game->hook.anim.right = 1;
 		game->move_pl_px.x -= 4;
@@ -47,7 +47,7 @@ static void	right_direction(t_data *game)
 static void	down_direction(t_data *game)
 {
 	if (!game->hook.anim.up && !game->hook.anim.left && !game->hook.anim.right && \
-		ft_check_path(game->player.x, game->player.y + 1, game))
+		ft_check_path(game->player.x, game->player.y + 1, 0, game))
 	{
 		game->hook.anim.down = 1;
 		game->move_pl_px.y -= 4;
@@ -63,7 +63,7 @@ static void	down_direction(t_data *game)
 static void	up_direction(t_data *game)
 {
 	if (!game->hook.anim.down && !game->hook.anim.left && !game->hook.anim.right && \
-		ft_check_path(game->player.x, game->player.y - 1, game))
+		ft_check_path(game->player.x, game->player.y - 1, 0, game))
 	{
 		game->hook.anim.up = 1;
 		game->move_pl_px.y += 4;

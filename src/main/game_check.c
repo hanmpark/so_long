@@ -1,22 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   check_game.c                                       :+:      :+:    :+:   */
+/*   game_check.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hanmpark <hanmpark@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/09 09:46:35 by hanmpark          #+#    #+#             */
-/*   Updated: 2023/02/21 15:02:52 by hanmpark         ###   ########.fr       */
+/*   Updated: 2023/02/22 07:34:06 by hanmpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/so_long.h"
 
-int	ft_check_path(int x, int y, t_data *game)
+int	ft_check_path(int x, int y, int enemy, t_data *game)
 {
-	if (game->map[y][x] != '1')
-		return (1);
-	return (0);
+	if (game->map[y][x] == '1')
+		return (0);
+	if (enemy && (game->map[y][x] == 'M' || game->map[y][x] == 'T'))
+		return (0);
+	return (1);
 }
 
 void	check_game(t_pos pl, t_enemy *mob, t_data *game)
@@ -45,11 +47,6 @@ void	move_dir(int x, int y, t_data *game)
 	exit = game->map_content.exit_pos;
 	if (exit.x == x && exit.y == y && game->exit)
 		ft_close(game);
-	else if (game->map[y][x] == 'M' || game->map[y][x] == 'T')
-	{
-		ft_printf("GAME OVER\nYou got killed by a slime !\n");
-		ft_close(game);
-	}
 	else if (game->map[y][x] == 'C')
 	{
 		collectible++;

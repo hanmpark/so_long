@@ -6,7 +6,7 @@
 /*   By: hanmpark <hanmpark@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 10:23:44 by hanmpark          #+#    #+#             */
-/*   Updated: 2023/02/20 15:42:28 by hanmpark         ###   ########.fr       */
+/*   Updated: 2023/02/22 07:23:19 by hanmpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -139,7 +139,7 @@ int		key_released(int key, t_data *game);
 int		key_pressed(int key, t_data *game);
 
 int		update(t_data *game);
-int		ft_check_path(int x, int y, t_data *game);
+int		ft_check_path(int x, int y, int enemy, t_data *game);
 void	check_game(t_pos pl, t_enemy *mob, t_data *game);
 
 void	move_player(t_data *game);

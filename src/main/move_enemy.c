@@ -6,7 +6,7 @@
 /*   By: hanmpark <hanmpark@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/20 13:49:07 by hanmpark          #+#    #+#             */
-/*   Updated: 2023/02/20 13:52:02 by hanmpark         ###   ########.fr       */
+/*   Updated: 2023/02/22 07:23:43 by hanmpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,14 +45,14 @@ static void	move_enemy_px(t_enemy *en, t_data *game, int pixel, int dir)
 		{
 			set_enemy_letter(LEFT, en, game);
 			en->pos.x -= 1;
-			if (!ft_check_path(en->pos.x - 1, en->pos.y, game))
+			if (!ft_check_path(en->pos.x - 1, en->pos.y, 1, game))
 				en->dir = RIGHT;
 		}
 		else if (dir == RIGHT)
 		{
 			set_enemy_letter(RIGHT, en, game);
 			en->pos.x += 1;
-			if (!ft_check_path(en->pos.x + 1, en->pos.y, game))
+			if (!ft_check_path(en->pos.x + 1, en->pos.y, 1, game))
 				en->dir = LEFT;
 		}
 	}
