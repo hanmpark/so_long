@@ -6,7 +6,7 @@
 /*   By: hanmpark <hanmpark@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/14 09:20:46 by hanmpark          #+#    #+#             */
-/*   Updated: 2023/02/22 19:47:34 by hanmpark         ###   ########.fr       */
+/*   Updated: 2023/02/23 21:27:11 by hanmpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,8 +51,7 @@ int	update(t_data *game)
 	check_game(game->player, game->enemy, game);
 	anim_collectible(game);
 	anim_enemy(game);
-	if (!game->game_state)
-		anim_player(game);
+	anim_player(game);
 	if (game->move_enemy)
 		move_enemy(game);
 	move_player(game);

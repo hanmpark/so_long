@@ -6,7 +6,7 @@
 /*   By: hanmpark <hanmpark@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/06 17:28:52 by hanmpark          #+#    #+#             */
-/*   Updated: 2023/02/22 20:26:33 by hanmpark         ###   ########.fr       */
+/*   Updated: 2023/02/22 23:47:56 by hanmpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,6 @@ static void	data_init(t_data *game)
 	if (!game->mlx)
 		ft_error(game->map, ERR_MLX);
 	assign_texture(game);
-	new_window(game, 832, 704);
 	game->move_pl_px.x = 0;
 	game->move_pl_px.y = 0;
 	game->hook.dir.left = 0;
@@ -41,6 +40,7 @@ static void	data_init(t_data *game)
 	game->count_moves = 0;
 	game->game_state = GAME_ON;
 	game->img.current_exit = game->img.exit[0];
+	new_window(game, 832, 704);
 }
 
 t_cnt	content_init(void)
