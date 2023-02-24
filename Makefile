@@ -6,7 +6,7 @@
 #    By: hanmpark <hanmpark@student.42nice.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/11 13:12:40 by hanmpark          #+#    #+#              #
-#    Updated: 2023/02/22 19:59:07 by hanmpark         ###   ########.fr        #
+#    Updated: 2023/02/24 18:45:49 by hanmpark         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,14 +14,25 @@
 NAME = so_long
 HDIR = inc/
 LIBFT = src/libft/
-MAIN = src/main/
+MAIN_BONUS = src/main/bonus/
+MAIN_MAN = src/main/mandatory/
 
 # SOURCES AND OBJECTS
-MAP_SRC = map_init.c map_check.c assign_textures.c game_init.c move_player.c game_check.c \
-			game_hooks.c game_render.c update.c move_enemy.c game_print_tools.c
-SRCS = ${addprefix ${MAIN}, main.c ${MAP_SRC}}
+FILES_MAN = main.c map_init.c map_check.c game_init.c hooks.c render.c move_check.c
 
-OBJS = ${SRCS:.c=.o}
+FILES_BONUS = map_init_bonus.c map_check_bonus.c assign_textures_bonus.c game_init_bonus.c \
+			move_player_bonus.c game_check_bonus.c hooks_bonus.c render_bonus.c \
+			update_frame_bonus.c move_enemy_bonus.c print_tools_bonus.c main_bonus.c \
+			clear_textures_bonus.c
+
+SRCS_MAN = ${addprefix ${MAIN_MAN}, ${FILES_MAN}}
+SRCS_BONUS = ${addprefix ${MAIN_BONUS}, ${FILES_BONUS}}
+
+ifdef BONUS
+OBJS = ${SRCS_BONUS:.c=.o}
+else
+OBJS = ${SRCS_MAN:.c=.o}
+endif
 
 # PRETTY
 DEF = \033[0m
@@ -54,6 +65,9 @@ ${NAME}: ${OBJS}
 	@${CC} ${FLAGS} ${LINKS} ${LIBFT}/libft.a ${OBJS} -o ${NAME}
 	@echo "${CUR}${GRAY}\t- Created ${BOLD}${NAME}${DEF}"
 	@echo "   ${CUR}${BOLD}${UL}${GREEN}- Compiled -${DEF}\n"
+
+bonus:
+	@${MAKE} BONUS=1
 
 debug: ${OBJS}
 	@echo "\n   ${BOLD}${UL}${MAGENTA}DEBUGGING MODE${DEF}"

@@ -6,15 +6,15 @@
 #    By: hanmpark <hanmpark@student.42nice.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/08 16:40:47 by hanmpark          #+#    #+#              #
-#    Updated: 2023/02/22 20:01:02 by hanmpark         ###   ########.fr        #
+#    Updated: 2023/02/24 09:17:54 by hanmpark         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 #################### PRESETTINGS ####################
-H_DIR = includes/
-LIBFT_DIR = sources/libft/
-FTPRINTF_DIR = sources/ft_printf/
-GNL_DIR = sources/get_next_line/
+H_DIR = inc/
+LIBFT_DIR = src/libft/
+FTPRINTF_DIR = src/ft_printf/
+GNL_DIR = src/get_next_line/
 NAME = libft.a
 
 #################### SOURCES AND OBJECTS ####################
