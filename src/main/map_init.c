@@ -6,7 +6,7 @@
 /*   By: hanmpark <hanmpark@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/22 22:13:11 by hanmpark          #+#    #+#             */
-/*   Updated: 2023/02/22 07:35:27 by hanmpark         ###   ########.fr       */
+/*   Updated: 2023/02/24 07:41:31 by hanmpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,6 +95,11 @@ static void	enemy_set(t_data *game)
 
 void	map_init(const char *file, t_data *game)
 {
+	int	len;
+
+	len = ft_strlen(file) - 4;
+	if (ft_strncmp(file + len, ".ber", 4) != 0)
+		ft_error (game->map, ERR_BER);
 	game->map_content = content_init();
 	game->size.y = ft_filelen(file);
 	game->map = malloc((game->size.y + 1) * sizeof(char *));
