@@ -6,13 +6,12 @@
 /*   By: hanmpark <hanmpark@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/16 11:13:04 by hanmpark          #+#    #+#             */
-/*   Updated: 2023/02/25 12:16:41 by hanmpark         ###   ########.fr       */
+/*   Updated: 2023/02/25 17:08:54 by hanmpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../inc/game_bonus.h"
 #include "../../../inc/hooks_bonus.h"
-#include "../src/libft/inc/ft_printf.h"
 
 int	game_close(t_data *game)
 {

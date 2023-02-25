@@ -6,12 +6,12 @@
 /*   By: hanmpark <hanmpark@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 16:46:23 by hanmpark          #+#    #+#             */
-/*   Updated: 2023/02/24 18:27:15 by hanmpark         ###   ########.fr       */
+/*   Updated: 2023/02/25 16:42:20 by hanmpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../inc/game.h"
-#include "../src/libft/inc/ft_printf.h"
+#include "../../libft/inc/ft_printf.h"
 
 void	print_img(t_data *game, void *img, int x, int y)
 {

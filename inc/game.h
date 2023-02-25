@@ -6,7 +6,7 @@
 /*   By: hanmpark <hanmpark@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 11:05:46 by hanmpark          #+#    #+#             */
-/*   Updated: 2023/02/24 18:33:21 by hanmpark         ###   ########.fr       */
+/*   Updated: 2023/02/25 18:34:06 by hanmpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,13 +35,13 @@
 # define GAME_OVER 1
 # define GAME_SUCCESS 2
 
-typedef struct	s_pos
+typedef struct s_pos
 {
 	int	x;
 	int	y;
-}				t_pos;
+}	t_pos;
 
-typedef struct	s_img
+typedef struct s_img
 {
 	void	*player;
 	void	*collectible;
@@ -51,17 +51,17 @@ typedef struct	s_img
 	void	*border;
 	int		height;
 	int		width;
-}				t_img;
+}	t_img;
 
-typedef struct	s_cnt
+typedef struct s_cnt
 {
 	int		isplayer;
 	int		collectible;
 	int		exit;
 	t_pos	exit_pos;
-}				t_cnt;
+}	t_cnt;
 
-typedef struct	s_data
+typedef struct s_data
 {
 	char	**map;
 	void	*mlx;
@@ -72,7 +72,7 @@ typedef struct	s_data
 	t_img	img;
 	int		exit;
 	int		count_moves;
-}				t_data;
+}	t_data;
 
 void	game_init(t_data *game);
 int		check_path(t_data *game, int x, int y);

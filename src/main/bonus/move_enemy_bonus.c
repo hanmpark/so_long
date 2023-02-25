@@ -6,29 +6,33 @@
 /*   By: hanmpark <hanmpark@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/20 13:49:07 by hanmpark          #+#    #+#             */
-/*   Updated: 2023/02/24 18:36:56 by hanmpark         ###   ########.fr       */
+/*   Updated: 2023/02/25 16:44:19 by hanmpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../inc/game_bonus.h"
 #include "../../../inc/move_bonus.h"
+#include "../../libft/inc/ft_printf.h"
 
 static void	set_enemy_letter(int dir, t_enemy *en, t_data *game)
 {
-	if (game->map[en->pos.y][en->pos.x] == 'T')
+	if (game->map[en->pos.y][en->pos.x] == 'T' || \
+		game->map[en->pos.y][en->pos.x] == 'C')
 		game->map[en->pos.y][en->pos.x] = 'C';
 	else
 		game->map[en->pos.y][en->pos.x] = '0';
 	if (dir == LEFT)
 	{
-		if (game->map[en->pos.y][en->pos.x - 1] == 'C')
+		if (game->map[en->pos.y][en->pos.x - 1] == 'C' || \
+			game->map[en->pos.y][en->pos.x - 1] == 'T')
 			game->map[en->pos.y][en->pos.x - 1] = 'T';
 		else
 			game->map[en->pos.y][en->pos.x - 1] = 'M';
 	}
 	else if (dir == RIGHT)
 	{
-		if (game->map[en->pos.y][en->pos.x + 1] == 'C')
+		if (game->map[en->pos.y][en->pos.x + 1] == 'C' || \
+			game->map[en->pos.y][en->pos.x + 1] == 'T')
 			game->map[en->pos.y][en->pos.x + 1] = 'T';
 		else
 			game->map[en->pos.y][en->pos.x + 1] = 'M';

@@ -6,7 +6,7 @@
 /*   By: hanmpark <hanmpark@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 10:23:44 by hanmpark          #+#    #+#             */
-/*   Updated: 2023/02/25 12:17:21 by hanmpark         ###   ########.fr       */
+/*   Updated: 2023/02/25 18:22:57 by hanmpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,13 +26,13 @@
 # define GAME_OVER 1
 # define GAME_SUCCESS 2
 
-typedef struct	s_pos
+typedef struct s_pos
 {
 	int	x;
 	int	y;
-}				t_pos;
+}	t_pos;
 
-typedef struct	s_img
+typedef struct s_img
 {
 	t_list	*left;
 	t_list	*right;
@@ -53,40 +53,40 @@ typedef struct	s_img
 	void	*border[3];
 	int		height;
 	int		width;
-}				t_img;
+}	t_img;
 
-typedef struct	s_content
+typedef struct s_content
 {
 	int		isplayer;
 	int		collectible;
 	int		exit;
 	t_pos	exit_pos;
 	int		enemy;
-}				t_cnt;
+}	t_cnt;
 
-typedef struct	s_dir
+typedef struct s_dir
 {
 	int	left;
 	int	right;
 	int	down;
 	int	up;
-}				t_dir;
+}	t_dir;
 
-typedef struct	s_hook
+typedef struct s_hook
 {
 	t_dir	dir;
 	t_dir	anim;
 	int		is_anim;
-}				t_hook;
+}	t_hook;
 
-typedef struct	s_enemy
+typedef struct s_enemy
 {
 	t_pos	pos;
 	int		move_px;
 	int		dir;
-}				t_enemy;
+}	t_enemy;
 
-typedef struct	s_data
+typedef struct s_data
 {
 	char	**map;
 	t_cnt	map_content;
@@ -103,7 +103,7 @@ typedef struct	s_data
 	int		game_state;
 	int		move_enemy;
 	int		frames;
-}				t_data;
+}	t_data;
 
 /* GAME INITIALIZING FUNCTIONS */
 void	game_init(t_data *game);

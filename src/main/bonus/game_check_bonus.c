@@ -6,12 +6,12 @@
 /*   By: hanmpark <hanmpark@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/09 09:46:35 by hanmpark          #+#    #+#             */
-/*   Updated: 2023/02/24 18:43:15 by hanmpark         ###   ########.fr       */
+/*   Updated: 2023/02/25 15:01:23 by hanmpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../inc/game_bonus.h"
-#include "../src/libft/inc/ft_printf.h"
+#include "../../libft/inc/ft_printf.h"
 
 int	check_path(t_data *game, int x, int y)
 {
