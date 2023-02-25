@@ -6,7 +6,7 @@
 /*   By: hanmpark <hanmpark@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 17:05:28 by hanmpark          #+#    #+#             */
-/*   Updated: 2023/02/25 16:42:08 by hanmpark         ###   ########.fr       */
+/*   Updated: 2023/02/25 23:32:19 by hanmpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,9 @@ void	move_player(t_data *game, int x, int y)
 	check_case(game, x, y);
 	game->map[pl.y][pl.x] = '0';
 	print_img(game, game->img.floor, pl.x, pl.y);
+	if (game->map_content.exit_pos.x == pl.x && \
+		game->map_content.exit_pos.y == pl.y)
+		print_img(game, game->img.exit, pl.x, pl.y);
 	print_img(game, game->img.player, x, y);
 	game->player.x = x;
 	game->player.y = y;
