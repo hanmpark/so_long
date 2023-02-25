@@ -6,7 +6,7 @@
 /*   By: hanmpark <hanmpark@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/16 11:13:04 by hanmpark          #+#    #+#             */
-/*   Updated: 2023/02/24 16:13:24 by hanmpark         ###   ########.fr       */
+/*   Updated: 2023/02/25 12:16:41 by hanmpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	game_close(t_data *game)
 	if (game->map)
 		ft_freetab(game->map);
 	free(game->enemy);
-	clear_img(game);
+	clear_textures(game);
 	mlx_destroy_window(game->mlx, game->win);
 	free(game->mlx);
 	exit(0);

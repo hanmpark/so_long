@@ -6,7 +6,7 @@
 /*   By: hanmpark <hanmpark@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/06 17:28:52 by hanmpark          #+#    #+#             */
-/*   Updated: 2023/02/24 16:34:17 by hanmpark         ###   ########.fr       */
+/*   Updated: 2023/02/25 12:07:08 by hanmpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ void	game_init(t_data *game)
 	game->mlx = mlx_init();
 	if (!game->mlx)
 		ft_error(game->map, game->enemy, ERR_MLX);
-	assign_texture(game);
+	assign_textures(game);
 	data_init(game);
 	new_window(game, 832, 704);
 	mlx_hook(game->win, 17, 0, &game_close, game);

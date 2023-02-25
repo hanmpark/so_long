@@ -6,7 +6,7 @@
 /*   By: hanmpark <hanmpark@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 14:59:40 by hanmpark          #+#    #+#             */
-/*   Updated: 2023/02/24 16:00:04 by hanmpark         ###   ########.fr       */
+/*   Updated: 2023/02/25 12:07:02 by hanmpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ static void	clear_numbers(t_data *g)
 	mlx_destroy_image(g->mlx, g->img.number[9]);
 }
 
-void	clear_img(t_data *g)
+void	clear_textures(t_data *g)
 {
 	clear_list(&g->img.left, g);
 	clear_list(&g->img.right, g);

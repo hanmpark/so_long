@@ -6,7 +6,7 @@
 /*   By: hanmpark <hanmpark@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 10:23:44 by hanmpark          #+#    #+#             */
-/*   Updated: 2023/02/24 18:35:44 by hanmpark         ###   ########.fr       */
+/*   Updated: 2023/02/25 12:17:21 by hanmpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,18 +105,21 @@ typedef struct	s_data
 	int		frames;
 }				t_data;
 
+/* GAME INITIALIZING FUNCTIONS */
 void	game_init(t_data *game);
 void	data_init(t_data *game);
-void	assign_texture(t_data *game);
+void	assign_textures(t_data *game);
 
+/* RENDERING FUNCTIONS */
 int		render(t_data *game);
 void	print_img(t_data *game, void *img, int x, int y);
 void	print_img_mob(t_data *g, int enemy_number);
-
 int		update(t_data *game);
+
+/* CHECKING GAME STATE FUNCTIONS */
 int		check_path(t_data *game, int x, int y);
 void	check_game(t_data *game, t_pos pl, t_enemy *mob);
 
-void	clear_img(t_data *g);
+void	clear_textures(t_data *g);
 
 #endif

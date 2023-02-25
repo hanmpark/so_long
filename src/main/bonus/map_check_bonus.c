@@ -6,7 +6,7 @@
 /*   By: hanmpark <hanmpark@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/27 17:40:48 by hanmpark          #+#    #+#             */
-/*   Updated: 2023/02/24 16:01:46 by hanmpark         ###   ########.fr       */
+/*   Updated: 2023/02/25 12:12:38 by hanmpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ static int	check_case(char c, int x, int y, t_data *game)
 		game->map_content.isplayer++;
 	}
 	else if (c == 'P' && game->map_content.isplayer)
-		return (MAP_WRONG);
+		return (MAP_ERROR);
 	else if (c == 'C')
 		game->map_content.collectible++;
 	else if (c == 'E')
@@ -34,7 +34,7 @@ static int	check_case(char c, int x, int y, t_data *game)
 	else if (c == 'M')
 		game->map_content.enemy++;
 	else if (c != '1' && c != '0')
-		return (MAP_WRONG);
+		return (MAP_ERROR);
 	return (MAP_OKAY);
 }
 
@@ -58,7 +58,7 @@ static int	filling(int x, int y, char **draftmap, t_data *g)
 	filling(x, y - 1, draftmap, g);
 	filling(x, y + 1, draftmap, g);
 	if (collectible != g->map_content.collectible || !exit)
-		return (MAP_WRONG);
+		return (MAP_ERROR);
 	return (MAP_OKAY);
 }
 
@@ -67,7 +67,7 @@ static int	flood_fill(t_data *game, char **tmpmap)
 	if (!filling(game->player.x, game->player.y, tmpmap, game))
 	{
 		ft_freetab(tmpmap);
-		return (MAP_WRONG);
+		return (MAP_ERROR);
 	}
 	ft_freetab(tmpmap);
 	return (MAP_OKAY);
@@ -93,7 +93,7 @@ void	check_content(char **map, t_data *game)
 	if (!game->map_content.collectible || game->map_content.exit != 1 || \
 		game->map_content.isplayer != 1)
 		ft_error(map, game->enemy, ERR_ELEMENTS);
-	else if (flood_fill(game, ft_mapdup(map)) == MAP_WRONG)
+	else if (flood_fill(game, ft_mapdup(map)) == MAP_ERROR)
 		ft_error(map, game->enemy, ERR_IMPOSSIBLE);
 }
 

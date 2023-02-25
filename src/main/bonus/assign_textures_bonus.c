@@ -6,7 +6,7 @@
 /*   By: hanmpark <hanmpark@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/08 09:14:22 by hanmpark          #+#    #+#             */
-/*   Updated: 2023/02/24 15:59:08 by hanmpark         ###   ########.fr       */
+/*   Updated: 2023/02/25 12:06:41 by hanmpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,7 +102,7 @@ static void	assign_numbers(t_data *game)
 		"./img/numbers/9.xpm", &game->img.width, &game->img.height);
 }
 
-void	assign_texture(t_data *game)
+void	assign_textures(t_data *game)
 {
 	assign_sprites(game);
 	assign_environment(game);

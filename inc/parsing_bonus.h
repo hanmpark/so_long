@@ -6,7 +6,7 @@
 /*   By: hanmpark <hanmpark@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 08:46:00 by hanmpark          #+#    #+#             */
-/*   Updated: 2023/02/24 09:18:30 by hanmpark         ###   ########.fr       */
+/*   Updated: 2023/02/25 12:12:14 by hanmpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 # include "../src/libft/inc/get_next_line.h"
 
 # define MAP_OKAY 1
-# define MAP_WRONG 0
+# define MAP_ERROR 0
 
 # define ERR_MALLOC "Error\nMalloc failed\n"
 # define ERR_FORMAT "Error\nFormat error\n"
