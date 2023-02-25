@@ -53,10 +53,13 @@ SRCS_BONUS = ${addprefix ${PATH_BONUS}, map_init_bonus.c \
 										main_bonus.c \
 										clear_textures_bonus.c}
 
+OBJS_MAN = ${SRCS_MAN:.c=.o}
+OBJS_BONUS = ${SRCS_BONUS:.c=.o}
+
 ifdef BONUS
-OBJS = ${SRCS_BONUS:.c=.o}
+OBJS = ${OBJS_BONUS}
 else
-OBJS = ${SRCS_MAN:.c=.o}
+OBJS = ${OBJS_MAN}
 endif
 
 # COMPILER
@@ -107,7 +110,7 @@ debug: ${OBJS}
 
 clean:
 	@echo "\n${CUR}${GRAY}\t- Removing object files${DEF}"
-	@rm -rf ${OBJS}
+	@rm -rf ${OBJS_MAN} ${OBJS_BONUS}
 	@${MAKE} -C ${LIBFT} clean
 
 fclean: clean
