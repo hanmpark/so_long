@@ -6,7 +6,7 @@
 /*   By: hanmpark <hanmpark@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/08 09:14:22 by hanmpark          #+#    #+#             */
-/*   Updated: 2023/02/25 12:06:41 by hanmpark         ###   ########.fr       */
+/*   Updated: 2023/02/26 16:00:14 by hanmpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ static t_list	*load_sprites(char *path, char times, t_data *game)
 		set++;
 	while (number < times)
 	{
-		ft_memset(&str[set], number, 1);
+		str[set] == number;
 		ft_lstadd_back(&img, ft_lstnew(mlx_xpm_file_to_image(game->mlx, str, \
 			&game->img.width, &game->img.height)));
 		number++;
