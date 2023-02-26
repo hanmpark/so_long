@@ -1,3 +1,4 @@
+![so_long](https://github.com/Nonino42/so_long/blob/master/github_image.png)
 # so_long
 First graphical project
 
