@@ -1,4 +1,3 @@
-![so_long](https://github.com/Nonino42/so_long/blob/master/github_image.png)
 # so_long
 First graphical project
 
@@ -16,6 +15,8 @@ My ***So_long*** has two versions:
 The first being the very basic So_long without any animation. You still have to collect all the collectibles to be able to exit the game successfully.
 
 The second version is my **_bonus version_** where it includes enemie(s) which only move(s) from LEFT to RIGHT. If you end up crossing paths with an enemy, you will lose !
+
+![so_long](https://github.com/Nonino42/so_long/blob/master/github_so_long.gif)
 
 ### My Makefile rules
 
