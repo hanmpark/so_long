@@ -6,7 +6,7 @@
 #    By: hanmpark <hanmpark@student.42nice.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/11 13:12:40 by hanmpark          #+#    #+#              #
-#    Updated: 2023/02/25 18:49:06 by hanmpark         ###   ########.fr        #
+#    Updated: 2023/02/26 22:43:29 by hanmpark         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,6 +18,7 @@ HDIR_LIBFT = src/libft/inc/
 LIBFT = src/libft/
 PATH_BONUS = src/main/bonus/
 PATH_MAN = src/main/mandatory/
+PATH_ERROR = maps/error/
 
 # COLORS
 DEF = \033[0m
@@ -88,20 +89,52 @@ bonus:
 
 norminette:
 	@echo "\n${BOLD}${UL}${MAGENTA}NORMINETTE${DEF}"
-	@echo "\n${BOLD}${UL}${GREEN}<<< Checking for libft>>>${DEF}"
+	@echo "\n${BOLD}${UL}${GREEN}<<< Checking for libft >>>${DEF}"
 	@echo "${UL}${MAGENTA}norminette ${LIBFT}${DEF}"
-	@norminette ${LIBFT}
+	@norminette ${LIBFT} || true
 	@echo "\n${BOLD}${UL}${GREEN}<<< Checking for main files >>>${DEF}"
-	@echo "${UL}${MAGENTA}norminette ${MAIN_MAN}${DEF}"
-	@norminette ${MAIN_MAN}
+	@echo "${UL}${MAGENTA}norminette ${PATH_MAN}${DEF}"
+	@norminette ${PATH_MAN} || true
 	@echo "\n${BOLD}${UL}${GREEN}<<< Checking for bonus files >>>${DEF}"
-	@echo "${UL}${MAGENTA}norminette ${MAIN_BONUS}${DEF}"
-	@norminette ${MAIN_BONUS}
+	@echo "${UL}${MAGENTA}norminette ${PATH_BONUS}${DEF}"
+	@norminette ${PATH_BONUS} || true
 	@echo "\n${BOLD}${UL}${GREEN}<<< Checking for header files >>>${DEF}"
 	@echo "${UL}${MAGENTA}norminette ${HDIR}${DEF}"
-	@norminette ${HDIR}
+	@norminette ${HDIR} || true
 	@echo "\n${UL}${MAGENTA}norminette ${HDIR_LIBFT}${DEF}"
-	@norminette ${HDIR_LIBFT}
+	@norminette ${HDIR_LIBFT} || true
+	@echo ""
+
+test: ${NAME}
+	@echo "\n${BOLD}${UL}${MAGENTA}TESTING ERROR MAPS${DEF}"
+	@echo "\n${BOLD}${UL}${GREEN}<<< ELEMENTS IN MAP >>>${DEF}"
+	@echo "${CUR}${GRAY}elements_duplicate_exit.ber${DEF}"
+	@${EXEC} ${PATH_ERROR}elements_duplicate_exit.ber || true
+	@echo "\n${CUR}${GRAY}elements_duplicate_player.ber${DEF}"
+	@${EXEC} ${PATH_ERROR}elements_duplicate_player.ber || true
+	@echo "\n${CUR}${GRAY}elements_number.ber${DEF}"
+	@${EXEC} ${PATH_ERROR}elements_number.ber || true
+	@echo "\n${CUR}${GRAY}elements_wrong.ber${DEF}"
+	@${EXEC} ${PATH_ERROR}elements_wrong.ber || true
+	@echo "\n${BOLD}${UL}${GREEN}<<< MAP'S FORMAT >>>${DEF}"
+	@echo "${CUR}${GRAY}format_error_edge.ber${DEF}"
+	@${EXEC} ${PATH_ERROR}format_error_edge.ber || true
+	@echo "\n${CUR}${GRAY}format_error_wall0.ber${DEF}"
+	@${EXEC} ${PATH_ERROR}format_error_wall0.ber || true
+	@echo "\n${CUR}${GRAY}format_error_wall1.ber${DEF}"
+	@${EXEC} ${PATH_ERROR}format_error_wall1.ber || true
+	@echo "\n${BOLD}${UL}${GREEN}<<< INVALID MAP >>>${DEF}"
+	@echo "${CUR}${GRAY}invalid_map_coin.ber${DEF}"
+	@${EXEC} ${PATH_ERROR}invalid_map_coin.ber || true
+	@echo "\n${CUR}${GRAY}invalid_map_exit.ber${DEF}"
+	@${EXEC} ${PATH_ERROR}invalid_map_exit.ber || true
+	@echo "\n${CUR}${GRAY}invalid_map_player.ber${DEF}"
+	@${EXEC} ${PATH_ERROR}invalid_map_player.ber || true
+	@echo "\n${BOLD}${UL}${GREEN}<<< .BER >>>${DEF}"
+	@echo "${CUR}${GRAY}valid_ber${DEF}"
+	@${EXEC} ${PATH_ERROR}valid_ber || true
+	@echo "\n${CUR}${GRAY}valid_ber.be${DEF}"
+	@${EXEC} ${PATH_ERROR}valid_ber.be || true
 	@echo ""
 
 debug: ${OBJS}
@@ -123,4 +156,4 @@ re: fclean all
 
 rebonus: fclean bonus
 
-.PHONY: all clean fclean re
+.PHONY: all clean fclean re bonus rebonus norminette debug test
