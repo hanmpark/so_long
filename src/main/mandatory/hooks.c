@@ -6,7 +6,7 @@
 /*   By: hanmpark <hanmpark@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 17:12:52 by hanmpark          #+#    #+#             */
-/*   Updated: 2023/02/25 17:34:44 by hanmpark         ###   ########.fr       */
+/*   Updated: 2023/02/27 22:06:06 by hanmpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@ static void	clear_img(t_data *game)
 	mlx_destroy_image(game->mlx, game->img.floor);
 	mlx_destroy_image(game->mlx, game->img.exit);
 	mlx_destroy_image(game->mlx, game->img.wall);
-	mlx_destroy_image(game->mlx, game->img.border);
 }
 
 int	game_close(t_data *game)

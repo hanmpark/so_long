@@ -6,7 +6,7 @@
 /*   By: hanmpark <hanmpark@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/06 17:28:52 by hanmpark          #+#    #+#             */
-/*   Updated: 2023/02/24 18:24:51 by hanmpark         ###   ########.fr       */
+/*   Updated: 2023/02/27 22:05:47 by hanmpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,6 @@ static void	assign_textures(t_data *game)
 		"./img/env/ground.xpm", &game->img.width, &game->img.height);
 	game->img.exit = mlx_xpm_file_to_image(game->mlx, \
 		"./img/env/exit0.xpm", &game->img.width, &game->img.height);
-	game->img.border = mlx_xpm_file_to_image(game->mlx, \
-		"./img/border/border.xpm", &game->img.width, &game->img.height);
 }
 
 void	game_init(t_data *game)
