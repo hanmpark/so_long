@@ -1,7 +1,7 @@
 # so_long
 First graphical project
 
-So long is one of 42 common core's project which gives you the basics in the following skills:
+So long is one of 42 common core's projects which gives you the basics in the following skills:
 - window management
 - event management
 - choice of colors and textures.
