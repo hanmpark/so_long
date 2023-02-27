@@ -46,7 +46,7 @@ The second version is my **_bonus version_** where it includes enemie(s) which o
 - It checks the parsing (more useful during the defense)
 
 ### How to start my So_long
-Simply type the following command and put the path to your desired map
+After having compiled the program simply type the following command and put the path to your desired map
 ```bash
   ./so_long _PATH_TO_MAP_
 ```
