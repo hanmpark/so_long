@@ -6,11 +6,11 @@
 /*   By: hanmpark <hanmpark@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/06 17:28:52 by hanmpark          #+#    #+#             */
-/*   Updated: 2023/02/24 18:24:51 by hanmpark         ###   ########.fr       */
+/*   Updated: 2023/04/03 16:03:45 by hanmpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../../inc/game.h"
+#include "game.h"
 
 static void	new_window(t_data *game, int x, int y)
 {

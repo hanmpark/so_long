@@ -6,13 +6,13 @@
 /*   By: hanmpark <hanmpark@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/06 17:28:52 by hanmpark          #+#    #+#             */
-/*   Updated: 2023/02/25 12:07:08 by hanmpark         ###   ########.fr       */
+/*   Updated: 2023/04/03 16:06:50 by hanmpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../../inc/game_bonus.h"
-#include "../../../inc/hooks_bonus.h"
-#include "../../../inc/move_bonus.h"
+#include "game_bonus.h"
+#include "hooks_bonus.h"
+#include "move_bonus.h"
 
 static void	new_window(t_data *game, int x, int y)
 {

@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   move_check.c                                       :+:      :+:    :+:   */
+/*   game_check_bonus.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hanmpark <hanmpark@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/24 17:05:28 by hanmpark          #+#    #+#             */
-/*   Updated: 2023/02/25 23:32:19 by hanmpark         ###   ########.fr       */
+/*   Created: 2023/02/09 09:46:35 by hanmpark          #+#    #+#             */
+/*   Updated: 2023/04/03 16:06:41 by hanmpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../../inc/game.h"
-#include "../../libft/inc/ft_printf.h"
+#include "game_bonus.h"
+#include "../libft/inc/ft_printf.h"
 
 int	check_path(t_data *game, int x, int y)
 {
@@ -20,7 +20,27 @@ int	check_path(t_data *game, int x, int y)
 	return (1);
 }
 
-static void	check_case(t_data *game, int x, int y)
+void	check_game(t_data *game, t_pos pl, t_enemy *mob)
+{
+	int	len;
+
+	len = 0;
+	while (len < game->map_content.enemy)
+	{
+		if (game->game_state == GAME_ON && \
+			(pl.x == mob[len].pos.x) && (pl.y == mob[len].pos.y))
+		{
+			ft_printf("%sGAME OVER\nYou got killed by a slime !%s\n", \
+				RED, DEF);
+			game->img.current = game->img.dead;
+			game->img.current_back = game->img.dead;
+			game->game_state = GAME_OVER;
+		}
+		len++;
+	}
+}
+
+static void	check_case(int x, int y, t_data *game)
 {
 	static int	collectible = 0;
 	t_pos		exit;
@@ -30,31 +50,26 @@ static void	check_case(t_data *game, int x, int y)
 	{
 		ft_printf("%sGAME SUCCESS\nLevel completed in %d moves !%s\n", \
 			GREEN, game->count_moves, DEF);
-		game_close(game);
+		game->game_state = GAME_SUCCESS;
 	}
 	else if (game->map[y][x] == 'C')
 	{
 		collectible++;
 		game->map[y][x] = '0';
 		if (collectible == game->map_content.collectible)
+		{
+			game->img.current_exit = game->img.exit[1];
 			game->exit = 1;
+		}
 	}
 }
 
-void	move_player(t_data *game, int x, int y)
+void	move_dir(int x, int y, t_data *game)
 {
-	t_pos	pl;
-
-	pl = game->player;
 	game->count_moves++;
-	ft_printf("Moves: %d\n", game->count_moves);
-	check_case(game, x, y);
-	game->map[pl.y][pl.x] = '0';
-	print_img(game, game->img.floor, pl.x, pl.y);
-	if (game->map_content.exit_pos.x == pl.x && \
-		game->map_content.exit_pos.y == pl.y)
-		print_img(game, game->img.exit, pl.x, pl.y);
-	print_img(game, game->img.player, x, y);
+	ft_printf("Moves : %d\n", game->count_moves);
+	check_case(x, y, game);
+	game->map[game->player.y][game->player.x] = '0';
 	game->player.x = x;
 	game->player.y = y;
 	game->map[y][x] = 'P';

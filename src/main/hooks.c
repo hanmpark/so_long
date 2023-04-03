@@ -6,11 +6,11 @@
 /*   By: hanmpark <hanmpark@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 17:12:52 by hanmpark          #+#    #+#             */
-/*   Updated: 2023/02/25 17:34:44 by hanmpark         ###   ########.fr       */
+/*   Updated: 2023/04/03 16:03:52 by hanmpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../../inc/game.h"
+#include "game.h"
 
 static void	clear_img(t_data *game)
 {

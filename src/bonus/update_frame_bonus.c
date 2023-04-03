@@ -6,12 +6,12 @@
 /*   By: hanmpark <hanmpark@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/14 09:20:46 by hanmpark          #+#    #+#             */
-/*   Updated: 2023/02/25 12:04:27 by hanmpark         ###   ########.fr       */
+/*   Updated: 2023/04/03 16:07:56 by hanmpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../../inc/game_bonus.h"
-#include "../../../inc/move_bonus.h"
+#include "game_bonus.h"
+#include "move_bonus.h"
 
 static void	anim_player(t_data *game)
 {

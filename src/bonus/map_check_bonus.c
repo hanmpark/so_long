@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   map_check.c                                        :+:      :+:    :+:   */
+/*   map_check_bonus.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hanmpark <hanmpark@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/27 17:40:48 by hanmpark          #+#    #+#             */
-/*   Updated: 2023/02/24 16:33:35 by hanmpark         ###   ########.fr       */
+/*   Updated: 2023/04/03 16:07:07 by hanmpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../../inc/game.h"
-#include "../../../inc/parsing.h"
+#include "game_bonus.h"
+#include "parsing_bonus.h"
 
 static int	check_case(char c, int x, int y, t_data *game)
 {
@@ -22,7 +22,7 @@ static int	check_case(char c, int x, int y, t_data *game)
 		game->map_content.isplayer++;
 	}
 	else if (c == 'P' && game->map_content.isplayer)
-		return (MAP_WRONG);
+		return (MAP_ERROR);
 	else if (c == 'C')
 		game->map_content.collectible++;
 	else if (c == 'E')
@@ -31,8 +31,10 @@ static int	check_case(char c, int x, int y, t_data *game)
 		game->map_content.exit_pos.x = x;
 		game->map_content.exit_pos.y = y;
 	}
+	else if (c == 'M')
+		game->map_content.enemy++;
 	else if (c != '1' && c != '0')
-		return (MAP_WRONG);
+		return (MAP_ERROR);
 	return (MAP_OKAY);
 }
 
@@ -43,7 +45,8 @@ static int	filling(int x, int y, char **draftmap, t_data *g)
 
 	if (x < 0 || y < 0 || x >= g->size.x || y >= g->size.y)
 		return (0);
-	if (draftmap[y][x] == 'F' || draftmap[y][x] == '1')
+	if (draftmap[y][x] == 'F' || draftmap[y][x] == '1' || \
+		draftmap[y][x] == 'M')
 		return (0);
 	else if (draftmap[y][x] == 'C')
 		collectible++;
@@ -55,7 +58,7 @@ static int	filling(int x, int y, char **draftmap, t_data *g)
 	filling(x, y - 1, draftmap, g);
 	filling(x, y + 1, draftmap, g);
 	if (collectible != g->map_content.collectible || !exit)
-		return (MAP_WRONG);
+		return (MAP_ERROR);
 	return (MAP_OKAY);
 }
 
@@ -64,7 +67,7 @@ static int	flood_fill(t_data *game, char **tmpmap)
 	if (!filling(game->player.x, game->player.y, tmpmap, game))
 	{
 		ft_freetab(tmpmap);
-		return (MAP_WRONG);
+		return (MAP_ERROR);
 	}
 	ft_freetab(tmpmap);
 	return (MAP_OKAY);
@@ -82,16 +85,16 @@ void	check_content(char **map, t_data *game)
 		while (map[i][k])
 		{
 			if (!check_case(map[i][k], k, i, game))
-				ft_error(map, NULL, ERR_CASE);
+				ft_error(map, game->enemy, ERR_CASE);
 			k++;
 		}
 		i++;
 	}
 	if (!game->map_content.collectible || game->map_content.exit != 1 || \
 		game->map_content.isplayer != 1)
-		ft_error(map, NULL, ERR_ELEMENTS);
-	else if (flood_fill(game, ft_mapdup(map)) == MAP_WRONG)
-		ft_error(map, NULL, ERR_IMPOSSIBLE);
+		ft_error(map, game->enemy, ERR_ELEMENTS);
+	else if (flood_fill(game, ft_mapdup(map)) == MAP_ERROR)
+		ft_error(map, game->enemy, ERR_IMPOSSIBLE);
 }
 
 void	check_edges(char **map, t_data *game)
@@ -102,14 +105,14 @@ void	check_edges(char **map, t_data *game)
 	while (i < game->size.x)
 	{
 		if (map[0][i] != '1' || map[game->size.y - 1][i] != '1')
-			ft_error(map, NULL, ERR_WALLS);
+			ft_error(map, game->enemy, ERR_WALLS);
 		i++;
 	}
 	i = 0;
 	while (i < game->size.y)
 	{
 		if (map[i][0] != '1' || map[i][game->size.x - 1] != '1')
-			ft_error(map, NULL, ERR_WALLS);
+			ft_error(map, game->enemy, ERR_WALLS);
 		i++;
 	}
 }

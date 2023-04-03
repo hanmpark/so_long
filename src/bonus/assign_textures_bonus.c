@@ -6,11 +6,11 @@
 /*   By: hanmpark <hanmpark@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/08 09:14:22 by hanmpark          #+#    #+#             */
-/*   Updated: 2023/02/26 22:38:13 by hanmpark         ###   ########.fr       */
+/*   Updated: 2023/04/03 16:06:28 by hanmpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../../inc/game_bonus.h"
+#include "game_bonus.h"
 
 static t_list	*load_sprites(char *path, char times, t_data *game)
 {

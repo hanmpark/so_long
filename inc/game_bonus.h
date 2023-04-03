@@ -6,14 +6,14 @@
 /*   By: hanmpark <hanmpark@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 10:23:44 by hanmpark          #+#    #+#             */
-/*   Updated: 2023/02/25 18:22:57 by hanmpark         ###   ########.fr       */
+/*   Updated: 2023/04/03 16:08:12 by hanmpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef GAME_BONUS_H
 # define GAME_BONUS_H
 
-# include "../src/libft/inc/libft.h"
+# include "../libft/inc/libft.h"
 # include <mlx.h>
 
 # define ERR_MLX "Error\nMLX problem\n"

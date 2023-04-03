@@ -6,11 +6,11 @@
 /*   By: hanmpark <hanmpark@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 14:59:40 by hanmpark          #+#    #+#             */
-/*   Updated: 2023/02/25 12:07:02 by hanmpark         ###   ########.fr       */
+/*   Updated: 2023/04/03 16:06:32 by hanmpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../../inc/game_bonus.h"
+#include "game_bonus.h"
 
 static void	clear_list(t_list **list, t_data *g)
 {

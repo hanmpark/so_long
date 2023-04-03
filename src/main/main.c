@@ -6,12 +6,12 @@
 /*   By: hanmpark <hanmpark@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 10:22:52 by hanmpark          #+#    #+#             */
-/*   Updated: 2023/02/24 16:33:48 by hanmpark         ###   ########.fr       */
+/*   Updated: 2023/04/03 16:01:29 by hanmpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../../inc/game.h"
-#include "../../../inc/parsing.h"
+#include "game.h"
+#include "parsing.h"
 
 int	main(int argc, char **argv)
 {

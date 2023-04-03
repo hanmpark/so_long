@@ -6,14 +6,14 @@
 /*   By: hanmpark <hanmpark@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 11:05:46 by hanmpark          #+#    #+#             */
-/*   Updated: 2023/02/25 18:34:06 by hanmpark         ###   ########.fr       */
+/*   Updated: 2023/04/03 16:02:33 by hanmpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef GAME_H
 # define GAME_H
 
-# include "../src/libft/inc/libft.h"
+# include "../libft/inc/libft.h"
 # include <mlx.h>
 
 # define ERR_MLX "Error\nMLX problem\n"

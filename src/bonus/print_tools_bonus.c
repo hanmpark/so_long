@@ -6,11 +6,11 @@
 /*   By: hanmpark <hanmpark@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/22 19:56:22 by hanmpark          #+#    #+#             */
-/*   Updated: 2023/02/24 19:05:28 by hanmpark         ###   ########.fr       */
+/*   Updated: 2023/04/03 16:07:37 by hanmpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../../inc/game_bonus.h"
+#include "game_bonus.h"
 
 void	print_img(t_data *game, void *img, int x, int y)
 {

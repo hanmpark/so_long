@@ -6,12 +6,12 @@
 /*   By: hanmpark <hanmpark@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/17 09:55:42 by hanmpark          #+#    #+#             */
-/*   Updated: 2023/02/24 18:41:09 by hanmpark         ###   ########.fr       */
+/*   Updated: 2023/04/03 16:07:32 by hanmpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../../inc/game_bonus.h"
-#include "../../../inc/move_bonus.h"
+#include "game_bonus.h"
+#include "move_bonus.h"
 
 static void	left_direction(t_data *game)
 {

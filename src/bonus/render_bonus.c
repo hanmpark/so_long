@@ -6,11 +6,11 @@
 /*   By: hanmpark <hanmpark@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/08 17:45:49 by hanmpark          #+#    #+#             */
-/*   Updated: 2023/02/24 16:12:49 by hanmpark         ###   ########.fr       */
+/*   Updated: 2023/04/03 16:07:41 by hanmpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../../inc/game_bonus.h"
+#include "game_bonus.h"
 
 static void	print_elements(t_pos win, t_pos pl, t_data *game)
 {
