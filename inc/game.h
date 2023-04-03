@@ -6,7 +6,7 @@
 /*   By: hanmpark <hanmpark@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 11:05:46 by hanmpark          #+#    #+#             */
-/*   Updated: 2023/04/03 16:02:33 by hanmpark         ###   ########.fr       */
+/*   Updated: 2023/04/03 16:13:54 by hanmpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,6 @@ typedef struct s_img
 	void	*floor;
 	void	*exit;
 	void	*wall;
-	void	*border;
 	int		height;
 	int		width;
 }	t_img;
