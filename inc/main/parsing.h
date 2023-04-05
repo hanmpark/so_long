@@ -6,14 +6,14 @@
 /*   By: hanmpark <hanmpark@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 11:12:06 by hanmpark          #+#    #+#             */
-/*   Updated: 2023/04/03 16:02:46 by hanmpark         ###   ########.fr       */
+/*   Updated: 2023/04/05 09:23:50 by hanmpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PARSING_H
 # define PARSING_H
 
-# include "../libft/inc/get_next_line.h"
+# include "../../libft/inc/get_next_line.h"
 
 # define MAP_OKAY 1
 # define MAP_WRONG 0
