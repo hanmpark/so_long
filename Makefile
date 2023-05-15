@@ -6,7 +6,7 @@
 #    By: hanmpark <hanmpark@student.42nice.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/11 13:12:40 by hanmpark          #+#    #+#              #
-#    Updated: 2023/04/05 09:27:20 by hanmpark         ###   ########.fr        #
+#    Updated: 2023/05/15 13:30:35 by hanmpark         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -91,7 +91,7 @@ ${BONUS_PATH}%.o: ${BONUS_PATH}%.c ${HEADER_PATH_BONUS}
 	@${eval SRCS_COUNT = ${shell expr ${SRCS_COUNT} + 1}}
 	@${CC} ${CFLAGS} -I ${HEADER_PATH_BONUS} -c $< -o ${<:.c=.o}
 	@echo ""
-	@echo " ${BOLD}${CUR}${BEIGE}-> Compiling ${DEF}${BOLD}${LYELLOW}[PIPEX (BONUS)]${DEF}"
+	@echo " ${BOLD}${CUR}${BEIGE}-> Compiling ${DEF}${BOLD}${LYELLOW}[SO_LONG (BONUS)]${DEF}"
 	@printf " ${BEIGE}   [${LGREEN}%-23.${BAR_BONUS}s${BEIGE}] [%d/%d (%d%%)]${DEF}" "***********************" ${SRCS_COUNT} ${SRCS_TOT_BONUS} ${SRCS_PRCT_BONUS}
 	@echo "${UP}${UP}${UP}"
 
