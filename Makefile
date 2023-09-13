@@ -6,7 +6,7 @@
 #    By: hanmpark <hanmpark@student.42nice.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/11 13:12:40 by hanmpark          #+#    #+#              #
-#    Updated: 2023/05/15 13:30:35 by hanmpark         ###   ########.fr        #
+#    Updated: 2023/09/14 00:59:19 by hanmpark         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -63,9 +63,10 @@ endif
 # --------------------------------- COMPILER --------------------------------- #
 CC = gcc
 CFLAGS = -Wall -Wextra -Werror
-LINKS = -lmlx -framework OpenGL -framework Appkit
+LINKS = -framework OpenGL -framework Appkit
+MLX = ./minilibx-mac/libmlx.a
 ifdef DEBUG
-CFLAGS += -fsanitize=address -g
+	CFLAGS += -fsanitize=address -g
 endif
 
 HEADER_PATH = ./inc/main/
@@ -101,13 +102,16 @@ LIBFT_PATH = ./libft/
 EXEC = ./so_long
 PATH_ERROR = ./maps/error/
 
-all: ${NAME}
+all: setmlx ${NAME}
 
 ${NAME}: ${OBJS}
 	@echo "\n\n\n"
 	@${MAKE} -C ${LIBFT_PATH}
-	@${CC} ${FLAGS} ${LINKS} ${LIBFT_PATH}/libft.a ${OBJS} -o ${NAME}
+	@${CC} ${FLAGS} ${OBJS} ${LIBFT_PATH}/libft.a ${MLX} ${LINKS} -o ${NAME}
 	@echo "\n\n\n   ${BOLD}${CUR}${LYELLOW}SO_LONG COMPILED ✨${DEF}\n"
+
+setmlx:
+	@${MAKE} -C ./minilibx-mac/
 
 bonus:
 	@${MAKE} COMPILE_BONUS=1 all

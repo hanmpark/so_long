@@ -6,7 +6,7 @@
 /*   By: hanmpark <hanmpark@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 11:05:46 by hanmpark          #+#    #+#             */
-/*   Updated: 2023/04/05 09:24:06 by hanmpark         ###   ########.fr       */
+/*   Updated: 2023/09/14 00:58:32 by hanmpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 # include "../../libft/inc/libft.h"
 # include "../../libft/inc/ft_printf.h"
-# include <mlx.h>
+# include "../../minilibx-mac/mlx.h"
 
 # define ERR_MLX "Error\nMLX problem\n"
 
